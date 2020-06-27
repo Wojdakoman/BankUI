@@ -1,4 +1,5 @@
-﻿using Projekt.API;
+﻿using BankUI.ViewModel.Classes;
+using Projekt.API;
 using Projekt.Class;
 using Projekt.DAL.Entity;
 using Projekt.DAL.Repositories;
@@ -47,14 +48,27 @@ namespace BankUI.Model
         #region Public
         public string WlascicielName { get { if (!(wlasciciel is null)) return $"{wlasciciel.Imie} {wlasciciel.Nazwisko}"; return "unDef"; } }
         public List<string> NumeryKont { get {
+                _numeryKont.Clear();
                 foreach (var konto in kontoBankowe.ListaKont)
                 {
                     _numeryKont.Add(konto.NumerKonta);
                 }
                 return _numeryKont;
             } }
-        public string TypKonta { get; set; }
+        public string TypKonta { get => kontoBankowe.ListaKont[Konto].TypKonta; }
         public double Saldo { get => kontoBankowe.ListaKont[Konto].Saldo; }
+        public List<StringHistoria> Historia { get
+            {
+                List<Konto> temp = new List<Konto>();
+                temp.Add(kontoBankowe.ListaKont[Konto]);
+                List<StringHistoria> result = new List<StringHistoria>();
+
+                foreach(var przelew in RepositoryPrzelew.LoadOperations(temp).ElementAt(0).Value)
+                {
+                    result.Add(new StringHistoria(przelew, kontoBankowe.ListaKont[Konto].NumerKonta));
+                }
+                return result;
+            } }
         #endregion
     }
 }

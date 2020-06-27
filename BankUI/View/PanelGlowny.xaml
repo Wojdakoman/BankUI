@@ -29,7 +29,13 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
                     <Label Content="Aktywne konto: " FontSize="14" />
-                    <ComboBox x:Name="combo" IsEditable="False" ItemsSource="{Binding ListaKont}" SelectedIndex="{Binding ListaKontIndex}" />
+                    <ComboBox x:Name="combo" IsEditable="False" ItemsSource="{Binding ListaKont}" SelectedIndex="{Binding ListaKontIndex}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ZmienKonto}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="{Binding UserName}" FontSize="14" />
@@ -64,7 +70,7 @@
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                <Label Content="Konto Młodzieżowe" FontSize="17" />
+                <Label Content="{Binding TypKonta}" FontSize="17" />
                 <Label Content="{Binding Path=SelectedValue, ElementName=combo}" FontSize="13" Foreground="Gray" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">

@@ -48,6 +48,7 @@ namespace BankUI.ViewModel
                 .FirstOrDefault(vm => vm == viewModel);
         }
 
+        #region ZmianaWidoku
         private void OnGo1Screen(object obj)
         {
             Console.WriteLine(obj.ToString());
@@ -65,18 +66,26 @@ namespace BankUI.ViewModel
             ChangeViewModel(PageViewModels[1]);
         }
 
+        private void NowyPrzelew(object obj)
+        {
+            Console.WriteLine($"Model: {_model.Konto}");
+            ChangeViewModel(PageViewModels[2]);
+        }
+        #endregion
         public MainWindowVM()
         {
             _model = new Data();
             // Add available pages and set page
             PageViewModels.Add(new LoginVM(ref _model));
             PageViewModels.Add(new PanelGlownyVM(ref _model));
+            PageViewModels.Add(new PrzelewVM(ref _model));
             PageViewModels.Add(new UserControl1VM());
             PageViewModels.Add(new UserControl2VM());
 
             CurrentPageViewModel = PageViewModels[0];
 
             Mediator.Subscribe("Zalogowano", OnLogin);
+            Mediator.Subscribe("NowyPrzelew", NowyPrzelew);
             Mediator.Subscribe("GoTo1Screen", OnGo1Screen);
             Mediator.Subscribe("GoTo2Screen", OnGo2Screen);
         }

@@ -1,28 +1,32 @@
 ﻿using BankUI.Model;
 using BankUI.ViewModel.Base;
-using BankUI.ViewModel.Classes;
 using BankUI.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
-    class PanelGlownyVM : ViewModelBase, IPageViewModel
+    class PrzelewVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
+        #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
-        public int ListaKontIndex { get; set; } = 0;
-        public string Saldo { get => $"{_model.Saldo} PLN"; }
-        public string TypKonta { get => $"Konto {_model.TypKonta}"; }
-        public List<StringHistoria> Lista { get => _model.Historia; }
-
-        public PanelGlownyVM(ref Data model) => _model = model;
+        public int ListaKontIndex { get; set; }
+        public double Saldo { get => _model.Saldo; }
+        public string SaldoString { get => $"{_model.Saldo} PLN"; }
+        #region DanePrzelewu
+        public string Odbiorca { get; set; }
+        public string Tytul { get; set; }
+        public string Opis { get; set; }
+        public string Wartosc { get; set; } //potrzebny converter
+        #endregion
+        #endregion
+        public PrzelewVM(ref Data model) => _model = model;
 
         #region Komendy
         private ICommand _onLoad = null;
@@ -35,7 +39,8 @@ namespace BankUI.ViewModel
                     _onLoad = new RelayCommand(
                         arg =>
                         {
-                            OnPropertyChanged(nameof(UserName), nameof(ListaKont), nameof(Saldo), nameof(TypKonta), nameof(Lista));
+                            ListaKontIndex = _model.Konto;
+                            OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont), nameof(Saldo), nameof(SaldoString));
                         },
                         arg => true
                     );
@@ -43,6 +48,7 @@ namespace BankUI.ViewModel
                 return _onLoad;
             }
         }
+
         private ICommand _zmienKonto = null;
         public ICommand ZmienKonto
         {
@@ -54,7 +60,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             _model.Konto = ListaKontIndex;
-                            OnPropertyChanged(nameof(ListaKontIndex), nameof(ListaKont), nameof(Saldo), nameof(TypKonta), nameof(Lista));
+                            OnPropertyChanged(nameof(ListaKont), nameof(Saldo), nameof(SaldoString));
                         },
                         arg => true
                     );
@@ -62,26 +68,6 @@ namespace BankUI.ViewModel
                 return _zmienKonto;
             }
         }
-        #region goTo
-        private ICommand _goPrzelewy = null;
-        public ICommand GoPrzelewy
-        {
-            get
-            {
-                if (_goPrzelewy == null)
-                {
-                    _goPrzelewy = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("NowyPrzelew", "");
-                        },
-                        arg => true
-                    );
-                }
-                return _goPrzelewy;
-            }
-        }
-        #endregion
         #endregion
     }
 }

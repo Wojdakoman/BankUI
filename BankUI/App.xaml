@@ -12,6 +12,9 @@
         <DataTemplate DataType="{x:Type vm:PanelGlownyVM}">
             <okna:PanelGlowny />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PrzelewVM}">
+            <okna:Przelew />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:UserControl1VM}">
             <okna:UserControl1 />
         </DataTemplate>

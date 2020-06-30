@@ -16,9 +16,9 @@
             </StackPanel>
             <StackPanel Margin="0 5" Orientation="Horizontal">
                 <Label Content="Hasło:" />
-                <TextBox Width="150" Text="{Binding Pass}"  />
+                <PasswordBox x:Name="passwordBoxPassword" Width="150"></PasswordBox>
             </StackPanel>
-            <Button Margin="0 5" Content="Zaloguj" Command="{Binding Login}" />
+            <Button Margin="0 5" Content="Zaloguj" Command="{Binding Login}" CommandParameter="{Binding ElementName=passwordBoxPassword}" />
             <Button Content="Rejestracja" />
         </StackPanel>
     </Grid>

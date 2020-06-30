@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace BankUI.ViewModel
@@ -15,7 +16,6 @@ namespace BankUI.ViewModel
         private Data _model;
         public string Error { get; set; }
         public string LoginName { get; set; }
-        public string Pass { get; set; }
 
         public LoginVM(ref Data model) => _model = model;
 
@@ -26,9 +26,10 @@ namespace BankUI.ViewModel
             {
                 if (_login == null)
                 {
-                    _login = new RelayCommand(
-                        arg =>
+                    _login = new RelayCommand((parameter)
+                        =>
                         {
+                            string Pass = (parameter as PasswordBox).Password;
                             //check in model; return true or false
                             if (_model.Login(LoginName, Pass))
                             {

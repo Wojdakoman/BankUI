@@ -30,6 +30,8 @@ namespace BankUI.Model
             await IP.GetData();
         }
         #endregion
+
+        #region Funkcje
         public bool Login(string uzytkownik, string haslo)
         {
             wlasciciel = RepositoryWlasciciel.FindOwner(uzytkownik, haslo);
@@ -40,10 +42,16 @@ namespace BankUI.Model
                 return true;
             }
         }
-        public override string ToString()
+        public bool NumerIstnieje(string numerKonta)
         {
-            return "jestem datą";
+            return !RepositoryKonto.NumberExist(numerKonta);
         }
+        public void NowyPrzelew(string odbiorca, double wartosc, string tytul, string opis)
+        {
+            RepositoryPrzelew.ExecuteOperation(kontoBankowe.ListaKont[Konto], odbiorca, wartosc, tytul, opis);
+            kontoBankowe.Update();
+        }
+        #endregion
 
         #region Public
         public string WlascicielName { get { if (!(wlasciciel is null)) return $"{wlasciciel.Imie} {wlasciciel.Nazwisko}"; return "unDef"; } }

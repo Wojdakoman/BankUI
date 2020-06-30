@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankUI.ViewModel
@@ -23,7 +24,7 @@ namespace BankUI.ViewModel
         public string Odbiorca { get; set; }
         public string Tytul { get; set; }
         public string Opis { get; set; }
-        public string Wartosc { get; set; } //potrzebny converter
+        public double? Wartosc { get; set; }
         #endregion
         #endregion
         public PrzelewVM(ref Data model) => _model = model;
@@ -68,6 +69,57 @@ namespace BankUI.ViewModel
                 return _zmienKonto;
             }
         }
+
+        private ICommand _wykonajPrzelew = null;
+        public ICommand WykonajPrzelew
+        {
+            get
+            {
+                if (_wykonajPrzelew == null)
+                {
+                    _wykonajPrzelew = new RelayCommand(
+                        arg =>
+                        {
+                            _model.NowyPrzelew(Odbiorca, (double)Wartosc, Tytul, Opis);
+                            Clear();
+                            OnPropertyChanged(nameof(Saldo), nameof(SaldoString));
+                            MessageBox.Show("Wykonano przelew");
+                        },
+                        arg => !(string.IsNullOrEmpty(Odbiorca) && string.IsNullOrEmpty(Tytul)) && Wartosc > 0 && Wartosc <= Saldo && _model.NumerIstnieje(Odbiorca)
+                    );
+                }
+                return _wykonajPrzelew;
+            }
+        }
+        #region goTo
+        private ICommand _goMain = null;
+        public ICommand GoMain
+        {
+            get
+            {
+                if (_goMain == null)
+                {
+                    _goMain = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("PanelGlowny", "");
+                        },
+                        arg => true
+                    );
+                }
+                return _goMain;
+            }
+        }
         #endregion
+        #endregion
+
+        private void Clear()
+        {
+            Odbiorca = "";
+            Tytul = "";
+            Opis = "";
+            Wartosc = 0;
+            OnPropertyChanged(nameof(Odbiorca), nameof(Tytul), nameof(Opis), nameof(Wartosc));
+        }
     }
 }

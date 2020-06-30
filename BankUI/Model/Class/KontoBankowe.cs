@@ -33,5 +33,15 @@ namespace Projekt.Class
         {
             RepositoryKartaPlatnicza.AddCard(this.KartyPlatnicze, choosedAccount);
         }
+        /// <summary>
+        /// Aktualizuje dane po ich zmianie w bazie
+        /// </summary>
+        public void Update()
+        {
+            ListaKont = RepositoryKonto.GetAccount(Wlasciciel.Pesel);
+            ListaPrzelewow = RepositoryPrzelew.LoadOperations(ListaKont);
+            KartyPlatnicze = RepositoryKartaPlatnicza.LoadCards(ListaKont);
+            ListOperacjiKart = RepositoryKartaOperacje.LoadHistory(KartyPlatnicze);
+        }
     }
 }

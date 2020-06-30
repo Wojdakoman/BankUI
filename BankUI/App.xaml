@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BankUI"
              xmlns:vm="clr-namespace:BankUI.ViewModel"
+             xmlns:convter="clr-namespace:BankUI.ViewModel.Converters"
              xmlns:okna="clr-namespace:BankUI.View"
              >
     <Application.Resources>
+        <convter:DoubleToStringConverter x:Key="DoubleToStringConverter" />
         <DataTemplate DataType="{x:Type vm:LoginVM}">
             <okna:Login />
         </DataTemplate>

@@ -68,8 +68,12 @@ namespace BankUI.ViewModel
 
         private void NowyPrzelew(object obj)
         {
-            Console.WriteLine($"Model: {_model.Konto}");
             ChangeViewModel(PageViewModels[2]);
+        }
+
+        private void ToPanelGlowny(object obj)
+        {
+            ChangeViewModel(PageViewModels[1]);
         }
         #endregion
         public MainWindowVM()
@@ -85,6 +89,7 @@ namespace BankUI.ViewModel
             CurrentPageViewModel = PageViewModels[0];
 
             Mediator.Subscribe("Zalogowano", OnLogin);
+            Mediator.Subscribe("PanelGlowny", ToPanelGlowny);
             Mediator.Subscribe("NowyPrzelew", NowyPrzelew);
             Mediator.Subscribe("GoTo1Screen", OnGo1Screen);
             Mediator.Subscribe("GoTo2Screen", OnGo2Screen);

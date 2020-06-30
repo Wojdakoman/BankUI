@@ -145,8 +145,6 @@
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\PanelGlownyVM.cs" />
     <Compile Include="ViewModel\PrzelewVM.cs" />
-    <Compile Include="ViewModel\UserControl1VM.cs" />
-    <Compile Include="ViewModel\UserControl2VM.cs" />
     <Compile Include="View\Controls\DoubleTextBox.xaml.cs">
       <DependentUpon>DoubleTextBox.xaml</DependentUpon>
     </Compile>
@@ -158,12 +156,6 @@
     </Compile>
     <Compile Include="View\Przelew.xaml.cs">
       <DependentUpon>Przelew.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControl2.xaml.cs">
-      <DependentUpon>UserControl2.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -190,14 +182,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Przelew.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControl2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

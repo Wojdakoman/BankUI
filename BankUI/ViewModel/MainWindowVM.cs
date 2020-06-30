@@ -12,15 +12,15 @@ namespace BankUI.ViewModel
     class MainWindowVM : ViewModelBase
     {
         private IPageViewModel _currentPageViewModel;
-        private List<IPageViewModel> _pageViewModels;
+        private Dictionary<string, IPageViewModel> _pageViewModels;
         private Data _model;
 
-        public List<IPageViewModel> PageViewModels
+        public Dictionary<string, IPageViewModel> PageViewModels
         {
             get
             {
                 if (_pageViewModels == null)
-                    _pageViewModels = new List<IPageViewModel>();
+                    _pageViewModels = new Dictionary<string, IPageViewModel>();
 
                 return _pageViewModels;
             }
@@ -39,60 +39,26 @@ namespace BankUI.ViewModel
             }
         }
 
-        private void ChangeViewModel(IPageViewModel viewModel)
-        {
-            if (!PageViewModels.Contains(viewModel))
-                PageViewModels.Add(viewModel);
-
-            CurrentPageViewModel = PageViewModels
-                .FirstOrDefault(vm => vm == viewModel);
-        }
-
         #region ZmianaWidoku
-        private void OnGo1Screen(object obj)
+        private void ZmianaWidoku(object obj)
         {
-            Console.WriteLine(obj.ToString());
-            ChangeViewModel(PageViewModels[1]);
-        }
-
-        private void OnGo2Screen(object obj)
-        {
-            Console.WriteLine(obj.ToString());
-            ChangeViewModel(PageViewModels[2]);
-        }
-
-        private void OnLogin(object obj)
-        {
-            ChangeViewModel(PageViewModels[1]);
-        }
-
-        private void NowyPrzelew(object obj)
-        {
-            ChangeViewModel(PageViewModels[2]);
-        }
-
-        private void ToPanelGlowny(object obj)
-        {
-            ChangeViewModel(PageViewModels[1]);
+            string pageName = obj.ToString();
+            if(PageViewModels.ContainsKey(pageName))
+                CurrentPageViewModel = PageViewModels[obj.ToString()];
+            else CurrentPageViewModel = PageViewModels["panelGlowny"];
         }
         #endregion
         public MainWindowVM()
         {
             _model = new Data();
             // Add available pages and set page
-            PageViewModels.Add(new LoginVM(ref _model));
-            PageViewModels.Add(new PanelGlownyVM(ref _model));
-            PageViewModels.Add(new PrzelewVM(ref _model));
-            PageViewModels.Add(new UserControl1VM());
-            PageViewModels.Add(new UserControl2VM());
+            PageViewModels.Add("login", new LoginVM(ref _model));
+            PageViewModels.Add("panelGlowny", new PanelGlownyVM(ref _model));
+            PageViewModels.Add("przelew", new PrzelewVM(ref _model));
 
-            CurrentPageViewModel = PageViewModels[0];
+            CurrentPageViewModel = PageViewModels["login"];
 
-            Mediator.Subscribe("Zalogowano", OnLogin);
-            Mediator.Subscribe("PanelGlowny", ToPanelGlowny);
-            Mediator.Subscribe("NowyPrzelew", NowyPrzelew);
-            Mediator.Subscribe("GoTo1Screen", OnGo1Screen);
-            Mediator.Subscribe("GoTo2Screen", OnGo2Screen);
+            Mediator.Subscribe("GoToPage", ZmianaWidoku);
         }
     }
 }

@@ -102,7 +102,7 @@ namespace BankUI.ViewModel
                     _goMain = new RelayCommand(
                         arg =>
                         {
-                            Mediator.Notify("PanelGlowny", "");
+                            Mediator.Notify("GoToPage", "panelGlowny");
                         },
                         arg => true
                     );

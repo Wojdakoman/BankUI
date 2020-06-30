@@ -73,7 +73,7 @@ namespace BankUI.ViewModel
                     _goPrzelewy = new RelayCommand(
                         arg =>
                         {
-                            Mediator.Notify("NowyPrzelew", "");
+                            Mediator.Notify("GoToPage", "przelew");
                         },
                         arg => true
                     );

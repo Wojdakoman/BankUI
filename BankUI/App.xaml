@@ -17,12 +17,6 @@
         <DataTemplate DataType="{x:Type vm:PrzelewVM}">
             <okna:Przelew />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:UserControl1VM}">
-            <okna:UserControl1 />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:UserControl2VM}">
-            <okna:UserControl2 />
-        </DataTemplate>
         <!-- STYLES -->
         <Style x:Key="BigRoundButtonTemplate" TargetType="Button">
             <Setter Property="Background" Value="#F0F8FF" />

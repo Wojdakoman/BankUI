@@ -34,7 +34,7 @@ namespace BankUI.ViewModel
                             if (_model.Login(LoginName, Pass))
                             {
                                 //login successfull
-                                Mediator.Notify("Zalogowano", "");
+                                Mediator.Notify("GoToPage", "panelGlowny");
                             }
                             else
                             {

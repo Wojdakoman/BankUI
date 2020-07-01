@@ -133,6 +133,7 @@
     <Compile Include="Model\DAL\Repositories\RepositoryPrzelew.cs" />
     <Compile Include="Model\DAL\Repositories\RepositoryWlasciciel.cs" />
     <Compile Include="Model\Data.cs" />
+    <Compile Include="ViewModel\RejestracjaVM.cs" />
     <Compile Include="ViewModel\Base\EventArgs.cs" />
     <Compile Include="ViewModel\Base\EventRaiser.cs" />
     <Compile Include="ViewModel\Base\Mediator.cs" />
@@ -156,6 +157,9 @@
     </Compile>
     <Compile Include="View\Przelew.xaml.cs">
       <DependentUpon>Przelew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Rejestracja.xaml.cs">
+      <DependentUpon>Rejestracja.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Przelew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Rejestracja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

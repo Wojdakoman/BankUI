@@ -17,6 +17,9 @@
         <DataTemplate DataType="{x:Type vm:PrzelewVM}">
             <okna:Przelew />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RejestracjaVM}">
+            <okna:Rejestracja></okna:Rejestracja>
+        </DataTemplate>
         <!-- STYLES -->
         <Style x:Key="BigRoundButtonTemplate" TargetType="Button">
             <Setter Property="Background" Value="#F0F8FF" />

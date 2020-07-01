@@ -55,6 +55,7 @@ namespace BankUI.ViewModel
             PageViewModels.Add("login", new LoginVM(ref _model));
             PageViewModels.Add("panelGlowny", new PanelGlownyVM(ref _model));
             PageViewModels.Add("przelew", new PrzelewVM(ref _model));
+            PageViewModels.Add("rejestracja", new RejestracjaVM(ref _model));
 
             CurrentPageViewModel = PageViewModels["login"];
 

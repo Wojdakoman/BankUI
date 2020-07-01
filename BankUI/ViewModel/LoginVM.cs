@@ -50,5 +50,24 @@ namespace BankUI.ViewModel
                 return _login;
             }
         }
+
+        private ICommand _stronaRejestracji = null;
+        public ICommand StronaRejestracji
+        {
+            get
+            {
+                if(_stronaRejestracji == null)
+                {
+                    _stronaRejestracji = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "rejestracja");
+                        },
+                        arg => true
+                        );
+                }
+                return _stronaRejestracji;
+            }
+        }
     }
 }

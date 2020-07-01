@@ -28,19 +28,10 @@ namespace BankUI.ViewModel
 
         public string Pesel
         {
-            get
-            {
-                return pesel;
-            }
-            set
-            {
-                OnPropertyChanged(nameof(Pesel));
-                pesel = value;
-                //Sprawdz istnienie wpisanego Pesla
-                MessageBox.Show(pesel.ToString());
-                CheckPesel(pesel);
-            }
+            get { return pesel; }
+            set { pesel = value; CheckPesel(pesel); }
         }
+        public string Imie { get; set; }
 
         #endregion
 
@@ -55,7 +46,7 @@ namespace BankUI.ViewModel
 
         private void CheckPesel(string pesel)
         {
-            MessageBox.Show(pesel.ToString());
+            //Sprawdzenie czy dany pesel instnieje juz w poczcie
         }
 
         #endregion

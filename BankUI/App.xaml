@@ -7,62 +7,70 @@
              xmlns:okna="clr-namespace:BankUI.View"
              >
     <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/Texts.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+
+
         <convter:DoubleToStringConverter x:Key="DoubleToStringConverter" />
-        <DataTemplate DataType="{x:Type vm:LoginVM}">
-            <okna:Login />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:PanelGlownyVM}">
-            <okna:PanelGlowny />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:PrzelewVM}">
-            <okna:Przelew />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:RejestracjaVM}">
-            <okna:Rejestracja></okna:Rejestracja>
-        </DataTemplate>
-        <!-- STYLES -->
-        <Style x:Key="BigRoundButtonTemplate" TargetType="Button">
-            <Setter Property="Background" Value="#F0F8FF" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Century Gothic" />
-            <Setter Property="Margin" Value="5 0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Padding="20"  CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="#C9D0D6" BorderThickness="1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" Value="#98CFFF"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="RoundButtonTemplate" TargetType="Button">
-            <Setter Property="Background" Value="#F0F8FF" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontFamily" Value="Century Gothic" />
-            <Setter Property="Margin" Value="5 0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Padding="5"  CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="#C9D0D6" BorderThickness="1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" Value="#98CFFF"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+            <DataTemplate DataType="{x:Type vm:LoginVM}">
+                <okna:Login />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:PanelGlownyVM}">
+                <okna:PanelGlowny />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:PrzelewVM}">
+                <okna:Przelew />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:RejestracjaVM}">
+                <okna:Rejestracja></okna:Rejestracja>
+            </DataTemplate>
+            <!-- STYLES -->
+            <Style x:Key="BigRoundButtonTemplate" TargetType="Button">
+                <Setter Property="Background" Value="#F0F8FF" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontFamily" Value="Century Gothic" />
+                <Setter Property="Margin" Value="5 0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Padding="20"  CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="#C9D0D6" BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" Value="#98CFFF"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="RoundButtonTemplate" TargetType="Button">
+                <Setter Property="Background" Value="#F0F8FF" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="Century Gothic" />
+                <Setter Property="Margin" Value="5 0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Padding="5"  CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="#C9D0D6" BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" Value="#98CFFF"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         <Style x:Key="asd" TargetType="DataGridCell">
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Template">
@@ -75,5 +83,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+            
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

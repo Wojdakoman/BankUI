@@ -77,6 +77,13 @@ namespace BankUI.Model
                 }
                 return result;
             } }
+
+        public bool PeselIstnieje(Int64 pesel)
+        {
+
+
+            return true;
+        }
         #endregion
     }
 }

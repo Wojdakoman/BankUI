@@ -8,20 +8,149 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
-            <TextBox 
-                prop:PeselProperties.OnlyDigit="True"
-                Text="{Binding Pesel}" 
-                Style="{StaticResource rejestacjaTB}"
-                MaxLength="11"
-                Tag="Pesel"
-                ></TextBox>
-            <TextBox
-                Text="{Binding Imie}"
-                Style="{StaticResource rejestacjaTB}"
-                Tag="Imie"
-                MaxLength="20"
-                ></TextBox>
+        <StackPanel Height="450" Width="400">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label 
+                    Content="Pesel"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label >
+                <Label 
+                    Content="Imie"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+                <Label 
+                    Content="Nazwisko"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+                <Label 
+                    Content="Data urodzenia"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+                <Label 
+                    Content="Miasto"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+                <Label 
+                    Content="Adres"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+                <Label 
+                    Content="Telefon"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+                <Label 
+                    Content="Login"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+                <Label 
+                    Content="Haslo"
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Style="{StaticResource lRejestacja}"
+                    ></Label>
+
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    MaxLength="11"
+                    Text="{Binding Pesel}"
+                    prop:PeselProperties.OnlyDigit="True"
+                    prop:PeselProperties.PeselPoprawny="{Binding Pesel}"
+                    Style="{StaticResource tbRejestracja}"
+                    ></TextBox>
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Imie}"
+                    Style="{StaticResource tbRejestracja}"
+                    ></TextBox>
+                <TextBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Text="{Binding Nazwisko}"
+                    Style="{StaticResource tbRejestracja}"
+                    ></TextBox>
+                <DatePicker
+                    Style="{StaticResource dRejestracja}"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    DisplayDateEnd="{Binding DataKoncowa}"
+                    DisplayDateStart="{Binding DataPoczatkowa}"
+                    SelectedDate="{Binding Data}"
+                    ></DatePicker>
+                <TextBox
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Text="{Binding Miasto}"
+                    Style="{StaticResource tbRejestracja}"
+                    ></TextBox>
+                <TextBox
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Text="{Binding Adres}"
+                    Style="{StaticResource tbRejestracja}"
+                    ></TextBox>
+                <TextBox
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    MaxLength="11"
+                    Text="{Binding Telefon}"
+                    prop:PeselProperties.OnlyDigit="True"
+                    Style="{StaticResource tbRejestracja}"
+                    ></TextBox>
+                <TextBox
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Text="{Binding Login}"
+                    prop:LoginProperties.UnikatowyLogin="{Binding Login}"
+                    Style="{StaticResource tbRejestracja}"
+                    ></TextBox>
+                <PasswordBox
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    Style="{StaticResource pbRejestracja}"
+                    x:Name="passwordRejestracja"
+                    ></PasswordBox>
+                <Button 
+                    Content="Zarejestruj"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="9"
+                    Style="{StaticResource bRejestacja}"
+                    Command="{Binding Zarejestruj}" CommandParameter="{Binding ElementName=passwordRejestracja}"
+                    ></Button>
+            </Grid>
         </StackPanel>
 
     </Grid>

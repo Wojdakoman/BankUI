@@ -10,6 +10,7 @@ namespace Projekt.DAL.Repositories
         private static string FIND_OWNER = "SELECT * FROM wlasciciel WHERE login=@login AND haslo=@password";
         private static string FIND_PESEL = "SELECT * FROM wlasciciel WHERE login=@login";
         private static string CREATE_OWNER = "INSERT INTO wlasciciel VALUES (@pesel, @imie, @nazwisko, @data, @miasto, @adres, @telefon, @login, @haslo)";
+        private static string PESEL_EXIST = "SELECT * FROM wlasciciel WHERE pesel=@peselPodany";
 
         public static Wlasciciel FindOwner(string login, string password)
         {
@@ -68,6 +69,44 @@ namespace Projekt.DAL.Repositories
 
                 command.ExecuteNonQuery();
                 connection.Close();
+            }
+        }
+
+        public static bool DoesPeselExist(Int64 pesel)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(PESEL_EXIST, connection);
+                command.Parameters.Add("@peselPodany", MySqlDbType.Int64, 11).Value = pesel;
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
+        public static bool DoesLoginExist(string login)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(FIND_PESEL, connection);
+                command.Parameters.Add("@login", MySqlDbType.VarChar, 20).Value = login;
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                    return false;
             }
         }
     }

@@ -133,6 +133,7 @@
     <Compile Include="Model\DAL\Repositories\RepositoryKartaOperacje.cs" />
     <Compile Include="Model\DAL\Repositories\RepositoryKartaPlatnicza.cs" />
     <Compile Include="Model\DAL\Repositories\RepositoryKonto.cs" />
+    <Compile Include="Model\DAL\Repositories\RepositoryKredyt.cs" />
     <Compile Include="Model\DAL\Repositories\RepositoryPrzelew.cs" />
     <Compile Include="Model\DAL\Repositories\RepositoryWlasciciel.cs" />
     <Compile Include="Model\Data.cs" />

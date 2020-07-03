@@ -11,6 +11,7 @@ namespace Projekt.DAL.Repositories
         private static string GET_ACCOUNT = "SELECT * FROM konto WHERE WlascicielPesel=@pesel";
         private static string UPDATE_BALANCE = "UPDATE konto SET saldo = saldo + @ile WHERE NumerKonta = @numer";
         private static string ADD_NEW_ACCOUNT = "INSERT INTO konto VALUES (@numer, @pesel, @typ, @saldo)";
+        private static string ADD_NEW_CREDIT_ACCOUNT = "INSERT INTO konto (NumerKonta, WlascicielPesel, TypKonta ) VALUES (@numer, @pesel, @typ)";
         private static string NUMBER_EXIST = "SELECT * FROM konto WHERE NumerKonta=@numer";
 
         public static List<Konto> GetAccount(Int64 pesel)
@@ -27,14 +28,36 @@ namespace Projekt.DAL.Repositories
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Konto(reader));
+                        if (reader["TypKonta"].ToString() != "Kredytowe")
+                            list.Add(new Konto(reader));
                     }
                 }
                 connection.Close();
             }
             return list;
         }
+        public static List<Konto> GetCreditAccount(Int64 pesel)
+        {
+            List<Konto> list = new List<Konto>();
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(GET_ACCOUNT, connection);
+                command.Parameters.Add("@pesel", MySqlDbType.Int64).Value = pesel;
 
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["TypKonta"].ToString() == "Kredytowe")
+                            list.Add(new Konto(reader));
+                    }
+                }
+                connection.Close();
+            }
+            return list;
+        }
         public static void ChangeBalanceT(string accountNumber, string receiverNumber, double money)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -101,7 +124,6 @@ namespace Projekt.DAL.Repositories
             {
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(ADD_NEW_ACCOUNT, connection);
-                //@numer, @pesel, @typ, @saldo
                 command.Parameters.Add("@numer", MySqlDbType.VarChar, 26).Value = konto.NumerKonta;
                 command.Parameters.Add("@pesel", MySqlDbType.Int64, 11).Value = konto.WlascicielPesel;
                 command.Parameters.Add("@typ", MySqlDbType.VarChar).Value = konto.TypKonta;
@@ -116,7 +138,20 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
         }
+        public static void AddAccount(Int64 pesel, string numer)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(ADD_NEW_CREDIT_ACCOUNT, connection);
+                command.Parameters.Add("@numer", MySqlDbType.VarChar, 26).Value = numer;
+                command.Parameters.Add("@pesel", MySqlDbType.Int64, 11).Value = pesel;
+                command.Parameters.Add("@typ", MySqlDbType.VarChar).Value = "Kredytowe";
 
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
         public static bool NumberExist(string accountNumber)
         {
             using (MySqlConnection connection = DB.Instance.Connection)

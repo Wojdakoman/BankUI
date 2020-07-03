@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="BankUI.View.HistoriaLogowan"
+﻿<UserControl x:Class="BankUI.View.DaneOsobowe"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -43,18 +43,9 @@
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Karty" />
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Moje dane" Command="{Binding GoDaneOsobowe}" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Konto" Command="{Binding GoMain}" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Historia logowań" Command="{Binding GoHistoriaLogowan}" />
             </StackPanel>
         </Grid>
-
-        <DataGrid Grid.Row="4" ItemsSource="{Binding Lista}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Data" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Godzina" IsReadOnly="True" Binding="{Binding Godzina}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Adres IP" IsReadOnly="True" Binding="{Binding AdresIP}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="1*" Header="Logowanie poprawne" IsReadOnly="True" Binding="{Binding Poprawne}" CellStyle="{StaticResource asd}" />
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </UserControl>

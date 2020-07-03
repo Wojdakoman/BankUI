@@ -57,6 +57,7 @@ namespace BankUI.ViewModel
             PageViewModels.Add("przelew", new PrzelewVM(ref _model));
             PageViewModels.Add("rejestracja", new RejestracjaVM(ref _model));
             PageViewModels.Add("historiaLogowan", new HistoriaLogowanVM(ref _model));
+            PageViewModels.Add("daneOsobowe", new DaneOsoboweVM(ref _model));
 
             CurrentPageViewModel = PageViewModels["login"];
 

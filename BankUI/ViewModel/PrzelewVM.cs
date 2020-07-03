@@ -128,6 +128,24 @@ namespace BankUI.ViewModel
                 return _goHistoriaLogowan;
             }
         }
+        private ICommand _goDaneOsobowe = null;
+        public ICommand GoDaneOsobowe
+        {
+            get
+            {
+                if (_goDaneOsobowe == null)
+                {
+                    _goDaneOsobowe = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "daneOsobowe");
+                        },
+                        arg => true
+                    );
+                }
+                return _goDaneOsobowe;
+            }
+        }
         #endregion
         #endregion
 

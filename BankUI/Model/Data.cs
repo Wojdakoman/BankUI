@@ -92,6 +92,7 @@ namespace BankUI.Model
                 return result;
             }
         }
+        public WlascicielDane DaneWlasciciela { get => new WlascicielDane(wlasciciel); }
 
         public bool PeselIstnieje(Int64 pesel)
         {

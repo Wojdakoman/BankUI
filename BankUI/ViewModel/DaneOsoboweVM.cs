@@ -11,13 +11,15 @@ using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
-    class HistoriaLogowanVM : ViewModelBase, IPageViewModel
+    class DaneOsoboweVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
-        public string UserName { get => _model.WlascicielName; }
-        public List<StringHistoriaLogowan> Lista { get => _model.HistoriaLogowan; }
+        private WlascicielDane _dane { get => _model.DaneWlasciciela; }
 
-        public HistoriaLogowanVM(ref Data model) => _model = model;
+        #region PUBLIC
+        public string UserName { get => _model.WlascicielName; }
+        #endregion
+        public DaneOsoboweVM(ref Data model) => _model = model;
 
         #region Komendy
         private ICommand _onLoad = null;
@@ -30,7 +32,7 @@ namespace BankUI.ViewModel
                     _onLoad = new RelayCommand(
                         arg =>
                         {
-                            OnPropertyChanged(nameof(UserName), nameof(Lista));
+                            OnPropertyChanged(nameof(UserName));
                         },
                         arg => true
                     );
@@ -38,7 +40,7 @@ namespace BankUI.ViewModel
                 return _onLoad;
             }
         }
-        
+
         #region goTo
         private ICommand _goPrzelewy = null;
         public ICommand GoPrzelewy
@@ -76,22 +78,22 @@ namespace BankUI.ViewModel
                 return _goMain;
             }
         }
-        private ICommand _goDaneOsobowe = null;
-        public ICommand GoDaneOsobowe
+        private ICommand _goHistoriaLogowan = null;
+        public ICommand GoHistoriaLogowan
         {
             get
             {
-                if (_goDaneOsobowe == null)
+                if (_goHistoriaLogowan == null)
                 {
-                    _goDaneOsobowe = new RelayCommand(
+                    _goHistoriaLogowan = new RelayCommand(
                         arg =>
                         {
-                            Mediator.Notify("GoToPage", "daneOsobowe");
+                            Mediator.Notify("GoToPage", "historiaLogowan");
                         },
                         arg => true
                     );
                 }
-                return _goDaneOsobowe;
+                return _goHistoriaLogowan;
             }
         }
         #endregion

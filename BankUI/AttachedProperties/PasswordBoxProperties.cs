@@ -15,27 +15,32 @@ namespace BankUI.AttachedProperties
                 "Haslo",
                 typeof(string),
                 typeof(PasswordBoxProperties),
-                new PropertyMetadata(string.Empty, PasswordBoxTextChanged)
+                new PropertyMetadata(string.Empty, OnHasloChanged)
                 );
 
         public static string GetHaslo(PasswordBox passwordBox)
         {
             return (string)passwordBox.GetValue(HasloProperty);
         }
-        public static void SetHaslo(PasswordBox passwordBox, bool value)
+        public static void SetHaslo(PasswordBox passwordBox, string value)
         {
             passwordBox.SetValue(HasloProperty, value);
         }
 
-        public static void PasswordBoxTextChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        private static void OnHasloChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var passworBox = sender as PasswordBox;
-            if(passworBox == null)
+            var passwordBox = sender as PasswordBox;
+            if(passwordBox == null)
             {
                 return;
             }
-            var Haslo = (string)e.NewValue ?? string.Empty;
-            passworBox.Password = Haslo;
+            passwordBox.PasswordChanged += PasswodrBox_PasswordChanged;
+        }
+
+        private static void PasswodrBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = sender as PasswordBox;
+            SetHaslo(passwordBox, passwordBox.Password);
         }
     }
 }

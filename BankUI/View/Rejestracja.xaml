@@ -92,7 +92,7 @@
                     MaxLength="11"
                     Text="{Binding Pesel}"
                     prop:PeselProperties.OnlyDigit="True"
-                    prop:PeselProperties.PeselPoprawny="{Binding Pesel}"
+                    prop:PeselProperties.PeselPoprawny="{Binding Pesel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource tbRejestracja}"
                     ></TextBox>
                 <TextBox
@@ -139,7 +139,7 @@
                     Grid.Row="7"
                     Grid.Column="1"
                     Text="{Binding Login}"
-                    prop:LoginProperties.UnikatowyLogin="{Binding Login}"
+                    prop:LoginProperties.UnikatowyLogin="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource tbRejestracja}"
                     ></TextBox>
                 <PasswordBox
@@ -147,6 +147,7 @@
                     Grid.Column="1"
                     prop:PasswordBoxProperties.Haslo="{Binding Path=Haslo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource pbRejestracja}"
+                    MaxLength="15"
                     x:Name="passwordRejestracja"
                     ></PasswordBox>
                 <Button 

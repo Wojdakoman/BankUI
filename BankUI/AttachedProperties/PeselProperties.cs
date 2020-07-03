@@ -102,6 +102,7 @@ namespace BankUI.AttachedProperties
                 MessageBox.Show("Podany pesel istnieje już w naszej bazie");
                 textBox.Foreground = new SolidColorBrush(Colors.Red);
                 textBox.Text = "Wpisz inny pesel";
+                SetPeselPoprawny(textBox, null);
             }
         }
     }

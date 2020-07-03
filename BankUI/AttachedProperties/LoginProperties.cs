@@ -23,7 +23,7 @@ namespace BankUI.AttachedProperties
         {
             return (string)textBox.GetValue(UnikatowyLoginProperty);
         }
-        public static void SetUnikatowyLogin(TextBox textBox, bool value)
+        public static void SetUnikatowyLogin(TextBox textBox, string value)
         {
             textBox.SetValue(UnikatowyLoginProperty, value);
         }
@@ -44,6 +44,7 @@ namespace BankUI.AttachedProperties
                 MessageBox.Show("Podany login jest już zajęty");
                 textBox.Foreground = new SolidColorBrush(Colors.Red);
                 textBox.Text = "Podaj inny login";
+                SetUnikatowyLogin(textBox, null);
             }
         }
 

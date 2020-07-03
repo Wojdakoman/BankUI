@@ -20,7 +20,7 @@ namespace BankUI.ViewModel
 
         #region Private Methods
         private Data _model;
-        private string haslo = string.Empty;
+        private string haslo;
         private ICommand powrot;
         private ICommand zarejestruj;
         #endregion
@@ -72,7 +72,7 @@ namespace BankUI.ViewModel
                         }
 
                     },
-                        arg => (Pesel != null && Imie != null && Nazwisko != null && Data != null && Miasto != null && Adres != null && Telefon != null && Login != null)
+                        arg => (Pesel != null && Imie != null && Nazwisko != null && Data != null && Miasto != null && Adres != null && Telefon != null && Login != null && Haslo != null)
                     );
                 }
                 return zarejestruj;

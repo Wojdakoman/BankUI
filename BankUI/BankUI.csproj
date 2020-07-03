@@ -135,6 +135,8 @@
     <Compile Include="Model\DAL\Repositories\RepositoryPrzelew.cs" />
     <Compile Include="Model\DAL\Repositories\RepositoryWlasciciel.cs" />
     <Compile Include="Model\Data.cs" />
+    <Compile Include="ViewModel\Classes\StringHistoriaLogowan.cs" />
+    <Compile Include="ViewModel\HistoriaLogowanVM.cs" />
     <Compile Include="ViewModel\RejestracjaVM.cs" />
     <Compile Include="ViewModel\Base\EventArgs.cs" />
     <Compile Include="ViewModel\Base\EventRaiser.cs" />
@@ -150,6 +152,9 @@
     <Compile Include="ViewModel\PrzelewVM.cs" />
     <Compile Include="View\Controls\DoubleTextBox.xaml.cs">
       <DependentUpon>DoubleTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HistoriaLogowan.xaml.cs">
+      <DependentUpon>HistoriaLogowan.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -180,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\DoubleTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HistoriaLogowan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

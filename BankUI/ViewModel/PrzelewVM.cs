@@ -110,6 +110,24 @@ namespace BankUI.ViewModel
                 return _goMain;
             }
         }
+        private ICommand _goHistoriaLogowan = null;
+        public ICommand GoHistoriaLogowan
+        {
+            get
+            {
+                if (_goHistoriaLogowan == null)
+                {
+                    _goHistoriaLogowan = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "historiaLogowan");
+                        },
+                        arg => true
+                    );
+                }
+                return _goHistoriaLogowan;
+            }
+        }
         #endregion
         #endregion
 

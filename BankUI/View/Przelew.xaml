@@ -64,7 +64,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Moje dane" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Historia logowań" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Historia logowań" Command="{Binding GoHistoriaLogowan}" />
             </StackPanel>
         </Grid>
 

@@ -75,8 +75,23 @@ namespace BankUI.Model
                 {
                     result.Add(new StringHistoria(przelew, kontoBankowe.ListaKont[Konto].NumerKonta));
                 }
+                result.Sort((a, b) => b.Data.CompareTo(a.Data));
                 return result;
             } }
+        public List<StringHistoriaLogowan> HistoriaLogowan
+        {
+            get
+            {
+                List<StringHistoriaLogowan> result = new List<StringHistoriaLogowan>();
+
+                foreach (var log in RepositoryHistoriaLogowan.LoadHistory(wlasciciel.Pesel))
+                {
+                    result.Add(new StringHistoriaLogowan(log));
+                }
+                result.Sort((a, b) => a.Data.CompareTo(b.Data));
+                return result;
+            }
+        }
 
         public bool PeselIstnieje(Int64 pesel)
         {

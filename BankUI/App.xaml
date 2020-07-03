@@ -28,6 +28,9 @@
             <DataTemplate DataType="{x:Type vm:RejestracjaVM}">
                 <okna:Rejestracja></okna:Rejestracja>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:HistoriaLogowanVM}">
+                <okna:HistoriaLogowan />
+            </DataTemplate>
             <!-- STYLES -->
             <Style x:Key="BigRoundButtonTemplate" TargetType="Button">
                 <Setter Property="Background" Value="#F0F8FF" />

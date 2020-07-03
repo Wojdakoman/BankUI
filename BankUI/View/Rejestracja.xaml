@@ -8,6 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Button 
+            Content="Powrót"
+            Style="{StaticResource bPowrot}"
+            Command="{Binding Powrot}"
+            ></Button>
         <StackPanel Height="450" Width="400">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -140,6 +145,7 @@
                 <PasswordBox
                     Grid.Row="8"
                     Grid.Column="1"
+                    prop:PasswordBoxProperties.Haslo="{Binding Path=Haslo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource pbRejestracja}"
                     x:Name="passwordRejestracja"
                     ></PasswordBox>

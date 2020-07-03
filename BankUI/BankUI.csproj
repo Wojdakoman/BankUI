@@ -113,6 +113,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AttachedProperties\LoginProperties.cs" />
+    <Compile Include="AttachedProperties\PasswordBoxProperties.cs" />
     <Compile Include="AttachedProperties\PeselProperties.cs" />
     <Compile Include="Model\API\APIHelper.cs" />
     <Compile Include="Model\API\IP.cs" />

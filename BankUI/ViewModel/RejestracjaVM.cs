@@ -20,12 +20,11 @@ namespace BankUI.ViewModel
 
         #region Private Methods
         private Data _model;
-        private string pesel;
+        private string haslo = string.Empty;
         private ICommand powrot;
         private ICommand zarejestruj;
         #endregion
         #region Public Properties
-        public ICommand Powrot { get; set; }
         public string Pesel { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
@@ -36,7 +35,18 @@ namespace BankUI.ViewModel
         public string Adres { get; set; }
         public string Telefon { get; set; }
         public string Login { get; set; }
-        public string Haslo { get; set; }
+        public string Haslo
+        {
+            get
+            {
+                return haslo;
+            }
+            set
+            {
+                haslo = value;
+                OnPropertyChanged(nameof(Haslo));
+            }
+        }
 
         public ICommand Zarejestruj
         {
@@ -51,7 +61,8 @@ namespace BankUI.ViewModel
                         //check in model; return true or false
                         if (!(RepositoryWlasciciel.DoesLoginExist(Login) || RepositoryWlasciciel.DoesPeselExist(Int64.Parse(Pesel))))
                         {
-                            string typ = (DateTime.Now - Data).Days / 365 < 18 ? "Mlodziezowe" : "Normalne";
+                            //Mlodziezowe do 18 roku zycia
+                            string typ = (DateTime.Now - Data).Days / 365 <= 18 ? "Mlodziezowe" : "Normalne";
                             NewOwner nowaOsoba = new NewOwner(typ, Pesel, Imie, Nazwisko, Data.ToShortDateString(), Miasto, Adres, Telefon, Login, Haslo);
                             Task.Delay(1000);
 
@@ -67,9 +78,28 @@ namespace BankUI.ViewModel
                 return zarejestruj;
             }
         }
+
+        public ICommand Powrot
+        {
+            get
+            {
+                if (powrot == null)
+                {
+                    powrot = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "login");
+                        },
+                arg => true);
+                }
+                return powrot;
+            }
+            set
+            {
+                powrot = value;
+            }
+        }
         #endregion
-
-
         #region Contructors
         public RejestracjaVM(ref Data model)
         {

@@ -20,6 +20,14 @@
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
     </Style>
 
+    <Style TargetType="{x:Type Button}" x:Key="bPowrot">
+        <Setter Property="Margin" Value="10 10 0 0"></Setter>
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+    </Style>
+
     <Style TargetType="{x:Type DatePicker}" x:Key="dRejestracja">
         <Setter Property="DisplayDateEnd" Value="{x:Static System:DateTime.Today}"></Setter>
         <Setter Property="Margin" Value="0 5 0 0"></Setter>

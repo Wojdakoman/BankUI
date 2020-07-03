@@ -31,7 +31,7 @@ namespace BankUI.AttachedProperties
         public static void OnUnikatowyLoginChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-
+            
             textBox.GotFocus += TextBox_GotFocus;
             textBox.LostFocus += TextBox_LostFocus;
         }

@@ -61,11 +61,9 @@ namespace BankUI.ViewModel
             PageViewModels.Add("rejestracja", new RejestracjaVM(ref _model));
             PageViewModels.Add("historiaLogowan", new HistoriaLogowanVM(ref _model));
             PageViewModels.Add("daneOsobowe", new DaneOsoboweVM(ref _model));
-            PageViewModels.Add("kredyty", new KredytVM(ref _model, ref _kredytInfo));
-            PageViewModels.Add("karty", new KartyVM(ref _model));
-            PageViewModels.Add("lBankomat", new LBankomatVM(ref _model));
             PageViewModels.Add("kredyty", new KredytVM(ref _model, ref _appInfo));
             PageViewModels.Add("karty", new KartyVM(ref _model, ref _appInfo));
+            PageViewModels.Add("lBankomat", new LBankomatVM(ref _model));
             PageViewModels.Add("pokazKarte", new KartaVM(ref _model, ref _appInfo));
 
             CurrentPageViewModel = PageViewModels["login"];

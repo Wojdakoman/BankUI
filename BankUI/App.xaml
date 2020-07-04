@@ -43,6 +43,9 @@
             <DataTemplate DataType="{x:Type vm:LBankomatVM}">
                 <okna:LBankomat></okna:LBankomat>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:BankomatVM}">
+                <okna:Bankomat></okna:Bankomat>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:KartaVM}">
                 <okna:Karta />
             </DataTemplate>

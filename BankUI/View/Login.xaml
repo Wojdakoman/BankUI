@@ -26,6 +26,7 @@
             Content="Bankomat"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
+            Margin="0 5 5 0"
             Command="{Binding Bankomat}"
             ></Button>
     </Grid>

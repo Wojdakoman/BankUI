@@ -112,6 +112,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttachedProperties\BankomatPin.cs" />
     <Compile Include="AttachedProperties\LoginProperties.cs" />
     <Compile Include="AttachedProperties\NumerKartyProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperties.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Model\DAL\Repositories\RepositoryPrzelew.cs" />
     <Compile Include="Model\DAL\Repositories\RepositoryWlasciciel.cs" />
     <Compile Include="Model\Data.cs" />
+    <Compile Include="ViewModel\Bankomat.cs" />
     <Compile Include="ViewModel\Classes\AppGlobalInfo.cs" />
     <Compile Include="ViewModel\Classes\StringHistoriaKarta.cs" />
     <Compile Include="ViewModel\Classes\StringHistoriaLogowan.cs" />

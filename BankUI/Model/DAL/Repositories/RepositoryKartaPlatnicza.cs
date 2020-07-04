@@ -14,6 +14,8 @@ namespace Projekt.DAL.Repositories
         private static string ADD_CARD = "INSERT INTO kartaplatnicza (NumerKarty, NumerKonta, DataWaznosci, LimitPlatnosci, Pin) VALUES (@numerKarty, @numerKonta, @data, @limit, @pin)";
         private static string DELETE_CARD = "DELETE FROM kartaplatnicza WHERE NumerKarty=@numer";
         private static string GET_ACCOUNT_NUMBER = "SELECT NumerKonta FROM kartaplatnicza WHERE NumerKarty=@numer";
+        private static string FIND_CARD_PIN = "SELECT * FROM kartaplatnicza where NumerKarty=@numer AND Pin=@pin";
+
 
         //Wczytanie wszystkich kart platniczych
         public static Dictionary<string,List<KartaPlatnicza>> LoadCards(List<Konto> accounts)
@@ -144,6 +146,26 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
             return accountNumber;
+        }
+
+        public static bool DoesCardExist(string numerKarty, string pin)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(FIND_CARD_PIN, connection);
+                command.Parameters.Add("@numer", MySqlDbType.VarChar, 16).Value = numerKarty;
+                command.Parameters.Add("@pin", MySqlDbType.Int32, 4).Value = int.Parse(pin);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
         }
     }
 }

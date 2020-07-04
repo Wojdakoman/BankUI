@@ -65,6 +65,7 @@ namespace BankUI.ViewModel
             PageViewModels.Add("karty", new KartyVM(ref _model, ref _appInfo));
             PageViewModels.Add("lBankomat", new LBankomatVM(ref _model));
             PageViewModels.Add("pokazKarte", new KartaVM(ref _model, ref _appInfo));
+            PageViewModels.Add("bankomat", new BankomatVM(ref _model));
 
             CurrentPageViewModel = PageViewModels["login"];
 

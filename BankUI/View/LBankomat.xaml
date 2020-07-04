@@ -8,7 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
+        <StackPanel Width="250" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -22,18 +24,40 @@
                 <Label 
                     Content="Numer karty"
                     Grid.Row="0"
+                    Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
                     Content="PIN"
                     Grid.Row="1"
+                    Style="{StaticResource lRejestacja}"
                     ></Label>
                 <TextBox
+                    Style="{StaticResource tbRejestracja}"
                     Grid.Row="0"
                     Grid.Column="1"
                     MaxLength="19"
                     prop:NumerKartyProperties.NumerKarty="{Binding NumerKarty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></TextBox>
+                <PasswordBox
+                    Style="{StaticResource pbRejestracja}"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    MaxLength="4"
+                    prop:BankomatPin.PinLiczby="{Binding Pin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ></PasswordBox>
+                <Button
+                    Content="Połacz"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="3"
+                    Style="{StaticResource bRejestacja}"
+                    Command="{Binding Zaloguj}"
+                    ></Button>
             </Grid>
         </StackPanel>
+        <Button 
+            Content="Powrót"
+            Style="{StaticResource bPowrot}"
+            Command="{Binding Powrot}"
+            ></Button>
     </Grid>
 </UserControl>

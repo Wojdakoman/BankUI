@@ -23,6 +23,7 @@ namespace BankUI.ViewModel
         public string Data { get; set; }
         public string Limit { get; set; }
         public string Pin { get; set; }
+        public List<StringHistoriaKarta> Lista { get => _model.PobierzHistorieKarty(_appInfo.NumerKarty); }
         #endregion
         #endregion
         public KartaVM(ref Data model, ref AppGlobalInfo appInfo)

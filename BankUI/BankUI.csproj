@@ -139,6 +139,7 @@
     <Compile Include="Model\DAL\Repositories\RepositoryWlasciciel.cs" />
     <Compile Include="Model\Data.cs" />
     <Compile Include="ViewModel\Classes\AppGlobalInfo.cs" />
+    <Compile Include="ViewModel\Classes\StringHistoriaKarta.cs" />
     <Compile Include="ViewModel\Classes\StringHistoriaLogowan.cs" />
     <Compile Include="ViewModel\Classes\StringKarta.cs" />
     <Compile Include="ViewModel\Classes\StringKredyt.cs" />

@@ -51,6 +51,15 @@ namespace BankUI.Model
             }
             return null;
         }
+        public List<StringHistoriaKarta> PobierzHistorieKarty(string numerkarty)
+        {
+            List<StringHistoriaKarta> result = new List<StringHistoriaKarta>();
+            foreach(var operacja in kontoBankowe.ListOperacjiKart[numerkarty])
+            {
+                    result.Add(new StringHistoriaKarta(operacja));
+            }
+            return result;
+        }
         public bool NumerIstnieje(string numerKonta)
         {
             return !RepositoryKonto.NumberExist(numerKonta);

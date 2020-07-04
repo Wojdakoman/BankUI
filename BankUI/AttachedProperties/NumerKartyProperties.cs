@@ -21,7 +21,7 @@ namespace BankUI.AttachedProperties
         {
             textBox.SetValue(NumerKartyProperty, value);
         }
-        public static string GetValue(TextBox textBox)
+        public static string GetNumerKarty(TextBox textBox)
         {
             return (string)textBox.GetValue(NumerKartyProperty);
         }

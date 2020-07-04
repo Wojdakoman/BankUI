@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankUI.View"
+             xmlns:prop="clr-namespace:BankUI.AttachedProperties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -22,9 +23,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <ComboBox Grid.Row="0" Grid.ColumnSpan="2" SelectedItem="{Binding Typ}">
-                    <ComboBoxItem>Wplata</ComboBoxItem>
-                    <ComboBoxItem>Wyplata</ComboBoxItem>
+                <ComboBox Grid.Row="0" Grid.ColumnSpan="2" SelectedValue="{Binding Typ}">
+                    <ComboBoxItem Content="Wplata"></ComboBoxItem>
+                    <ComboBoxItem Content="Wyplata"></ComboBoxItem>
                 </ComboBox>
                 <StackPanel
                     Grid.Row="1"
@@ -48,37 +49,42 @@
                             Grid.Column="0"
                             Content="10"
                             GroupName="pieniadze"
-                            IsChecked="{Binding Opcja}"
+                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         ></RadioButton>
                         <RadioButton
                             Grid.Row="1"
                             Grid.Column="0"
                             Content="20"
                             GroupName="pieniadze"
+                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="2"
                             Grid.Column="0"
                             Content="50"
                             GroupName="pieniadze"
+                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="0"
                             Grid.Column="1"
                             Content="100"
                             GroupName="pieniadze"
+                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="1"
                             Grid.Column="1"
                             Content="200"
                             GroupName="pieniadze"
+                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="2"
                             Grid.Column="1"
                             Content="500"
                             GroupName="pieniadze"
+                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                     </Grid>
                 </StackPanel>
@@ -86,6 +92,7 @@
                     Grid.Row="3"
                     Grid.ColumnSpan="2"
                     Content="Wykonaj"
+                    Command="{Binding Wykonaj}"
                     ></Button>
             </Grid>
         </StackPanel>

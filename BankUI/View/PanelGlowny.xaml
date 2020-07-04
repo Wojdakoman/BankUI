@@ -58,13 +58,13 @@
                 <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5" >
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Przelewy" Command="{Binding GoPrzelewy}" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Kredyty" Command="{Binding GoKredyty}" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Karty" Command="{Binding GoKarty}" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Przelewy" Command="{Binding GoTo}" CommandParameter="przelew" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Kredyty" Command="{Binding GoTo}" CommandParameter="kredyty" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Karty" Command="{Binding GoTo}" CommandParameter="karty" />
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Moje dane"  Command="{Binding GoDaneOsobowe}" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Historia logowań"  Command="{Binding GoHistoriaLogowan}" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Moje dane" Command="{Binding GoTo}" CommandParameter="daneOsobowe" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Historia logowań" Command="{Binding GoTo}" CommandParameter="historiaLogowan" />
             </StackPanel>
         </Grid>
 

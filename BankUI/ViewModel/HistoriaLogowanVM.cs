@@ -38,60 +38,25 @@ namespace BankUI.ViewModel
                 return _onLoad;
             }
         }
-        
+
         #region goTo
-        private ICommand _goPrzelewy = null;
-        public ICommand GoPrzelewy
+        private ICommand _goTo = null;
+        public ICommand GoTo
         {
             get
             {
-                if (_goPrzelewy == null)
+                if (_goTo == null)
                 {
-                    _goPrzelewy = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "przelew");
-                        },
+                    _goTo = new RelayCommand((parameter)
+                        =>
+                    {
+                        string page = parameter.ToString();
+                        Mediator.Notify("GoToPage", page);
+                    },
                         arg => true
                     );
                 }
-                return _goPrzelewy;
-            }
-        }
-        private ICommand _goMain = null;
-        public ICommand GoMain
-        {
-            get
-            {
-                if (_goMain == null)
-                {
-                    _goMain = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "panelGlowny");
-                        },
-                        arg => true
-                    );
-                }
-                return _goMain;
-            }
-        }
-        private ICommand _goDaneOsobowe = null;
-        public ICommand GoDaneOsobowe
-        {
-            get
-            {
-                if (_goDaneOsobowe == null)
-                {
-                    _goDaneOsobowe = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "daneOsobowe");
-                        },
-                        arg => true
-                    );
-                }
-                return _goDaneOsobowe;
+                return _goTo;
             }
         }
         #endregion

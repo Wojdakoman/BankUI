@@ -63,94 +63,23 @@ namespace BankUI.ViewModel
             }
         }
         #region goTo
-        private ICommand _goPrzelewy = null;
-        public ICommand GoPrzelewy
+        private ICommand _goTo = null;
+        public ICommand GoTo
         {
             get
             {
-                if (_goPrzelewy == null)
+                if (_goTo == null)
                 {
-                    _goPrzelewy = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "przelew");
-                        },
+                    _goTo = new RelayCommand((parameter)
+                        =>
+                    {
+                        string page = parameter.ToString();
+                        Mediator.Notify("GoToPage", page);
+                    },
                         arg => true
                     );
                 }
-                return _goPrzelewy;
-            }
-        }
-        private ICommand _goKarty = null;
-        public ICommand GoKarty
-        {
-            get
-            {
-                if (_goKarty == null)
-                {
-                    _goKarty = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "karty");
-                        },
-                        arg => true
-                    );
-                }
-                return _goKarty;
-            }
-        }
-        private ICommand _goKredyty = null;
-        public ICommand GoKredyty
-        {
-            get
-            {
-                if (_goKredyty == null)
-                {
-                    _goKredyty = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "kredyt");
-                        },
-                        arg => true
-                    );
-                }
-                return _goKredyty;
-            }
-        }
-        private ICommand _goHistoriaLogowan = null;
-        public ICommand GoHistoriaLogowan
-        {
-            get
-            {
-                if (_goHistoriaLogowan == null)
-                {
-                    _goHistoriaLogowan = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "historiaLogowan");
-                        },
-                        arg => true
-                    );
-                }
-                return _goHistoriaLogowan;
-            }
-        }
-        private ICommand _goDaneOsobowe = null;
-        public ICommand GoDaneOsobowe
-        {
-            get
-            {
-                if (_goDaneOsobowe == null)
-                {
-                    _goDaneOsobowe = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "daneOsobowe");
-                        },
-                        arg => true
-                    );
-                }
-                return _goDaneOsobowe;
+                return _goTo;
             }
         }
         #endregion

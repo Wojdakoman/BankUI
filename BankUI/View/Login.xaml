@@ -21,5 +21,12 @@
             <Button Margin="0 5" Content="Zaloguj" Command="{Binding Login}" CommandParameter="{Binding ElementName=passwordBoxPassword}" />
             <Button Content="Rejestracja" Command="{Binding StronaRejestracji}"/>
         </StackPanel>
+        <Button 
+            Style="{StaticResource bPowrot}"
+            Content="Bankomat"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Command="{Binding Bankomat}"
+            ></Button>
     </Grid>
 </UserControl>

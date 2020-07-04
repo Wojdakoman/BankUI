@@ -69,5 +69,23 @@ namespace BankUI.ViewModel
                 return _stronaRejestracji;
             }
         }
+        private ICommand _bankomat = null;
+        public ICommand Bankomat
+        {
+            get
+            {
+                if (_bankomat == null)
+                {
+                    _bankomat = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "lBankomat");
+                        },
+                        arg => true
+                        );
+                }
+                return _bankomat;
+            }
+        }
     }
 }

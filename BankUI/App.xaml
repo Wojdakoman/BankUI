@@ -40,6 +40,9 @@
             <DataTemplate DataType="{x:Type vm:KartyVM}">
                 <okna:Karty />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:LBankomatVM}">
+                <okna:LBankomat></okna:LBankomat>
+            </DataTemplate>
             <!-- STYLES -->
             <Style x:Key="BigRoundButtonTemplate" TargetType="Button">
                 <Setter Property="Background" Value="#F0F8FF" />

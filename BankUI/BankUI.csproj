@@ -113,6 +113,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AttachedProperties\LoginProperties.cs" />
+    <Compile Include="AttachedProperties\NumerKartyProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperties.cs" />
     <Compile Include="AttachedProperties\PeselProperties.cs" />
     <Compile Include="Model\API\APIHelper.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="ViewModel\HistoriaLogowanVM.cs" />
     <Compile Include="ViewModel\KartyVM.cs" />
     <Compile Include="ViewModel\KredytVM.cs" />
+    <Compile Include="ViewModel\LBankomatVM.cs" />
     <Compile Include="ViewModel\RejestracjaVM.cs" />
     <Compile Include="ViewModel\Base\EventArgs.cs" />
     <Compile Include="ViewModel\Base\EventRaiser.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\PanelGlownyVM.cs" />
     <Compile Include="ViewModel\PrzelewVM.cs" />
+    <Compile Include="View\Bankomat.xaml.cs" />
     <Compile Include="View\Controls\DoubleTextBox.xaml.cs">
       <DependentUpon>DoubleTextBox.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,7 @@
     <Compile Include="View\Kredyt.xaml.cs">
       <DependentUpon>Kredyt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LBankomat.xaml.cs" />
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

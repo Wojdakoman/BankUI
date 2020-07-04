@@ -160,7 +160,9 @@
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\PanelGlownyVM.cs" />
     <Compile Include="ViewModel\PrzelewVM.cs" />
-    <Compile Include="View\Bankomat.xaml.cs" />
+    <Compile Include="View\Bankomat.xaml.cs">
+      <DependentUpon>Bankomat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\DoubleTextBox.xaml.cs">
       <DependentUpon>DoubleTextBox.xaml</DependentUpon>
     </Compile>
@@ -176,7 +178,9 @@
     <Compile Include="View\Kredyt.xaml.cs">
       <DependentUpon>Kredyt.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LBankomat.xaml.cs" />
+    <Compile Include="View\LBankomat.xaml.cs">
+      <DependentUpon>LBankomat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -205,6 +209,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Bankomat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\DoubleTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -222,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Kredyt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LBankomat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

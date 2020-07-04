@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace BankUI.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy Bankomat.xaml
+    /// Interaction logic for Bankomat.xaml
     /// </summary>
     public partial class Bankomat : UserControl
     {

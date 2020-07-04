@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankUI.ViewModel.Classes
 {
-    class KredytPrzelewInfo
+    class AppGlobalInfo
     {
         public bool HasData { get; set; }
-        public StringKredyt Dane { get; set; }
+        public StringKredyt DaneKredyt { get; set; }
+        public string NumerKarty { get; set; }
     }
 }

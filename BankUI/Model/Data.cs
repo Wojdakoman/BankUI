@@ -42,6 +42,15 @@ namespace BankUI.Model
                 return true;
             }
         }
+        public StringKarta PobierzKarte(string numerkarty)
+        {
+            foreach(var karta in kontoBankowe.KartyPlatnicze.ElementAt(Konto).Value)
+            {
+                if (karta.NumerKarty == numerkarty)
+                    return new StringKarta(karta);
+            }
+            return null;
+        }
         public bool NumerIstnieje(string numerKonta)
         {
             return !RepositoryKonto.NumberExist(numerKonta);
@@ -65,6 +74,15 @@ namespace BankUI.Model
             } }
         public string TypKonta { get => kontoBankowe.ListaKont[Konto].TypKonta; }
         public double Saldo { get => kontoBankowe.ListaKont[Konto].Saldo; }
+        public List<StringKarta> Karty { get
+            {
+                List<StringKarta> result = new List<StringKarta>();
+                foreach(var karta in kontoBankowe.KartyPlatnicze[NumeryKont[Konto]])
+                {
+                    result.Add(new StringKarta(karta));
+                }
+                return result;
+            } }
         public List<StringHistoria> Historia { get
             {
                 List<Konto> temp = new List<Konto>();

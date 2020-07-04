@@ -15,7 +15,7 @@ namespace BankUI.ViewModel
         private IPageViewModel _currentPageViewModel;
         private Dictionary<string, IPageViewModel> _pageViewModels;
         private Data _model;
-        private KredytPrzelewInfo _kredytInfo;
+        private AppGlobalInfo _appInfo;
 
         public Dictionary<string, IPageViewModel> PageViewModels
         {
@@ -53,17 +53,20 @@ namespace BankUI.ViewModel
         public MainWindowVM()
         {
             _model = new Data();
-            _kredytInfo = new KredytPrzelewInfo();
+            _appInfo = new AppGlobalInfo();
             // Add available pages and set page
             PageViewModels.Add("login", new LoginVM(ref _model));
             PageViewModels.Add("panelGlowny", new PanelGlownyVM(ref _model));
-            PageViewModels.Add("przelew", new PrzelewVM(ref _model, ref _kredytInfo));
+            PageViewModels.Add("przelew", new PrzelewVM(ref _model, ref _appInfo));
             PageViewModels.Add("rejestracja", new RejestracjaVM(ref _model));
             PageViewModels.Add("historiaLogowan", new HistoriaLogowanVM(ref _model));
             PageViewModels.Add("daneOsobowe", new DaneOsoboweVM(ref _model));
             PageViewModels.Add("kredyty", new KredytVM(ref _model, ref _kredytInfo));
             PageViewModels.Add("karty", new KartyVM(ref _model));
             PageViewModels.Add("lBankomat", new LBankomatVM(ref _model));
+            PageViewModels.Add("kredyty", new KredytVM(ref _model, ref _appInfo));
+            PageViewModels.Add("karty", new KartyVM(ref _model, ref _appInfo));
+            PageViewModels.Add("pokazKarte", new KartaVM(ref _model, ref _appInfo));
 
             CurrentPageViewModel = PageViewModels["login"];
 

@@ -1,5 +1,6 @@
 ﻿using BankUI.Model;
 using BankUI.ViewModel.Base;
+using BankUI.ViewModel.Classes;
 using BankUI.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,17 @@ namespace BankUI.ViewModel
     class KartyVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
+        private AppGlobalInfo _appInfo;
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
         public int ListaKontIndex { get; set; }
-        //public List<StringKarta> Lista { get => _model.Karty; }
+        public List<StringKarta> Lista { get => _model.Karty; }
         #endregion
-        public KartyVM(ref Data model)
+        public KartyVM(ref Data model, ref AppGlobalInfo appInfo)
         {
             _model = model;
+            _appInfo = appInfo;
         }
         #region Komendy
         private ICommand _onLoad = null;
@@ -35,7 +38,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             ListaKontIndex = _model.Konto;
-                            OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont)/*, nameof(Lista)*/);
+                            OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont), nameof(Lista));
                         },
                         arg => true
                     );
@@ -55,7 +58,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             _model.Konto = ListaKontIndex;
-                            OnPropertyChanged(nameof(ListaKont));
+                            OnPropertyChanged(nameof(ListaKont), nameof(Lista));
                         },
                         arg => true
                     );
@@ -64,27 +67,26 @@ namespace BankUI.ViewModel
             }
         }
 
-        //private ICommand _splacRate = null;
-        //public ICommand SplacRate
-        //{
-        //    get
-        //    {
-        //        if (_splacRate == null)
-        //        {
-        //            _splacRate = new RelayCommand((parameter)
-        //                =>
-        //            {
-        //                int ID = Convert.ToInt32(parameter);
-        //                _kredytInfo.Dane = Lista[ID];
-        //                _kredytInfo.HasData = true;
-        //                Mediator.Notify("GoToPage", "przelew");
-        //            },
-        //                arg => true
-        //            );
-        //        }
-        //        return _splacRate;
-        //    }
-        //}
+        private ICommand _pokazKarte = null;
+        public ICommand PokazKarte
+        {
+            get
+            {
+                if (_pokazKarte == null)
+                {
+                    _pokazKarte = new RelayCommand((parameter)
+                        =>
+                    {
+                        string numerkarty = parameter.ToString();
+                        _appInfo.NumerKarty = numerkarty;
+                        Mediator.Notify("GoToPage", "pokazKarte");
+                    },
+                        arg => true
+                    );
+                }
+                return _pokazKarte;
+            }
+        }
         #region goTo
         private ICommand _goTo = null;
         public ICommand GoTo

@@ -14,14 +14,14 @@ namespace BankUI.ViewModel
     class KredytVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
-        private KredytPrzelewInfo _kredytInfo;
+        private AppGlobalInfo _kredytInfo;
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
         public int ListaKontIndex { get; set; }
         public List<StringKredyt> Lista { get => _model.Kredyty; }
         #endregion
-        public KredytVM(ref Data model, ref KredytPrzelewInfo kredyt)
+        public KredytVM(ref Data model, ref AppGlobalInfo kredyt)
         {
             _model = model;
             _kredytInfo = kredyt;
@@ -79,7 +79,7 @@ namespace BankUI.ViewModel
                         =>
                     {
                         int ID = Convert.ToInt32(parameter);
-                        _kredytInfo.Dane = Lista[ID];
+                        _kredytInfo.DaneKredyt = Lista[ID];
                         _kredytInfo.HasData = true;
                         Mediator.Notify("GoToPage", "przelew");
                     },

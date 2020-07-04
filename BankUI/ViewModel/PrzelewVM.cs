@@ -17,7 +17,7 @@ namespace BankUI.ViewModel
     class PrzelewVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
-        private KredytPrzelewInfo _kredytInfo;
+        private AppGlobalInfo _kredytInfo;
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
@@ -31,7 +31,7 @@ namespace BankUI.ViewModel
         public double? Wartosc { get; set; }
         #endregion
         #endregion
-        public PrzelewVM(ref Data model, ref KredytPrzelewInfo kredyt)
+        public PrzelewVM(ref Data model, ref AppGlobalInfo kredyt)
         {
             _model = model;
             _kredytInfo = kredyt;
@@ -51,17 +51,12 @@ namespace BankUI.ViewModel
                             ListaKontIndex = _model.Konto;
                             if (_kredytInfo.HasData)
                             {
-                                Odbiorca = _kredytInfo.Dane.NumerKonta;
+                                Odbiorca = _kredytInfo.DaneKredyt.NumerKonta;
                                 Tytul = "Spłata raty";
-                                Wartosc = _kredytInfo.Dane.Rata;
+                                Wartosc = _kredytInfo.DaneKredyt.Rata;
                                 _kredytInfo.HasData = false;
                             }
-                            else
-                            {
-                                Odbiorca = null;
-                                Tytul = null;
-                                Wartosc = null;
-                            }
+                            else Clear();
                             OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont), nameof(Saldo), nameof(SaldoString), nameof(Odbiorca), nameof(Tytul), nameof(Wartosc));
                         },
                         arg => true
@@ -140,7 +135,7 @@ namespace BankUI.ViewModel
             Odbiorca = "";
             Tytul = "";
             Opis = "";
-            Wartosc = 0;
+            Wartosc = null;
             OnPropertyChanged(nameof(Odbiorca), nameof(Tytul), nameof(Opis), nameof(Wartosc));
         }
     }

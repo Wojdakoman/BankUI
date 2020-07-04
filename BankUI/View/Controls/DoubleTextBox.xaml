@@ -12,7 +12,7 @@
                  TextChanged="textBox_TextChanged"
                  Text="{
                         Binding Path=Text,  
-                        Mode=OneWayToSource, 
+                        Mode=TwoWay, 
                         UpdateSourceTrigger=PropertyChanged, 
                         RelativeSource={
                                         RelativeSource Mode=FindAncestor, 

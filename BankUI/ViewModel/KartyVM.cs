@@ -1,29 +1,28 @@
 ﻿using BankUI.Model;
 using BankUI.ViewModel.Base;
-using BankUI.ViewModel.Classes;
 using BankUI.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
-    class PanelGlownyVM : ViewModelBase, IPageViewModel
+    class KartyVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
+        #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
-        public int ListaKontIndex { get; set; } = 0;
-        public string Saldo { get => $"{_model.Saldo} PLN"; }
-        public string TypKonta { get => $"Konto {_model.TypKonta}"; }
-        public List<StringHistoria> Lista { get => _model.Historia; }
-
-        public PanelGlownyVM(ref Data model) => _model = model;
-
+        public int ListaKontIndex { get; set; }
+        //public List<StringKarta> Lista { get => _model.Karty; }
+        #endregion
+        public KartyVM(ref Data model)
+        {
+            _model = model;
+        }
         #region Komendy
         private ICommand _onLoad = null;
         public ICommand OnLoad
@@ -35,7 +34,8 @@ namespace BankUI.ViewModel
                     _onLoad = new RelayCommand(
                         arg =>
                         {
-                            OnPropertyChanged(nameof(UserName), nameof(ListaKont), nameof(Saldo), nameof(TypKonta), nameof(Lista));
+                            ListaKontIndex = _model.Konto;
+                            OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont)/*, nameof(Lista)*/);
                         },
                         arg => true
                     );
@@ -43,6 +43,7 @@ namespace BankUI.ViewModel
                 return _onLoad;
             }
         }
+
         private ICommand _zmienKonto = null;
         public ICommand ZmienKonto
         {
@@ -54,7 +55,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             _model.Konto = ListaKontIndex;
-                            OnPropertyChanged(nameof(ListaKontIndex), nameof(ListaKont), nameof(Saldo), nameof(TypKonta), nameof(Lista));
+                            OnPropertyChanged(nameof(ListaKont));
                         },
                         arg => true
                     );
@@ -62,59 +63,45 @@ namespace BankUI.ViewModel
                 return _zmienKonto;
             }
         }
+
+        //private ICommand _splacRate = null;
+        //public ICommand SplacRate
+        //{
+        //    get
+        //    {
+        //        if (_splacRate == null)
+        //        {
+        //            _splacRate = new RelayCommand((parameter)
+        //                =>
+        //            {
+        //                int ID = Convert.ToInt32(parameter);
+        //                _kredytInfo.Dane = Lista[ID];
+        //                _kredytInfo.HasData = true;
+        //                Mediator.Notify("GoToPage", "przelew");
+        //            },
+        //                arg => true
+        //            );
+        //        }
+        //        return _splacRate;
+        //    }
+        //}
         #region goTo
-        private ICommand _goPrzelewy = null;
-        public ICommand GoPrzelewy
+        private ICommand _goMain = null;
+        public ICommand GoMain
         {
             get
             {
-                if (_goPrzelewy == null)
+                if (_goMain == null)
                 {
-                    _goPrzelewy = new RelayCommand(
+                    _goMain = new RelayCommand(
                         arg =>
                         {
-                            Mediator.Notify("GoToPage", "przelew");
+                            Mediator.Notify("GoToPage", "panelGlowny");
                         },
                         arg => true
                     );
                 }
-                return _goPrzelewy;
-            }
-        }
-        private ICommand _goKarty = null;
-        public ICommand GoKarty
-        {
-            get
-            {
-                if (_goKarty == null)
-                {
-                    _goKarty = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "karty");
-                        },
-                        arg => true
-                    );
-                }
-                return _goKarty;
-            }
-        }
-        private ICommand _goKredyty = null;
-        public ICommand GoKredyty
-        {
-            get
-            {
-                if (_goKredyty == null)
-                {
-                    _goKredyty = new RelayCommand(
-                        arg =>
-                        {
-                            Mediator.Notify("GoToPage", "kredyt");
-                        },
-                        arg => true
-                    );
-                }
-                return _goKredyty;
+                return _goMain;
             }
         }
         private ICommand _goHistoriaLogowan = null;
@@ -151,6 +138,24 @@ namespace BankUI.ViewModel
                     );
                 }
                 return _goDaneOsobowe;
+            }
+        }
+        private ICommand _goPrzelewy = null;
+        public ICommand GoPrzelewy
+        {
+            get
+            {
+                if (_goPrzelewy == null)
+                {
+                    _goPrzelewy = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "przelew");
+                        },
+                        arg => true
+                    );
+                }
+                return _goPrzelewy;
             }
         }
         #endregion

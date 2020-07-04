@@ -51,10 +51,9 @@ namespace BankUI.ViewModel
                             ListaKontIndex = _model.Konto;
                             if (_kredytInfo.HasData)
                             {
-                                Console.WriteLine("mam dane");
                                 Odbiorca = _kredytInfo.Dane.NumerKonta;
                                 Tytul = "Spłata raty";
-                                Wartosc = _kredytInfo.Dane.Wartosc;
+                                Wartosc = _kredytInfo.Dane.Rata;
                                 _kredytInfo.HasData = false;
                             }
                             else

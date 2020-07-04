@@ -50,7 +50,7 @@
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Przelewy" Command="{Binding GoPrzelewy}" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Konto" Command="{Binding GoMain}" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Karty" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Karty" Command="{Binding GoKarty}" />
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Moje dane"  Command="{Binding GoDaneOsobowe}" />

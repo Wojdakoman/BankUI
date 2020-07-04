@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="BankUI.View.PanelGlowny"
+﻿<UserControl x:Class="BankUI.View.Kredyt"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:BankUI.View"
              mc:Ignorable="d" 
@@ -12,10 +12,8 @@
             <i:InvokeCommandAction Command="{Binding OnLoad}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Background="White">
+    <Grid x:Name="MainGrid" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
@@ -39,14 +37,6 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="{Binding UserName}" FontSize="14" />
-                    <!--<Expander Header="Moje dane" ExpandDirection="Left" FlowDirection="RightToLeft" >
-                        <Canvas FlowDirection="LeftToRight">
-                            <StackPanel Orientation="Vertical">
-                                <Button Content="Dane osobowe" />
-                                <Button Content="Historia logowań" />
-                            </StackPanel>
-                        </Canvas>
-                    </Expander>-->
                     <Button Style="{StaticResource RoundButtonTemplate}" Content="Wyloguj" FontSize="12" Margin="5 0" Padding="4 0" />
                 </StackPanel>
             </Grid>
@@ -59,7 +49,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Przelewy" Command="{Binding GoPrzelewy}" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Kredyty" Command="{Binding GoKredyty}" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Konto" Command="{Binding GoMain}" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Karty" />
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
@@ -68,26 +58,20 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                <Label Content="{Binding TypKonta}" FontSize="17" />
-                <Label Content="{Binding Path=SelectedValue, ElementName=combo}" FontSize="13" Foreground="Gray" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Label Margin="10 0 0 0" Content="Saldo: " FontSize="17" />
-                <Label Content="{Binding Saldo}" FontSize="17" />
-            </StackPanel>
-        </StackPanel>
-
-
-
-        <DataGrid Grid.Row="4" ItemsSource="{Binding Lista}" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Lista}" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Data" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Nadawca/Odbiorca" IsReadOnly="True" Binding="{Binding Person}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Tytuł" IsReadOnly="True" Binding="{Binding Name}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Rodzaj operacji" IsReadOnly="True" Binding="{Binding Type}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="3*" Header="Wartość" IsReadOnly="True" Binding="{Binding Amount}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="2*" Header="Wartość kredytu" IsReadOnly="True" Binding="{Binding WartoscString}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="2*" Header="Data spłaty" IsReadOnly="True" Binding="{Binding DataSplaty}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="5*" Header="Numer konta" IsReadOnly="True" Binding="{Binding NumerKonta}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="1*" Header="Oprocntowanie" IsReadOnly="True" Binding="{Binding Oprocentowanie}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="2*" Header="Wysokość raty" IsReadOnly="True" Binding="{Binding RataString}" CellStyle="{StaticResource asd}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding ElementName=MainGrid, Path=DataContext.SplacRate}" CommandParameter="{Binding IDKredytu}">Spłać ratę</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

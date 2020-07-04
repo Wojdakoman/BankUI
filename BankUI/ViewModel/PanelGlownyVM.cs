@@ -81,6 +81,24 @@ namespace BankUI.ViewModel
                 return _goPrzelewy;
             }
         }
+        private ICommand _goKredyty = null;
+        public ICommand GoKredyty
+        {
+            get
+            {
+                if (_goKredyty == null)
+                {
+                    _goKredyty = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "kredyt");
+                        },
+                        arg => true
+                    );
+                }
+                return _goKredyty;
+            }
+        }
         private ICommand _goHistoriaLogowan = null;
         public ICommand GoHistoriaLogowan
         {

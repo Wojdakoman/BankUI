@@ -92,6 +92,24 @@ namespace BankUI.Model
                 return result;
             }
         }
+        public List<StringKredyt> Kredyty
+        {
+            get
+            {
+                List<StringKredyt> result = new List<StringKredyt>();
+
+                //foreach (var przelew in RepositoryPrzelew.LoadOperations(temp).ElementAt(0).Value)
+                //{
+                //    result.Add(new StringKredyt(przelew, kontoBankowe.ListaKont[Konto].NumerKonta));
+                //}
+                //result.Sort((a, b) => b.Data.CompareTo(a.Data));
+                for(int i = 0; i < 10; i++)
+                {
+                    result.Add(new StringKredyt());
+                }
+                return result;
+            }
+        }
         public WlascicielDane DaneWlasciciela { get => new WlascicielDane(wlasciciel); }
 
         public bool PeselIstnieje(Int64 pesel)

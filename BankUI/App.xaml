@@ -34,6 +34,9 @@
             <DataTemplate DataType="{x:Type vm:DaneOsoboweVM}">
                 <okna:DaneOsobowe />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:KredytVM}">
+                <okna:Kredyt />
+            </DataTemplate>
             <!-- STYLES -->
             <Style x:Key="BigRoundButtonTemplate" TargetType="Button">
                 <Setter Property="Background" Value="#F0F8FF" />

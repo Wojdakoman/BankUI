@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BankUI.Model;
 using BankUI.ViewModel.Base;
+using BankUI.ViewModel.Classes;
 using BankUI.ViewModel.Interfaces;
 
 namespace BankUI.ViewModel
@@ -14,6 +15,7 @@ namespace BankUI.ViewModel
         private IPageViewModel _currentPageViewModel;
         private Dictionary<string, IPageViewModel> _pageViewModels;
         private Data _model;
+        private KredytPrzelewInfo _kredytInfo;
 
         public Dictionary<string, IPageViewModel> PageViewModels
         {
@@ -39,7 +41,7 @@ namespace BankUI.ViewModel
             }
         }
 
-        #region ZmianaWidoku
+        #region EventsMethods
         private void ZmianaWidoku(object obj)
         {
             string pageName = obj.ToString();
@@ -51,13 +53,15 @@ namespace BankUI.ViewModel
         public MainWindowVM()
         {
             _model = new Data();
+            _kredytInfo = new KredytPrzelewInfo();
             // Add available pages and set page
             PageViewModels.Add("login", new LoginVM(ref _model));
             PageViewModels.Add("panelGlowny", new PanelGlownyVM(ref _model));
-            PageViewModels.Add("przelew", new PrzelewVM(ref _model));
+            PageViewModels.Add("przelew", new PrzelewVM(ref _model, ref _kredytInfo));
             PageViewModels.Add("rejestracja", new RejestracjaVM(ref _model));
             PageViewModels.Add("historiaLogowan", new HistoriaLogowanVM(ref _model));
             PageViewModels.Add("daneOsobowe", new DaneOsoboweVM(ref _model));
+            PageViewModels.Add("kredyt", new KredytVM(ref _model, ref _kredytInfo));
 
             CurrentPageViewModel = PageViewModels["login"];
 

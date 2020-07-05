@@ -69,6 +69,11 @@ namespace BankUI.Model
             RepositoryPrzelew.ExecuteOperation(kontoBankowe.ListaKont[Konto], odbiorca, wartosc, tytul, opis);
             kontoBankowe.Update();
         }
+        public void AktualizujKarte(string numer, string pin, double limit)
+        {
+            RepositoryKartaPlatnicza.UpdateCard(numer, pin, limit);
+            kontoBankowe.Update();
+        }
         #endregion
 
         #region Public

@@ -62,7 +62,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="16" Width="5*" Header="Numer karty" IsReadOnly="True" Binding="{Binding Numer}" CellStyle="{StaticResource asd}" />
                 <DataGridTextColumn FontSize="16" Width="2*" Header="Data ważności" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Limit płatności" IsReadOnly="True" Binding="{Binding Limit}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="2*" Header="Limit płatności" IsReadOnly="True" Binding="{Binding LimitString}" CellStyle="{StaticResource asd}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

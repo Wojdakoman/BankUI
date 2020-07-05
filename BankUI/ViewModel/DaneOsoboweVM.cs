@@ -150,6 +150,16 @@ namespace BankUI.ViewModel
         public string RAccount { get => R.account; }
         public string RLoginHistory { get => R.loginHistory; }
         #endregion
+        #region dane
+        public string RName { get => R.name; }
+        public string RSurname { get => R.surname; }
+        public string RCity { get => R.city; }
+        public string RAddres { get => R.addres; }
+        public string RTel { get => R.telephone; }
+        public string RLogin { get => R.login; }
+        public string RPassword { get => R.password; }
+        public string RUpdate { get => R.update; }
+        #endregion
         #endregion
     }
 }

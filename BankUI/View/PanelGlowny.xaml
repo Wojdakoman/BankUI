@@ -12,7 +12,7 @@
             <i:InvokeCommandAction Command="{Binding OnLoad}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Background="White">
+    <Grid x:Name="MainGrid" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -79,7 +79,7 @@
                 <Label Content="{Binding Path=SelectedValue, ElementName=combo}" FontSize="13" Foreground="Gray" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Label Margin="10 0 0 0" Content="Saldo: " FontSize="17" />
+                <Label Margin="10 0 0 0" Content="{Binding RBalance}" FontSize="17" />
                 <Label Content="{Binding Saldo}" FontSize="17" />
             </StackPanel>
         </StackPanel>
@@ -88,11 +88,41 @@
 
         <DataGrid Grid.Row="4" ItemsSource="{Binding Lista}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="16" Width="4*" Header="Data" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Nadawca/Odbiorca" IsReadOnly="True" Binding="{Binding Person}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Tytuł" IsReadOnly="True" Binding="{Binding Name}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Rodzaj operacji" IsReadOnly="True" Binding="{Binding Type}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="3*" Header="Wartość" IsReadOnly="True" Binding="{Binding Amount}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="4*" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RDate}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="5*" IsReadOnly="True" Binding="{Binding Person}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RSenderRec}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="5*" IsReadOnly="True" Binding="{Binding Name}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RTitle}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding Type}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.ROpType}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="3*" IsReadOnly="True" Binding="{Binding Amount}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RAmount}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

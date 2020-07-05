@@ -64,16 +64,52 @@
 
         <DataGrid Grid.Row="2" ItemsSource="{Binding Lista}" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Wartość kredytu" IsReadOnly="True" Binding="{Binding WartoscString}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Spłacono" IsReadOnly="True" Binding="{Binding Splacono}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Data spłaty" IsReadOnly="True" Binding="{Binding DataSplaty}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Numer konta" IsReadOnly="True" Binding="{Binding NumerKonta}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="1*" Header="Oprocntowanie" IsReadOnly="True" Binding="{Binding OprocentowanieString}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Wysokość raty" IsReadOnly="True" Binding="{Binding RataString}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding WartoscString}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RLoanValue}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding Splacono}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RPaidBack}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding DataSplaty}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RPayDate}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="5*" IsReadOnly="True" Binding="{Binding NumerKonta}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RAccountNumber}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="1*" IsReadOnly="True" Binding="{Binding OprocentowanieString}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RInterest}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding RataString}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RInstallment}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding ElementName=MainGrid, Path=DataContext.SplacRate}" CommandParameter="{Binding IDKredytu}">Spłać ratę</Button>
+                            <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding ElementName=MainGrid, Path=DataContext.SplacRate}" CommandParameter="{Binding IDKredytu}" Content="{Binding ElementName=MainGrid, Path=DataContext.RPayInstall}"/> 
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

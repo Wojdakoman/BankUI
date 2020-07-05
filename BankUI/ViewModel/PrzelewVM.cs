@@ -170,6 +170,12 @@ namespace BankUI.ViewModel
         public string RMyData { get => R.myData; }
         public string RLoginHistory { get => R.loginHistory; }
         #endregion
+        public string RFromAccount { get => R.fromAccount; }
+        public string RRecipent { get => R.recipient; }
+        public string RTitle { get => R.title; }
+        public string RDesc { get => R.description; }
+        public string RAmount { get => R.amount; }
+        public string RExec { get => R.execute; }
         #endregion
     }
 }

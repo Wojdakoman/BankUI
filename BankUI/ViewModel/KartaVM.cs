@@ -155,6 +155,21 @@ namespace BankUI.ViewModel
         public string RLoginHistory { get => R.loginHistory; }
         public string RNewCard { get => R.newCard; }
         #endregion
+        #region cardInfo
+        public string RCardNumber { get => R.cardNumber; }
+        public string RExpireDate { get => R.expireDate; }
+        public string RPaymentLimit { get => R.paymentLimit; }
+        public string RAssignedAccount { get => R.assignedAccount; }
+        public string RPin { get => R.pin; }
+        public string RUpdate { get => R.update; }
+        public string RDeleteCard { get => R.deleteCard; }
+        #endregion
+        #region table
+        public string RDate { get => R.date; }
+        public string RType { get => R.operationType; }
+        public string RAmount { get => R.amount; }
+        public string ROpHistry { get => R.operationHistory; }
+        #endregion
         #endregion
     }
 }

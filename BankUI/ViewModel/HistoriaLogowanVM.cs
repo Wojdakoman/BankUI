@@ -93,6 +93,12 @@ namespace BankUI.ViewModel
         public string RMyData { get => R.myData; }
         public string RAccount { get => R.account; }
         #endregion
+        #region table
+        public string RDate { get => R.date; }
+        public string RHour { get => R.hour; }
+        public string RIPAddres { get => R.IPAddres; }
+        public string RLoginResult { get => R.loginResult; }
+        #endregion
         #endregion
     }
 }

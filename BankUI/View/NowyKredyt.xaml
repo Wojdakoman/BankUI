@@ -64,7 +64,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label FontSize="20"  Content="Wartość kredytu:"/>
+                <Label FontSize="20"  Content="{Binding RLoanValue}"/>
                 <Label FontSize="20" Grid.Column="1" HorizontalAlignment="Right" Content="{Binding Path=Value,ElementName=wartosc}" />
             </Grid>
             <Slider Name="wartosc" Maximum="50000" Minimum="100" Value="{Binding Path=Wartosc, Mode=TwoWay}" TickFrequency="10" IsSnapToTickEnabled="True" FontSize="16" Height="25" />
@@ -73,20 +73,20 @@
                     <ColumnDefinition />
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label FontSize="20"  Content="Ile miesięcy:"/>
+                <Label FontSize="20"  Content="{Binding RCountMonths}"/>
                 <Label FontSize="20" Grid.Column="1" HorizontalAlignment="Right" Content="{Binding Path=Value,ElementName=dlugosc}" />
             </Grid>
             <Slider Name="dlugosc" Maximum="60" Minimum="3" Value="{Binding Path=Miesiecy, Mode=TwoWay}" TickFrequency="1" IsSnapToTickEnabled="True" FontSize="16" Height="25" />
             <StackPanel Orientation="Horizontal">
-                <Label FontSize="20" Content="Oprocentowanie:" />
+                <Label FontSize="20" Content="{Binding RInterest}" />
                 <Label FontSize="20" Content="{Binding Oprocentowanie}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label FontSize="20" Content="Rata:" />
+                <Label FontSize="20" Content="{Binding RInstallment}" />
                 <Label FontSize="20" Content="{Binding Rata}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
-                <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding WezKredyt}" Content="Weź kredyt" />
+                <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding WezKredyt}" Content="{Binding RTakeLoan}" />
             </StackPanel>
         </StackPanel>
     </Grid>

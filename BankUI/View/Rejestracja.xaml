@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Button 
-            Content="Powrót"
+            Content="{Binding RBack}"
             Style="{StaticResource bPowrot}"
             Command="{Binding Powrot}"
             ></Button>
@@ -32,55 +32,55 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label 
-                    Content="Pesel"
+                    Content="{Binding RPESEL}"
                     Grid.Row="0"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label >
                 <Label 
-                    Content="Imie"
+                    Content="{Binding RName}"
                     Grid.Row="1"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="Nazwisko"
+                    Content="{Binding RSurname}"
                     Grid.Row="2"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="Data urodzenia"
+                    Content="{Binding RBirthDate}"
                     Grid.Row="3"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="Miasto"
+                    Content="{Binding RCity}"
                     Grid.Row="4"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="Adres"
+                    Content="{Binding RAddres}"
                     Grid.Row="5"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="Telefon"
+                    Content="{Binding RTel}"
                     Grid.Row="6"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="Login"
+                    Content="{Binding RLogin}"
                     Grid.Row="7"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="Haslo"
+                    Content="{Binding RPassword}"
                     Grid.Row="8"
                     Grid.Column="0"
                     Style="{StaticResource lRejestacja}"
@@ -151,7 +151,7 @@
                     x:Name="passwordRejestracja"
                     ></PasswordBox>
                 <Button 
-                    Content="Zarejestruj"
+                    Content="{Binding RRegister}"
                     Grid.ColumnSpan="2"
                     Grid.Row="9"
                     Style="{StaticResource bRejestacja}"

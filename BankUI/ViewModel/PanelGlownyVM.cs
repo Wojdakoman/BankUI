@@ -143,6 +143,14 @@ namespace BankUI.ViewModel
         public string RNewAccount { get => R.newAccount; }
         public string RDeleteAccount { get => R.deleteAccount; }
         #endregion
+        public string RBalance { get => R.balance; }
+        #region table
+        public string RDate { get => R.date; }
+        public string RSenderRec { get => $"{R.sender}/{R.recipient}"; }
+        public string RTitle { get => R.title; }
+        public string ROpType { get => R.operationType; }
+        public string RAmount { get => R.amount; }
+        #endregion
         #endregion
     }
 }

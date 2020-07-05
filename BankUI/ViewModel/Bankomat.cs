@@ -14,6 +14,7 @@ using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
+    using R = Properties.Resources;
     class BankomatVM : ViewModelBase, IPageViewModel
     {
         private KartaPlatnicza _kartaPlatnicza;
@@ -86,5 +87,11 @@ namespace BankUI.ViewModel
                 powrot = value;
             }
         }
+
+        #region Zasoby
+        //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
+        public string RBack { get => R.back; }
+        public string RExec { get => R.execute; }
+        #endregion
     }
 }

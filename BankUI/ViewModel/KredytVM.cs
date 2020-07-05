@@ -151,6 +151,15 @@ namespace BankUI.ViewModel
         public string RLoginHistory { get => R.loginHistory; }
         public string RTakeLoan { get => R.takeLoan; }
         #endregion
+        #region table
+        public string RLoanValue { get => R.loanValue; }
+        public string RPaidBack { get => R.paidBack; }
+        public string RPayDate { get => R.payDate; }
+        public string RAccountNumber { get => R.accountNumber; }
+        public string RInterest { get => R.interest; }
+        public string RInstallment { get => R.installment; }
+        public string RPayInstall { get => R.payInstallment; }
+        #endregion
         #endregion
     }
 }

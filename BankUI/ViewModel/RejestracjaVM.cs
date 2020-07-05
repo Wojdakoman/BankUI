@@ -15,6 +15,7 @@ using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
+    using R = Properties.Resources;
     class RejestracjaVM : ViewModelBase, IPageViewModel
     {
 
@@ -109,6 +110,26 @@ namespace BankUI.ViewModel
         #region Methods
 
 
+        #endregion
+
+        #region Zasoby
+        //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
+        #region menu
+        public string RBack { get => R.back; }
+        public string RRegister { get => R.signUp; }
+        #endregion
+        #region dane
+        public string RName { get => R.name; }
+        public string RSurname { get => R.surname; }
+        public string RCity { get => R.city; }
+        public string RAddres { get => R.addres; }
+        public string RTel { get => R.telephone; }
+        public string RLogin { get => R.login; }
+        public string RPassword { get => R.password; }
+        public string RUpdate { get => R.update; }
+        public string RPESEL { get => R.PESEL; }
+        public string RBirthDate { get => R.birthDate; }
+        #endregion
         #endregion
     }
 }

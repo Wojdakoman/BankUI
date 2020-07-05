@@ -100,14 +100,14 @@
                 <Button
                     Grid.Row="3"
                     Grid.ColumnSpan="2"
-                    Content="Wykonaj"
+                    Content="{Binding RExec}"
                     Command="{Binding Wykonaj}"
                     Style="{StaticResource bRejestacja}"
                     ></Button>
             </Grid>
         </StackPanel>
         <Button 
-            Content="Powrót"
+            Content="{Binding RBack}"
             Style="{StaticResource bPowrot}"
             Command="{Binding Powrot}"
             ></Button>

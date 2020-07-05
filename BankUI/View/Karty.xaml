@@ -64,13 +64,31 @@
 
         <DataGrid Grid.Row="2" ItemsSource="{Binding Lista}" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Numer karty" IsReadOnly="True" Binding="{Binding Numer}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Data ważności" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Limit płatności" IsReadOnly="True" Binding="{Binding LimitString}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="5*" IsReadOnly="True" Binding="{Binding Numer}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RCardNumber}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RExpireDate}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding LimitString}" CellStyle="{StaticResource asd}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RPaymentLimit}"/>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding ElementName=MainGrid, Path=DataContext.PokazKarte}" CommandParameter="{Binding Numer}">Szczegóły</Button>
+                            <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding ElementName=MainGrid, Path=DataContext.PokazKarte}" CommandParameter="{Binding Numer}" Content="{Binding ElementName=MainGrid, Path=DataContext.RDetails}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

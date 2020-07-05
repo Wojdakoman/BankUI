@@ -163,6 +163,12 @@ namespace BankUI.ViewModel
         public string RLoginHistory { get => R.loginHistory; }
         public string RNewCard { get => R.newCard; }
         #endregion
+        #region table
+        public string RCardNumber { get => R.cardNumber; }
+        public string RExpireDate { get => R.expireDate; }
+        public string RPaymentLimit { get => R.paymentLimit; }
+        public string RDetails { get => R.details; }
+        #endregion
         #endregion
     }
 }

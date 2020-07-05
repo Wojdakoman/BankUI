@@ -121,9 +121,21 @@
     <value>Konto</value>
     <comment>menu</comment>
   </data>
+  <data name="accountNumber" xml:space="preserve">
+    <value>Numer konta</value>
+  </data>
   <data name="activeAccount" xml:space="preserve">
     <value>Aktywne konto: </value>
     <comment>menu</comment>
+  </data>
+  <data name="addres" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>Wartość</value>
+  </data>
+  <data name="assignedAccount" xml:space="preserve">
+    <value>Przypisane konto</value>
   </data>
   <data name="atm" xml:space="preserve">
     <value>Bankomat</value>
@@ -132,17 +144,71 @@
     <value>Powrót</value>
     <comment>menu</comment>
   </data>
+  <data name="balance" xml:space="preserve">
+    <value>Saldo: </value>
+  </data>
+  <data name="birthDate" xml:space="preserve">
+    <value>Data urodzenia</value>
+  </data>
+  <data name="cardNumber" xml:space="preserve">
+    <value>Numer karty</value>
+  </data>
   <data name="cards" xml:space="preserve">
     <value>Karty</value>
     <comment>menu</comment>
+  </data>
+  <data name="city" xml:space="preserve">
+    <value>Miasto</value>
+  </data>
+  <data name="connect" xml:space="preserve">
+    <value>Połącz</value>
+  </data>
+  <data name="countMonths" xml:space="preserve">
+    <value>Ile miesięcy:</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Data</value>
   </data>
   <data name="deleteAccount" xml:space="preserve">
     <value>Zamknij konto</value>
     <comment>menu</comment>
   </data>
+  <data name="deleteCard" xml:space="preserve">
+    <value>Usuń kartę</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>Szczegóły</value>
+  </data>
+  <data name="execute" xml:space="preserve">
+    <value>Wykonaj</value>
+  </data>
+  <data name="expireDate" xml:space="preserve">
+    <value>Data ważności</value>
+  </data>
+  <data name="fromAccount" xml:space="preserve">
+    <value>Z konta</value>
+  </data>
+  <data name="hour" xml:space="preserve">
+    <value>Godzina</value>
+  </data>
+  <data name="installment" xml:space="preserve">
+    <value>Wysokość raty</value>
+  </data>
+  <data name="interest" xml:space="preserve">
+    <value>Oprocentowanie</value>
+  </data>
+  <data name="IPAddres" xml:space="preserve">
+    <value>Adres IP</value>
+  </data>
   <data name="loans" xml:space="preserve">
     <value>Kredyty</value>
     <comment>menu</comment>
+  </data>
+  <data name="loanValue" xml:space="preserve">
+    <value>Wartość kredytu</value>
   </data>
   <data name="login" xml:space="preserve">
     <value>Login</value>
@@ -160,6 +226,9 @@
   <data name="loginIn" xml:space="preserve">
     <value>Zaloguj</value>
   </data>
+  <data name="loginResult" xml:space="preserve">
+    <value>Logowanie poprawne</value>
+  </data>
   <data name="logout" xml:space="preserve">
     <value>Wyloguj</value>
     <comment>menu</comment>
@@ -167,6 +236,9 @@
   <data name="myData" xml:space="preserve">
     <value>Moje dane</value>
     <comment>menu</comment>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Imię</value>
   </data>
   <data name="newAccount" xml:space="preserve">
     <value>Otwórz konto</value>
@@ -176,18 +248,60 @@
     <value>Nowa karta</value>
     <comment>menu</comment>
   </data>
+  <data name="operationHistory" xml:space="preserve">
+    <value>Historia operacji</value>
+  </data>
+  <data name="operationType" xml:space="preserve">
+    <value>Rodzaj operacji</value>
+  </data>
+  <data name="paidBack" xml:space="preserve">
+    <value>Spłacono</value>
+  </data>
   <data name="password" xml:space="preserve">
     <value>Hasło</value>
   </data>
+  <data name="payDate" xml:space="preserve">
+    <value>Data spłaty</value>
+  </data>
+  <data name="payInstallment" xml:space="preserve">
+    <value>Spłać ratę</value>
+  </data>
+  <data name="paymentLimit" xml:space="preserve">
+    <value>Limit płatności</value>
+  </data>
+  <data name="PESEL" xml:space="preserve">
+    <value>PESEL</value>
+  </data>
+  <data name="pin" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="recipient" xml:space="preserve">
+    <value>Odbiorca</value>
+  </data>
+  <data name="sender" xml:space="preserve">
+    <value>Nadawca</value>
+  </data>
   <data name="signUp" xml:space="preserve">
     <value>Rejestracja</value>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Nazwisko</value>
   </data>
   <data name="takeLoan" xml:space="preserve">
     <value>Weź kredyt</value>
     <comment>menu</comment>
   </data>
+  <data name="telephone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Tytuł</value>
+  </data>
   <data name="transfers" xml:space="preserve">
     <value>Przelewy</value>
     <comment>menu</comment>
+  </data>
+  <data name="update" xml:space="preserve">
+    <value>Zaktualizuj</value>
   </data>
 </root>

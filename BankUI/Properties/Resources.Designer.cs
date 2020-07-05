@@ -70,11 +70,47 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Numer konta.
+        /// </summary>
+        public static string accountNumber {
+            get {
+                return ResourceManager.GetString("accountNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Aktywne konto: .
         /// </summary>
         public static string activeAccount {
             get {
                 return ResourceManager.GetString("activeAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Adres.
+        /// </summary>
+        public static string addres {
+            get {
+                return ResourceManager.GetString("addres", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wartość.
+        /// </summary>
+        public static string amount {
+            get {
+                return ResourceManager.GetString("amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Przypisane konto.
+        /// </summary>
+        public static string assignedAccount {
+            get {
+                return ResourceManager.GetString("assignedAccount", resourceCulture);
             }
         }
         
@@ -97,11 +133,74 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Saldo: .
+        /// </summary>
+        public static string balance {
+            get {
+                return ResourceManager.GetString("balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Data urodzenia.
+        /// </summary>
+        public static string birthDate {
+            get {
+                return ResourceManager.GetString("birthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Numer karty.
+        /// </summary>
+        public static string cardNumber {
+            get {
+                return ResourceManager.GetString("cardNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Karty.
         /// </summary>
         public static string cards {
             get {
                 return ResourceManager.GetString("cards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Miasto.
+        /// </summary>
+        public static string city {
+            get {
+                return ResourceManager.GetString("city", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Połącz.
+        /// </summary>
+        public static string connect {
+            get {
+                return ResourceManager.GetString("connect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Ile miesięcy:.
+        /// </summary>
+        public static string countMonths {
+            get {
+                return ResourceManager.GetString("countMonths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Data.
+        /// </summary>
+        public static string date {
+            get {
+                return ResourceManager.GetString("date", resourceCulture);
             }
         }
         
@@ -115,11 +214,110 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Usuń kartę.
+        /// </summary>
+        public static string deleteCard {
+            get {
+                return ResourceManager.GetString("deleteCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Opis.
+        /// </summary>
+        public static string description {
+            get {
+                return ResourceManager.GetString("description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Szczegóły.
+        /// </summary>
+        public static string details {
+            get {
+                return ResourceManager.GetString("details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wykonaj.
+        /// </summary>
+        public static string execute {
+            get {
+                return ResourceManager.GetString("execute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Data ważności.
+        /// </summary>
+        public static string expireDate {
+            get {
+                return ResourceManager.GetString("expireDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Z konta.
+        /// </summary>
+        public static string fromAccount {
+            get {
+                return ResourceManager.GetString("fromAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Godzina.
+        /// </summary>
+        public static string hour {
+            get {
+                return ResourceManager.GetString("hour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wysokość raty.
+        /// </summary>
+        public static string installment {
+            get {
+                return ResourceManager.GetString("installment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Oprocentowanie.
+        /// </summary>
+        public static string interest {
+            get {
+                return ResourceManager.GetString("interest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Adres IP.
+        /// </summary>
+        public static string IPAddres {
+            get {
+                return ResourceManager.GetString("IPAddres", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Kredyty.
         /// </summary>
         public static string loans {
             get {
                 return ResourceManager.GetString("loans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wartość kredytu.
+        /// </summary>
+        public static string loanValue {
+            get {
+                return ResourceManager.GetString("loanValue", resourceCulture);
             }
         }
         
@@ -169,6 +367,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Logowanie poprawne.
+        /// </summary>
+        public static string loginResult {
+            get {
+                return ResourceManager.GetString("loginResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wyloguj.
         /// </summary>
         public static string logout {
@@ -183,6 +390,15 @@ namespace BankUI.Properties {
         public static string myData {
             get {
                 return ResourceManager.GetString("myData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Imię.
+        /// </summary>
+        public static string name {
+            get {
+                return ResourceManager.GetString("name", resourceCulture);
             }
         }
         
@@ -205,11 +421,101 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Historia operacji.
+        /// </summary>
+        public static string operationHistory {
+            get {
+                return ResourceManager.GetString("operationHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Rodzaj operacji.
+        /// </summary>
+        public static string operationType {
+            get {
+                return ResourceManager.GetString("operationType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Spłacono.
+        /// </summary>
+        public static string paidBack {
+            get {
+                return ResourceManager.GetString("paidBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Hasło.
         /// </summary>
         public static string password {
             get {
                 return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Data spłaty.
+        /// </summary>
+        public static string payDate {
+            get {
+                return ResourceManager.GetString("payDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Spłać ratę.
+        /// </summary>
+        public static string payInstallment {
+            get {
+                return ResourceManager.GetString("payInstallment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Limit płatności.
+        /// </summary>
+        public static string paymentLimit {
+            get {
+                return ResourceManager.GetString("paymentLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu PESEL.
+        /// </summary>
+        public static string PESEL {
+            get {
+                return ResourceManager.GetString("PESEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Pin.
+        /// </summary>
+        public static string pin {
+            get {
+                return ResourceManager.GetString("pin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Odbiorca.
+        /// </summary>
+        public static string recipient {
+            get {
+                return ResourceManager.GetString("recipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nadawca.
+        /// </summary>
+        public static string sender {
+            get {
+                return ResourceManager.GetString("sender", resourceCulture);
             }
         }
         
@@ -223,6 +529,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nazwisko.
+        /// </summary>
+        public static string surname {
+            get {
+                return ResourceManager.GetString("surname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Weź kredyt.
         /// </summary>
         public static string takeLoan {
@@ -232,11 +547,38 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Telefon.
+        /// </summary>
+        public static string telephone {
+            get {
+                return ResourceManager.GetString("telephone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Tytuł.
+        /// </summary>
+        public static string title {
+            get {
+                return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Przelewy.
         /// </summary>
         public static string transfers {
             get {
                 return ResourceManager.GetString("transfers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Zaktualizuj.
+        /// </summary>
+        public static string update {
+            get {
+                return ResourceManager.GetString("update", resourceCulture);
             }
         }
     }

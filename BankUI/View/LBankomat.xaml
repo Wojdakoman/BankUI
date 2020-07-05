@@ -46,7 +46,7 @@
                     prop:BankomatPin.PinLiczby="{Binding Pin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></PasswordBox>
                 <Button
-                    Content="Połacz"
+                    Content="{Binding RConnect}"
                     Grid.ColumnSpan="2"
                     Grid.Row="3"
                     Style="{StaticResource bRejestacja}"
@@ -55,7 +55,7 @@
             </Grid>
         </StackPanel>
         <Button 
-            Content="Powrót"
+            Content="{Binding RBack}"
             Style="{StaticResource bPowrot}"
             Command="{Binding Powrot}"
             ></Button>

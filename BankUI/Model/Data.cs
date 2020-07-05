@@ -164,7 +164,7 @@ namespace BankUI.Model
                 {
                     result.Add(new StringHistoriaLogowan(log));
                 }
-                result.Sort((a, b) => a.Data.CompareTo(b.Data));
+                result.OrderBy(a => a.Data).ThenBy(a => a.Godzina);
                 return result;
             }
         }

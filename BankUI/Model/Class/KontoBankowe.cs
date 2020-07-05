@@ -59,6 +59,7 @@ namespace Projekt.Class
             ListaKont = RepositoryKonto.GetAccount(Wlasciciel.Pesel);
             ListaPrzelewow = RepositoryPrzelew.LoadOperations(ListaKont);
             KartyPlatnicze = RepositoryKartaPlatnicza.LoadCards(ListaKont);
+            KontaKredytowe = RepositoryKonto.GetCreditAccount(Wlasciciel.Pesel);
             ListOperacjiKart = RepositoryKartaOperacje.LoadHistory(KartyPlatnicze);
         }
 

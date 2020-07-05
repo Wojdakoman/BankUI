@@ -65,9 +65,10 @@
         <DataGrid Grid.Row="2" ItemsSource="{Binding Lista}" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="16" Width="2*" Header="Wartość kredytu" IsReadOnly="True" Binding="{Binding WartoscString}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="2*" Header="Spłacono" IsReadOnly="True" Binding="{Binding Splacono}" CellStyle="{StaticResource asd}" />
                 <DataGridTextColumn FontSize="16" Width="2*" Header="Data spłaty" IsReadOnly="True" Binding="{Binding DataSplaty}" CellStyle="{StaticResource asd}" />
                 <DataGridTextColumn FontSize="16" Width="5*" Header="Numer konta" IsReadOnly="True" Binding="{Binding NumerKonta}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="1*" Header="Oprocntowanie" IsReadOnly="True" Binding="{Binding Oprocentowanie}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="1*" Header="Oprocntowanie" IsReadOnly="True" Binding="{Binding OprocentowanieString}" CellStyle="{StaticResource asd}" />
                 <DataGridTextColumn FontSize="16" Width="2*" Header="Wysokość raty" IsReadOnly="True" Binding="{Binding RataString}" CellStyle="{StaticResource asd}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

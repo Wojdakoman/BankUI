@@ -99,6 +99,15 @@ namespace BankUI.Model
             kontoBankowe.AddCreditAccount(wlasciciel.Pesel, kontoBankowe.ListaKont[Konto].NumerKonta, wartosc, dlugosc);
             kontoBankowe.Update();
         }
+        public double Splacono(string numerKonta)
+        {
+            foreach(var konto in kontoBankowe.KontaKredytowe)
+            {
+                if (konto.NumerKonta == numerKonta)
+                    return konto.Saldo;
+            }
+            return 0;
+        }
         #endregion
 
         #region Public
@@ -157,7 +166,7 @@ namespace BankUI.Model
 
                 foreach (var kredyt in RepositoryKredyt.LoadCredits(wlasciciel.Pesel))
                 {
-                    result.Add(new StringKredyt(kredyt));
+                    result.Add(new StringKredyt(kredyt, Splacono(kredyt.NumerKonta)));
                 }
                 //result.Sort((a, b) => b.Data.CompareTo(a.Data));
                 //for(int i = 0; i < 10; i++)

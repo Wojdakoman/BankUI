@@ -18,7 +18,7 @@ namespace BankUI.ViewModel
         private Data _model;
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
-        public int ListaKontIndex { get; set; } = 0;
+        public int ListaKontIndex { get; set; }
         public string Saldo { get => $"{_model.Saldo} PLN"; }
         public string TypKonta { get => $"Konto {_model.TypKonta}"; }
         public List<StringHistoria> Lista { get => _model.Historia; }
@@ -36,7 +36,8 @@ namespace BankUI.ViewModel
                     _onLoad = new RelayCommand(
                         arg =>
                         {
-                            OnPropertyChanged(nameof(UserName), nameof(ListaKont), nameof(Saldo), nameof(TypKonta), nameof(Lista));
+                            ListaKontIndex = _model.Konto;
+                            OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont), nameof(Saldo), nameof(TypKonta), nameof(Lista));
                         },
                         arg => true
                     );

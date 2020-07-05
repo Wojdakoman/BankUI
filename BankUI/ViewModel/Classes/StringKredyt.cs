@@ -13,12 +13,14 @@ namespace BankUI.ViewModel.Classes
         public double Wartosc { get; }
         public string WartoscString { get => $"{Wartosc} PLN"; }
         public double Oprocentowanie { get; }
+        public string OprocentowanieString { get => $"{Oprocentowanie*100}%"; }
         public double Rata { get; }
         public string RataString { get => $"{Rata} PLN"; }
         public string NumerKonta { get; }
         public string DataSplaty { get; }
+        public string Splacono { get; }
 
-        public StringKredyt(Kredyt kredyt)
+        public StringKredyt(Kredyt kredyt, double splacono)
         {
             IDKredytu = Convert.ToInt32(kredyt.NumerKredytu);
             Wartosc = kredyt.Wartosc;
@@ -26,6 +28,7 @@ namespace BankUI.ViewModel.Classes
             Rata = kredyt.Rata;
             NumerKonta = kredyt.NumerKonta;
             DataSplaty = kredyt.DataSplaty;
+            Splacono = $"{splacono} PLN";
         }
     }
 }

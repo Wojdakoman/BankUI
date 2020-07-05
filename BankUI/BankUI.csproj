@@ -153,6 +153,7 @@
     <Compile Include="ViewModel\KartyVM.cs" />
     <Compile Include="ViewModel\KredytVM.cs" />
     <Compile Include="ViewModel\LBankomatVM.cs" />
+    <Compile Include="ViewModel\NowyKredytVM.cs" />
     <Compile Include="ViewModel\RejestracjaVM.cs" />
     <Compile Include="ViewModel\Base\EventArgs.cs" />
     <Compile Include="ViewModel\Base\EventRaiser.cs" />
@@ -192,6 +193,9 @@
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowyKredyt.xaml.cs">
+      <DependentUpon>NowyKredyt.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PanelGlowny.xaml.cs">
       <DependentUpon>PanelGlowny.xaml</DependentUpon>
@@ -255,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowyKredyt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

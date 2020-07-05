@@ -39,6 +39,9 @@
             <DataTemplate DataType="{x:Type vm:KredytVM}">
                 <okna:Kredyt />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:NowyKredytVM}">
+                <okna:NowyKredyt />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:KartyVM}">
                 <okna:Karty />
             </DataTemplate>

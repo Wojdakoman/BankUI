@@ -94,6 +94,11 @@ namespace BankUI.Model
             RepositoryKartaPlatnicza.UpdateCard(numer, pin, limit);
             kontoBankowe.Update();
         }
+        public void WezKredyt(int wartosc, int dlugosc)
+        {
+            kontoBankowe.AddCreditAccount(wlasciciel.Pesel, kontoBankowe.ListaKont[Konto].NumerKonta, wartosc, dlugosc);
+            kontoBankowe.Update();
+        }
         #endregion
 
         #region Public
@@ -150,15 +155,15 @@ namespace BankUI.Model
             {
                 List<StringKredyt> result = new List<StringKredyt>();
 
-                //foreach (var przelew in RepositoryPrzelew.LoadOperations(temp).ElementAt(0).Value)
-                //{
-                //    result.Add(new StringKredyt(przelew, kontoBankowe.ListaKont[Konto].NumerKonta));
-                //}
-                //result.Sort((a, b) => b.Data.CompareTo(a.Data));
-                for(int i = 0; i < 10; i++)
+                foreach (var kredyt in RepositoryKredyt.LoadCredits(wlasciciel.Pesel))
                 {
-                    result.Add(new StringKredyt());
+                    result.Add(new StringKredyt(kredyt));
                 }
+                //result.Sort((a, b) => b.Data.CompareTo(a.Data));
+                //for(int i = 0; i < 10; i++)
+                //{
+                //    result.Add(new StringKredyt());
+                //}
                 return result;
             }
         }

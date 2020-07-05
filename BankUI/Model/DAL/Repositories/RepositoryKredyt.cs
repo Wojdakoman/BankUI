@@ -12,6 +12,7 @@ namespace Projekt.DAL.Repositories
     class RepositoryKredyt
     {
         private static string ADD_CREDIT = "INSERT INTO kredyt (WlascicielPesel, Wartosc, NumerKonta, DataSplaty, Oprocentowanie, Rata) VALUES (@pesel, @wartosc, @numer, @data, @oprocentowanie, @rata)";
+        private static string GET_CREDITS = "SELECT * FROM kredyt WHERE WlascicielPesel=@pesel";
         public static void TakeCredit(Int64 pesel, string wybraneKonto, double wartosc, int ileMiesiecy)
         {
             string accountNumber = string.Empty;
@@ -56,6 +57,32 @@ namespace Projekt.DAL.Repositories
 
                 connection.Close();
             }
+        }
+
+        public static List<Kredyt> LoadCredits(Int64 pesel)
+        {
+            List<Kredyt> credits = new List<Kredyt>();
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(GET_CREDITS, connection);
+                command.Parameters.Add("@pesel", MySqlDbType.Int64).Value = pesel;
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        credits.Add(new Kredyt(reader));
+                    }
+                }
+                reader.Close();
+                
+                connection.Close();
+            }
+            return credits;
         }
     }
 }

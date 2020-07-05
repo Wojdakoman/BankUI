@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="BankUI.View.Kredyt"
+﻿<UserControl x:Class="BankUI.View.NowyKredyt"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:BankUI.View"
              mc:Ignorable="d" 
@@ -12,7 +12,7 @@
             <i:InvokeCommandAction Command="{Binding OnLoad}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid x:Name="MainGrid" Background="White">
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -44,40 +44,50 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RTransfers}" Command="{Binding GoTo}" CommandParameter="przelew" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RAccount}" Command="{Binding GoTo}" CommandParameter="panelGlowny" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RLoans}" Command="{Binding GoTo}" CommandParameter="kredyty" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RCards}" Command="{Binding GoTo}" CommandParameter="karty" />
             </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5" >
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RTakeLoan}" Command="{Binding GoTo}" CommandParameter="nowyKredyt" />
-            </StackPanel>
-            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RMyData}" Command="{Binding GoTo}" CommandParameter="daneOsobowe" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RLoginHistory}" Command="{Binding GoTo}" CommandParameter="historiaLogowan" />
             </StackPanel>
         </Grid>
 
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Lista}" AutoGenerateColumns="False" CanUserAddRows="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Wartość kredytu" IsReadOnly="True" Binding="{Binding WartoscString}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Data spłaty" IsReadOnly="True" Binding="{Binding DataSplaty}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Numer konta" IsReadOnly="True" Binding="{Binding NumerKonta}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="1*" Header="Oprocntowanie" IsReadOnly="True" Binding="{Binding Oprocentowanie}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Wysokość raty" IsReadOnly="True" Binding="{Binding RataString}" CellStyle="{StaticResource asd}" />
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding ElementName=MainGrid, Path=DataContext.SplacRate}" CommandParameter="{Binding IDKredytu}">Spłać ratę</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-
+        <StackPanel Width="400" Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label FontSize="20"  Content="Wartość kredytu:"/>
+                <Label FontSize="20" Grid.Column="1" HorizontalAlignment="Right" Content="{Binding Path=Value,ElementName=wartosc}" />
+            </Grid>
+            <Slider Name="wartosc" Maximum="50000" Minimum="100" Value="{Binding Path=Wartosc, Mode=TwoWay}" TickFrequency="10" IsSnapToTickEnabled="True" FontSize="16" Height="25" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label FontSize="20"  Content="Ile miesięcy:"/>
+                <Label FontSize="20" Grid.Column="1" HorizontalAlignment="Right" Content="{Binding Path=Value,ElementName=dlugosc}" />
+            </Grid>
+            <Slider Name="dlugosc" Maximum="60" Minimum="3" Value="{Binding Path=Miesiecy, Mode=TwoWay}" TickFrequency="1" IsSnapToTickEnabled="True" FontSize="16" Height="25" />
+            <StackPanel Orientation="Horizontal">
+                <Label FontSize="20" Content="Oprocentowanie:" />
+                <Label FontSize="20" Content="{Binding Oprocentowanie}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label FontSize="20" Content="Rata:" />
+                <Label FontSize="20" Content="{Binding Rata}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+                <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding WezKredyt}" Content="Weź kredyt" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -205,6 +205,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Weź kredyt.
+        /// </summary>
+        public static string takeLoan {
+            get {
+                return ResourceManager.GetString("takeLoan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Przelewy.
         /// </summary>
         public static string transfers {

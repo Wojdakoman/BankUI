@@ -1,32 +1,42 @@
 ﻿using BankUI.Model;
 using BankUI.ViewModel.Base;
-using BankUI.ViewModel.Classes;
 using BankUI.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
     using R = Properties.Resources;
-    class KredytVM : ViewModelBase, IPageViewModel
+    class NowyKredytVM : ViewModelBase, IPageViewModel
     {
+        #region PRIVATE
         private Data _model;
-        private AppGlobalInfo _kredytInfo;
+        private int _wartosc = 100;
+        private int _miesiecy = 3;
+        #endregion
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
         public int ListaKontIndex { get; set; }
-        public List<StringKredyt> Lista { get => _model.Kredyty; }
+        #region Kredyt info
+        public string Rata { get => $"{Math.Round((_wartosc / _miesiecy) + ((_wartosc / _miesiecy) * 0.15), 2)} PLN"; }
+        public string Oprocentowanie { get => "15%"; }
+        public int Wartosc { get => _wartosc; set {
+                _wartosc = value;
+                OnPropertyChanged(nameof(Rata), nameof(Oprocentowanie));
+            } }
+        public int Miesiecy { get => _miesiecy; set {
+                _miesiecy = value;
+                OnPropertyChanged(nameof(Rata), nameof(Oprocentowanie));
+            } }
         #endregion
-        public KredytVM(ref Data model, ref AppGlobalInfo kredyt)
-        {
-            _model = model;
-            _kredytInfo = kredyt;
-        }
+        #endregion
+        public NowyKredytVM(ref Data model) => _model = model;
 
         #region Komendy
         private ICommand _onLoad = null;
@@ -40,7 +50,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             ListaKontIndex = _model.Konto;
-                            OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont), nameof(Lista));
+                            OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont));
                         },
                         arg => true
                     );
@@ -69,25 +79,24 @@ namespace BankUI.ViewModel
             }
         }
 
-        private ICommand _splacRate = null;
-        public ICommand SplacRate
+        private ICommand _wezKredyt = null;
+        public ICommand WezKredyt
         {
             get
             {
-                if (_splacRate == null)
+                if (_wezKredyt == null)
                 {
-                    _splacRate = new RelayCommand((parameter)
-                        =>
-                    {
-                        int ID = Convert.ToInt32(parameter);
-                        _kredytInfo.DaneKredyt = Lista[ID];
-                        _kredytInfo.HasData = true;
-                        Mediator.Notify("GoToPage", "przelew");
-                    },
+                    _wezKredyt = new RelayCommand(
+                        arg =>
+                        {
+                            _model.WezKredyt(Wartosc, Miesiecy);
+                            MessageBox.Show("Pomyślnie zaciagnieto kredyt", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Mediator.Notify("GoToPage", "kredyty");
+                        },
                         arg => true
                     );
                 }
-                return _splacRate;
+                return _wezKredyt;
             }
         }
 
@@ -138,7 +147,7 @@ namespace BankUI.ViewModel
         public string RActiveAccount { get => R.activeAccount; }
         public string RLogout { get => R.logout; }
         public string RTransfers { get => R.transfers; }
-        public string RAccount { get => R.account; }
+        public string RLoans { get => R.loans; }
         public string RCards { get => R.cards; }
         public string RMyData { get => R.myData; }
         public string RLoginHistory { get => R.loginHistory; }

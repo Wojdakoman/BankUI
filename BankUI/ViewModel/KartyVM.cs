@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankUI.ViewModel
@@ -85,6 +86,26 @@ namespace BankUI.ViewModel
                     );
                 }
                 return _pokazKarte;
+            }
+        }
+        private ICommand _nowaKarta = null;
+        public ICommand NowaKarta
+        {
+            get
+            {
+                if (_nowaKarta == null)
+                {
+                    _nowaKarta = new RelayCommand(
+                        arg =>
+                        {
+                            _model.DodajKarte();
+                            OnPropertyChanged(nameof(Lista));
+                            MessageBox.Show("Dodano nową kartę do konta", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                        },
+                        arg => true
+                    );
+                }
+                return _nowaKarta;
             }
         }
         #region goTo

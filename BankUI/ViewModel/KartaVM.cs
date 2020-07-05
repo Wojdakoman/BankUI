@@ -77,6 +77,29 @@ namespace BankUI.ViewModel
                 return _update;
             }
         }
+        private ICommand _usunKarte = null;
+        public ICommand UsunKarte
+        {
+            get
+            {
+                if (_usunKarte == null)
+                {
+                    _usunKarte = new RelayCommand(
+                        arg =>
+                        {
+                            var result = MessageBox.Show("Na pewno usunąć kartę? Tej operacji nie można cofnąć!", "Uwaga", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                            if(result == MessageBoxResult.Yes)
+                            {
+                                _model.UsunKarte(NumerKarty, NumerKonta);
+                                Mediator.Notify("GoToPage", "karty");
+                            }
+                        },
+                        arg => Limit > 0 && !string.IsNullOrEmpty(Pin) && Pin.Length == 4
+                    );
+                }
+                return _usunKarte;
+            }
+        }
         #region goTo
         private ICommand _goTo = null;
         public ICommand GoTo

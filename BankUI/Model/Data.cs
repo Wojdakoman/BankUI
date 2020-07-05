@@ -52,6 +52,16 @@ namespace BankUI.Model
             wlasciciel = RepositoryWlasciciel.FindOwner(noweDane.Login, noweDane.Haslo);
             kontoBankowe = new KontoBankowe(wlasciciel);
         }
+        public void OtworzKonto()
+        {
+            kontoBankowe.AddAccount("Zwykle");
+            kontoBankowe.Update();
+        }
+        //public void ZamknijKonto()
+        //{
+            
+        //    kontoBankowe.Update();
+        //}
         public StringKarta PobierzKarte(string numerkarty)
         {
             foreach(var karta in kontoBankowe.KartyPlatnicze.ElementAt(Konto).Value)
@@ -141,7 +151,7 @@ namespace BankUI.Model
                 {
                     result.Add(new StringHistoria(przelew, kontoBankowe.ListaKont[Konto].NumerKonta));
                 }
-                result.Sort((a, b) => b.Data.CompareTo(a.Data));
+                result.Sort((x, y) => DateTime.Compare(y.Czas, x.Czas));
                 return result;
             } }
         public List<StringHistoriaLogowan> HistoriaLogowan

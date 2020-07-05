@@ -106,6 +106,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Zamknij konto.
+        /// </summary>
+        public static string deleteAccount {
+            get {
+                return ResourceManager.GetString("deleteAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Kredyty.
         /// </summary>
         public static string loans {
@@ -174,6 +183,15 @@ namespace BankUI.Properties {
         public static string myData {
             get {
                 return ResourceManager.GetString("myData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Otwórz konto.
+        /// </summary>
+        public static string newAccount {
+            get {
+                return ResourceManager.GetString("newAccount", resourceCulture);
             }
         }
         

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankUI.ViewModel
@@ -82,6 +83,30 @@ namespace BankUI.ViewModel
                 return _wyloguj;
             }
         }
+        private ICommand _otworzKonto = null;
+        public ICommand OtworzKonto
+        {
+            get
+            {
+                if (_otworzKonto == null)
+                {
+                    _otworzKonto = new RelayCommand(
+                        arg =>
+                        {
+                            var result = MessageBox.Show("Na pewno chcesz otworzyć nowe konto?", "Uwaga!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                            if(result == MessageBoxResult.Yes)
+                            {
+                                _model.OtworzKonto();
+                                MessageBox.Show("Pomyślnie otwarto nowe konto!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                                OnPropertyChanged(nameof(ListaKontIndex), nameof(ListaKont));
+                            }
+                        },
+                        arg => true
+                    );
+                }
+                return _otworzKonto;
+            }
+        }
         #region goTo
         private ICommand _goTo = null;
         public ICommand GoTo
@@ -115,6 +140,8 @@ namespace BankUI.ViewModel
         public string RCards { get => R.cards; }
         public string RMyData { get => R.myData; }
         public string RLoginHistory { get => R.loginHistory; }
+        public string RNewAccount { get => R.newAccount; }
+        public string RDeleteAccount { get => R.deleteAccount; }
         #endregion
         #endregion
     }

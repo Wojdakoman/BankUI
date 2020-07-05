@@ -136,6 +136,10 @@
     <value>Karty</value>
     <comment>menu</comment>
   </data>
+  <data name="deleteAccount" xml:space="preserve">
+    <value>Zamknij konto</value>
+    <comment>menu</comment>
+  </data>
   <data name="loans" xml:space="preserve">
     <value>Kredyty</value>
     <comment>menu</comment>
@@ -162,6 +166,10 @@
   </data>
   <data name="myData" xml:space="preserve">
     <value>Moje dane</value>
+    <comment>menu</comment>
+  </data>
+  <data name="newAccount" xml:space="preserve">
+    <value>Otwórz konto</value>
     <comment>menu</comment>
   </data>
   <data name="newCard" xml:space="preserve">

@@ -56,13 +56,18 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*" />
                 <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RTransfers}" Command="{Binding GoTo}" CommandParameter="przelew" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RLoans}" Command="{Binding GoTo}" CommandParameter="kredyty" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RCards}" Command="{Binding GoTo}" CommandParameter="karty" />
             </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5" >
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RNewAccount}" Command="{Binding OtworzKonto}" />
+                <!--<Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RDeleteAccount}" />-->
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RMyData}" Command="{Binding GoTo}" CommandParameter="daneOsobowe" />
                 <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RLoginHistory}" Command="{Binding GoTo}" CommandParameter="historiaLogowan" />
             </StackPanel>
@@ -83,10 +88,10 @@
 
         <DataGrid Grid.Row="4" ItemsSource="{Binding Lista}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="16" Width="2*" Header="Data" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="4*" Header="Data" IsReadOnly="True" Binding="{Binding Data}" CellStyle="{StaticResource asd}" />
                 <DataGridTextColumn FontSize="16" Width="5*" Header="Nadawca/Odbiorca" IsReadOnly="True" Binding="{Binding Person}" CellStyle="{StaticResource asd}" />
                 <DataGridTextColumn FontSize="16" Width="5*" Header="Tytuł" IsReadOnly="True" Binding="{Binding Name}" CellStyle="{StaticResource asd}" />
-                <DataGridTextColumn FontSize="16" Width="5*" Header="Rodzaj operacji" IsReadOnly="True" Binding="{Binding Type}" CellStyle="{StaticResource asd}" />
+                <DataGridTextColumn FontSize="16" Width="2*" Header="Rodzaj operacji" IsReadOnly="True" Binding="{Binding Type}" CellStyle="{StaticResource asd}" />
                 <DataGridTextColumn FontSize="16" Width="3*" Header="Wartość" IsReadOnly="True" Binding="{Binding Amount}" CellStyle="{StaticResource asd}" />
             </DataGrid.Columns>
         </DataGrid>

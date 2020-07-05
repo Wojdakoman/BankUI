@@ -9,21 +9,22 @@ namespace BankUI.ViewModel.Classes
 {
     class StringHistoria
     {
-        public string Data { get; }
+        public string Data { get => Czas.ToString(); }
+        public DateTime Czas { get; }
         public string Person { get; }
         public string Name { get; }
         public string Type { get; }
-        public double Amount { get; }
+        public string Amount { get; }
 
         public StringHistoria(Przelew przelew, string konto)
         {
-            Data = przelew.CzasOperacji.ToString();
+            Czas = przelew.CzasOperacji;
             if (przelew.NumerNadawcy == konto)
                 Person = przelew.NumerOdbiorcy;
             else Person = przelew.NumerNadawcy;
             Name = przelew.Tytul;
             Type = "Przelew";
-            Amount = przelew.Wartosc;
+            Amount = $"{przelew.Wartosc} PLN";
         }
     }
 }

@@ -47,7 +47,7 @@
                             </StackPanel>
                         </Canvas>
                     </Expander>-->
-                    <Button Style="{StaticResource RoundButtonTemplate}" Content="Wyloguj" FontSize="12" Margin="5 0" Padding="4 0" />
+                    <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding Wyloguj}" Content="Wyloguj" FontSize="12" Margin="5 0" Padding="4 0" />
                 </StackPanel>
             </Grid>
         </Border>

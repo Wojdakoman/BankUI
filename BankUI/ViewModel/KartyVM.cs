@@ -108,6 +108,25 @@ namespace BankUI.ViewModel
                 return _nowaKarta;
             }
         }
+
+        private ICommand _wyloguj = null;
+        public ICommand Wyloguj
+        {
+            get
+            {
+                if (_wyloguj == null)
+                {
+                    _wyloguj = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("Wyloguj", "login");
+                        },
+                        arg => true
+                    );
+                }
+                return _wyloguj;
+            }
+        }
         #region goTo
         private ICommand _goTo = null;
         public ICommand GoTo

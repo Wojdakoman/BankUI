@@ -11,7 +11,7 @@ namespace Projekt.DAL.Repositories
         private static string GET_ACCOUNT = "SELECT * FROM konto WHERE WlascicielPesel=@pesel";
         private static string UPDATE_BALANCE = "UPDATE konto SET saldo = saldo + @ile WHERE NumerKonta = @numer";
         private static string ADD_NEW_ACCOUNT = "INSERT INTO konto VALUES (@numer, @pesel, @typ, @saldo)";
-        private static string ADD_NEW_CREDIT_ACCOUNT = "INSERT INTO konto (NumerKonta, WlascicielPesel, TypKonta ) VALUES (@numer, @pesel, @typ)";
+        private static string ADD_NEW_CREDIT_ACCOUNT = "INSERT INTO konto (NumerKonta, WlascicielPesel, TypKonta, Saldo ) VALUES (@numer, @pesel, @typ, @saldo)";
         private static string NUMBER_EXIST = "SELECT * FROM konto WHERE NumerKonta=@numer";
 
         public static List<Konto> GetAccount(Int64 pesel)
@@ -147,6 +147,7 @@ namespace Projekt.DAL.Repositories
                 command.Parameters.Add("@numer", MySqlDbType.VarChar, 26).Value = numer;
                 command.Parameters.Add("@pesel", MySqlDbType.Int64, 11).Value = pesel;
                 command.Parameters.Add("@typ", MySqlDbType.VarChar).Value = "Kredytowe";
+                command.Parameters.Add("@saldo", MySqlDbType.Decimal).Value = 0;
 
                 command.ExecuteNonQuery();
                 connection.Close();

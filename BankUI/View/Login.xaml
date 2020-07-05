@@ -9,21 +9,21 @@
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="{Binding Error}" Foreground="Red" />
-            <Label Content="Logowanie do systemu" FontSize="20"/>
+            <Label Content="{Binding RLoginHeader}" FontSize="20"/>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Login:" />
+                <Label Content="{Binding RLogin}" />
                 <TextBox Width="150" Text="{Binding LoginName}"  />
             </StackPanel>
             <StackPanel Margin="0 5" Orientation="Horizontal">
-                <Label Content="Hasło:" />
+                <Label Content="{Binding RPassword}" />
                 <PasswordBox x:Name="passwordBoxPassword" Width="150"></PasswordBox>
             </StackPanel>
-            <Button Margin="0 5" Content="Zaloguj" Command="{Binding Login}" CommandParameter="{Binding ElementName=passwordBoxPassword}" />
-            <Button Content="Rejestracja" Command="{Binding StronaRejestracji}"/>
+            <Button Margin="0 5" Content="{Binding RLoginIn}" Command="{Binding Login}" CommandParameter="{Binding ElementName=passwordBoxPassword}" />
+            <Button Content="{Binding RSignUp}" Command="{Binding StronaRejestracji}"/>
         </StackPanel>
         <Button 
             Style="{StaticResource bPowrot}"
-            Content="Bankomat"
+            Content="{Binding Ratm}"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Margin="0 5 5 0"

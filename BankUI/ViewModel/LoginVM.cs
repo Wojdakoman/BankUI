@@ -11,6 +11,7 @@ using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
+    using R = Properties.Resources;
     class LoginVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
@@ -19,6 +20,7 @@ namespace BankUI.ViewModel
 
         public LoginVM(ref Data model) => _model = model;
 
+        #region Komendy
         private ICommand _login = null;
         public ICommand Login
         {
@@ -90,5 +92,16 @@ namespace BankUI.ViewModel
                 return _bankomat;
             }
         }
+        #endregion
+
+        #region Zasoby
+        //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
+        public string RLoginHeader { get => R.loginHeader; }
+        public string RLogin { get => $"{R.login}:"; }
+        public string RPassword { get => $"{R.password}:"; }
+        public string RLoginIn { get => R.loginIn; }
+        public string RSignUp { get => R.signUp; }
+        public string Ratm { get => R.atm; }
+        #endregion
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
+    using R = Properties.Resources;
     class KredytVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
@@ -128,6 +129,19 @@ namespace BankUI.ViewModel
                 return _goTo;
             }
         }
+        #endregion
+        #endregion
+
+        #region Zasoby
+        //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
+        #region menu
+        public string RActiveAccount { get => R.activeAccount; }
+        public string RLogout { get => R.logout; }
+        public string RTransfers { get => R.transfers; }
+        public string RAccount { get => R.account; }
+        public string RCards { get => R.cards; }
+        public string RMyData { get => R.myData; }
+        public string RLoginHistory { get => R.loginHistory; }
         #endregion
         #endregion
     }

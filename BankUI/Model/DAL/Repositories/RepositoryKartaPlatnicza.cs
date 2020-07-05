@@ -169,7 +169,6 @@ namespace Projekt.DAL.Repositories
             }
         }
 
-<<<<<<< HEAD
         public static KartaPlatnicza GetCard(string numerKarty)
         {
             KartaPlatnicza kartaPlatnicza = new KartaPlatnicza();
@@ -190,7 +189,8 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
             return kartaPlatnicza;
-=======
+        }
+
         //zmiana pinu i limitu platnosci
         public static void UpdateCard(string cardNumber, string pin, double limit)
         {
@@ -207,9 +207,7 @@ namespace Projekt.DAL.Repositories
                 command.Parameters.Add(parameter);
                 command.ExecuteNonQuery();
                 connection.Close();
-                connection.Close();
             }
->>>>>>> 3855f69a187eb2fb8acad81b45b7c64593add326
         }
     }
 }

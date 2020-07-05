@@ -12,6 +12,7 @@ using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
+    using R = Properties.Resources;
     class DaneOsoboweVM : ViewModelBase, IPageViewModel
     {
         #region PRIVATE
@@ -135,6 +136,19 @@ namespace BankUI.ViewModel
                 return _goTo;
             }
         }
+        #endregion
+        #endregion
+
+        #region Zasoby
+        //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
+        #region menu
+        public string RActiveAccount { get => R.activeAccount; }
+        public string RLogout { get => R.logout; }
+        public string RTransfers { get => R.transfers; }
+        public string RLoans { get => R.loans; }
+        public string RCards { get => R.cards; }
+        public string RAccount { get => R.account; }
+        public string RLoginHistory { get => R.loginHistory; }
         #endregion
         #endregion
     }

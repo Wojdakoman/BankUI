@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="5*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Label Content="Aktywne konto: " FontSize="14" />
+                    <Label Content="{Binding RActiveAccount}" FontSize="14" />
                     <ComboBox x:Name="combo" IsEditable="False" ItemsSource="{Binding ListaKont}" SelectedIndex="{Binding ListaKontIndex}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
@@ -47,7 +47,7 @@
                             </StackPanel>
                         </Canvas>
                     </Expander>-->
-                    <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding Wyloguj}" Content="Wyloguj" FontSize="12" Margin="5 0" Padding="4 0" />
+                    <Button Style="{StaticResource RoundButtonTemplate}" Command="{Binding Wyloguj}" Content="{Binding RLogout}" FontSize="12" Margin="5 0" Padding="4 0" />
                 </StackPanel>
             </Grid>
         </Border>
@@ -58,13 +58,13 @@
                 <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5" >
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Konto" Command="{Binding GoTo}" CommandParameter="panelGlowny" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Kredyty" Command="{Binding GoTo}" CommandParameter="kredyty" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Karty" Command="{Binding GoTo}" CommandParameter="karty" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RAccount}" Command="{Binding GoTo}" CommandParameter="panelGlowny" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RLoans}" Command="{Binding GoTo}" CommandParameter="kredyty" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RCards}" Command="{Binding GoTo}" CommandParameter="karty" />
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Moje dane" Command="{Binding GoTo}" CommandParameter="daneOsobowe" />
-                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="Historia logowań" Command="{Binding GoTo}" CommandParameter="historiaLogowan" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RMyData}" Command="{Binding GoTo}" CommandParameter="daneOsobowe" />
+                <Button Style="{StaticResource BigRoundButtonTemplate}" Content="{Binding RLoginHistory}" Command="{Binding GoTo}" CommandParameter="historiaLogowan" />
             </StackPanel>
         </Grid>
 

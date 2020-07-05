@@ -14,6 +14,7 @@ using System.Windows.Input;
 
 namespace BankUI.ViewModel
 {
+    using R = Properties.Resources;
     class PrzelewVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
@@ -157,5 +158,18 @@ namespace BankUI.ViewModel
             Wartosc = null;
             OnPropertyChanged(nameof(Odbiorca), nameof(Tytul), nameof(Opis), nameof(Wartosc));
         }
+
+        #region Zasoby
+        //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
+        #region menu
+        public string RActiveAccount { get => R.activeAccount; }
+        public string RLogout { get => R.logout; }
+        public string RAccount { get => R.account; }
+        public string RLoans { get => R.loans; }
+        public string RCards { get => R.cards; }
+        public string RMyData { get => R.myData; }
+        public string RLoginHistory { get => R.loginHistory; }
+        #endregion
+        #endregion
     }
 }

@@ -33,6 +33,7 @@ namespace BankUI.ViewModel
                        arg =>
                        {
                            string wybranyTyp = Typ == 0 ? "wplata" : "wyplata";
+                           MessageBox.Show(_kartaPlatnicza.NumerKarty);
                            //Operacja karta
                            if (wybranyTyp == "wyplata")
                            {

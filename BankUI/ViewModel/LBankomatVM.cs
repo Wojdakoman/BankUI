@@ -1,4 +1,5 @@
 ﻿using BankUI.Model;
+using BankUI.View;
 using BankUI.ViewModel.Base;
 using BankUI.ViewModel.Interfaces;
 using Org.BouncyCastle.Asn1.Nist;
@@ -46,7 +47,14 @@ namespace BankUI.ViewModel
 
                            if (RepositoryKartaPlatnicza.DoesCardExist(NumerKarty, Pin))
                            {
-                               _kartaPlatnicza = RepositoryKartaPlatnicza.GetCard(NumerKarty);
+                               KartaPlatnicza test = RepositoryKartaPlatnicza.GetCard(NumerKarty);
+
+                               _kartaPlatnicza.NumerKarty = test.NumerKarty;
+                               _kartaPlatnicza.DataWaznosci = test.DataWaznosci;
+                               _kartaPlatnicza.LimitPlatnosci = test.LimitPlatnosci;
+                               _kartaPlatnicza.NumerKonta = test.NumerKonta;
+                               _kartaPlatnicza.Pin = test.Pin;
+
                                Mediator.Notify("GoToPage", "bankomat");
                            }
                            else

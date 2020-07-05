@@ -23,9 +23,18 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <ComboBox Grid.Row="0" Grid.ColumnSpan="2" SelectedValue="{Binding Typ}">
-                    <ComboBoxItem Content="Wplata"></ComboBoxItem>
-                    <ComboBoxItem Content="Wyplata"></ComboBoxItem>
+                <ComboBox 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2"
+                    
+                    SelectedIndex="{Binding Typ}"
+                    >
+                    <ComboBoxItem 
+                        Content="Wplata"
+                        ></ComboBoxItem>
+                    <ComboBoxItem 
+                        Content="Wyplata"
+                        ></ComboBoxItem>
                 </ComboBox>
                 <StackPanel
                     Grid.Row="1"
@@ -93,8 +102,14 @@
                     Grid.ColumnSpan="2"
                     Content="Wykonaj"
                     Command="{Binding Wykonaj}"
+                    Style="{StaticResource bRejestacja}"
                     ></Button>
             </Grid>
         </StackPanel>
+        <Button 
+            Content="Powrót"
+            Style="{StaticResource bPowrot}"
+            Command="{Binding Powrot}"
+            ></Button>
     </Grid>
 </UserControl>

@@ -7,6 +7,7 @@ using BankUI.Model;
 using BankUI.ViewModel.Base;
 using BankUI.ViewModel.Classes;
 using BankUI.ViewModel.Interfaces;
+using Projekt.DAL.Entity;
 
 namespace BankUI.ViewModel
 {
@@ -16,6 +17,7 @@ namespace BankUI.ViewModel
         private Dictionary<string, IPageViewModel> _pageViewModels;
         private Data _model;
         private AppGlobalInfo _appInfo;
+        private KartaPlatnicza _kartaPlatnicza;
 
         public Dictionary<string, IPageViewModel> PageViewModels
         {
@@ -54,6 +56,7 @@ namespace BankUI.ViewModel
         {
             _model = new Data();
             _appInfo = new AppGlobalInfo();
+            _kartaPlatnicza = new KartaPlatnicza();
             // Add available pages and set page
             PageViewModels.Add("login", new LoginVM(ref _model));
             PageViewModels.Add("panelGlowny", new PanelGlownyVM(ref _model));
@@ -63,9 +66,9 @@ namespace BankUI.ViewModel
             PageViewModels.Add("daneOsobowe", new DaneOsoboweVM(ref _model));
             PageViewModels.Add("kredyty", new KredytVM(ref _model, ref _appInfo));
             PageViewModels.Add("karty", new KartyVM(ref _model, ref _appInfo));
-            PageViewModels.Add("lBankomat", new LBankomatVM(ref _model));
+            PageViewModels.Add("lBankomat", new LBankomatVM(ref _kartaPlatnicza));
             PageViewModels.Add("pokazKarte", new KartaVM(ref _model, ref _appInfo));
-            PageViewModels.Add("bankomat", new BankomatVM(ref _model));
+            PageViewModels.Add("bankomat", new BankomatVM(ref _kartaPlatnicza));
 
             CurrentPageViewModel = PageViewModels["login"];
 

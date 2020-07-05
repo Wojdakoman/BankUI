@@ -2,6 +2,7 @@
 using BankUI.ViewModel.Base;
 using BankUI.ViewModel.Interfaces;
 using Org.BouncyCastle.Asn1.Nist;
+using Projekt.DAL.Entity;
 using Projekt.DAL.Repositories;
 using Renci.SshNet.Messages;
 using System;
@@ -16,7 +17,7 @@ namespace BankUI.ViewModel
 {
     class LBankomatVM : ViewModelBase, IPageViewModel
     {
-        private Data _model;
+        private KartaPlatnicza _kartaPlatnicza;
         private string numerKarty;
         private ICommand zaloguj;
         private ICommand powrot;
@@ -42,8 +43,10 @@ namespace BankUI.ViewModel
                     zaloguj = new RelayCommand(
                        arg =>
                        {
+
                            if (RepositoryKartaPlatnicza.DoesCardExist(NumerKarty, Pin))
                            {
+                               _kartaPlatnicza = RepositoryKartaPlatnicza.GetCard(NumerKarty);
                                Mediator.Notify("GoToPage", "bankomat");
                            }
                            else
@@ -58,9 +61,9 @@ namespace BankUI.ViewModel
                 return zaloguj;
             }
         }
-        public LBankomatVM(ref Data model)
+        public LBankomatVM(ref KartaPlatnicza kartaPlatnicza)
         {
-            _model = model;
+            _kartaPlatnicza = kartaPlatnicza;
         }
 
         public ICommand Powrot

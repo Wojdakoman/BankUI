@@ -167,5 +167,27 @@ namespace Projekt.DAL.Repositories
                     return false;
             }
         }
+
+        public static KartaPlatnicza GetCard(string numerKarty)
+        {
+            KartaPlatnicza kartaPlatnicza = new KartaPlatnicza();
+
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(FIND_CARD, connection);
+                command.Parameters.Add("@numer", MySqlDbType.VarChar, 16).Value = numerKarty;
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    kartaPlatnicza = new KartaPlatnicza(reader);
+                }
+                connection.Close();
+            }
+            return kartaPlatnicza;
+        }
     }
 }

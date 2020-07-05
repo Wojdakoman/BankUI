@@ -67,6 +67,14 @@ namespace Projekt.DAL.Repositories
             RepositoryKonto.ChangeBalance(accountNumber, wartosc);
         }
 
+        public static void ExecuteOperation(string cardNumber, string typ, double wartosc, string accountNumber)
+        {
+            AddOperation(new KartaOperacje(cardNumber, typ, wartosc));
+            if (typ == "wyplata")
+                wartosc = -wartosc;
+            RepositoryKonto.ChangeBalance(accountNumber, wartosc);
+        }
+
         public static void AddOperation(KartaOperacje cardOperation)
         {
             using (MySqlConnection connection = DB.Instance.Connection)

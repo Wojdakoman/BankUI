@@ -35,5 +35,7 @@ namespace Projekt.DAL.Entity
             LimitPlatnosci = 100;
             Pin = pin;
         }
+
+        public KartaPlatnicza() { }
     }
 }

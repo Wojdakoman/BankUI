@@ -1,6 +1,8 @@
 ﻿using BankUI.Model;
 using BankUI.ViewModel.Base;
 using BankUI.ViewModel.Interfaces;
+using Projekt.DAL.Entity;
+using Projekt.DAL.Repositories;
 using Renci.SshNet.Messages;
 using System;
 using System.Collections.Generic;
@@ -14,12 +16,12 @@ namespace BankUI.ViewModel
 {
     class BankomatVM : ViewModelBase, IPageViewModel
     {
-        private Data _model;
+        private KartaPlatnicza _kartaPlatnicza;
         private ICommand wykonaj;
 
 
         public string Wybrany { get; set; }
-        public string Typ { get; set; }
+        public int? Typ { get; set; }
         
         public ICommand Wykonaj
         {
@@ -30,18 +32,58 @@ namespace BankUI.ViewModel
                     wykonaj = new RelayCommand(
                        arg =>
                        {
-                           MessageBox.Show(Wybrany);
-                           MessageBox.Show(Typ);
+                           string wybranyTyp = Typ == 0 ? "wplata" : "wyplata";
+                           //Operacja karta
+                           if (wybranyTyp == "wyplata")
+                           {
+                               //Sprawdz dostepne srodki
+                               if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKarty, double.Parse(Wybrany)))
+                               {
+                                   RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
+                                   MessageBox.Show("Operacja wykonana poprawnie");
+                                   Mediator.Notify("GoToPage", "login");
+                               }
+                               else
+                                   MessageBox.Show("Brak wystarczajacej ilosci srodkow na koncie");
+                           }
+                           else
+                           {
+                               RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
+                               MessageBox.Show("Operacja wykonana poprawnie");
+                               Mediator.Notify("GoToPage", "login");
+                           }
                        },
-                        arg => true
+                        arg => Wybrany != null && Typ != null
                     );
                 }
                 return wykonaj;
             }
         }
-        public BankomatVM(ref Data model)
+        public BankomatVM(ref KartaPlatnicza kartaPlatnicza)
         {
-            _model = model;
+            _kartaPlatnicza = kartaPlatnicza;
+        }
+
+        private ICommand powrot;
+        public ICommand Powrot
+        {
+            get
+            {
+                if (powrot == null)
+                {
+                    powrot = new RelayCommand(
+                        arg =>
+                        {
+                            Mediator.Notify("GoToPage", "lBankomat");
+                        },
+                arg => true);
+                }
+                return powrot;
+            }
+            set
+            {
+                powrot = value;
+            }
         }
     }
 }

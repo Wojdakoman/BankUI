@@ -167,5 +167,32 @@ namespace Projekt.DAL.Repositories
                 //Tu zamkniecie polaczenie pozostawimy programowani
             }
         }
+
+        public static bool CheckBalance(string accountNumber, double wartosc)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(NUMBER_EXIST, connection);
+                command.Parameters.Add("@numer", MySqlDbType.VarChar, 26).Value = accountNumber;
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    Konto konto = new Konto(reader);
+                    if (konto.Saldo >= wartosc)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                    return false;
+                //Tu zamkniecie polaczenie pozostawimy programowani
+            }
+        }
     }
 }

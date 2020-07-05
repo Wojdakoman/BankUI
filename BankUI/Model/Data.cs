@@ -42,6 +42,16 @@ namespace BankUI.Model
                 return true;
             }
         }
+        public bool LoginIstnieje(string login)
+        {
+            return RepositoryWlasciciel.DoesLoginExist(login);
+        }
+        public void AktualizujDaneOsobowe(WlascicielDane noweDane)
+        {
+            kontoBankowe.ChangeOwnerData(new Wlasciciel(noweDane, wlasciciel.Pesel));
+            wlasciciel = RepositoryWlasciciel.FindOwner(noweDane.Login, noweDane.Haslo);
+            kontoBankowe = new KontoBankowe(wlasciciel);
+        }
         public StringKarta PobierzKarte(string numerkarty)
         {
             foreach(var karta in kontoBankowe.KartyPlatnicze.ElementAt(Konto).Value)

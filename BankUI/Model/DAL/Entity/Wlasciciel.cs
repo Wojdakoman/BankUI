@@ -1,4 +1,5 @@
 ﻿using System;
+using BankUI.ViewModel.Classes;
 using MySql.Data.MySqlClient;
 
 namespace Projekt.DAL.Entity
@@ -39,6 +40,18 @@ namespace Projekt.DAL.Entity
             Telefon = uint.Parse(reader["Telefon"].ToString());
             Login = reader["Login"].ToString();
             Haslo = reader["Haslo"].ToString();
+        }
+
+        public Wlasciciel(WlascicielDane dane, Int64 pesel)
+        {
+            Pesel = pesel;
+            Imie = dane.Imie;
+            Nazwisko = dane.Nazwisko;
+            Miasto = dane.Miasto;
+            Adres = dane.Adres;
+            Telefon = uint.Parse(dane.Telefon);
+            Login = dane.Login;
+            Haslo = dane.Haslo;
         }
     }
 }

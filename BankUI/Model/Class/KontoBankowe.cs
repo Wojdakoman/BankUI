@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projekt.Class
 {
+    using BankUI.ViewModel.Classes;
     using DAL.Repositories;
     using Projekt.DAL.Entity;
 
@@ -62,9 +63,9 @@ namespace Projekt.Class
         }
 
         //Wszystko zalezy od budowy w MVVM => wtedy sie zrobi
-        public void ChangeOwnerData()
+        public void ChangeOwnerData(Wlasciciel noweDane)
         {
-
+            RepositoryWlasciciel.UpdateOwnerData(noweDane);
         }
     }
 }

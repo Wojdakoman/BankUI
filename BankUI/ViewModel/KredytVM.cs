@@ -80,7 +80,14 @@ namespace BankUI.ViewModel
                         =>
                     {
                         int ID = Convert.ToInt32(parameter);
-                        _kredytInfo.DaneKredyt = Lista[ID];
+                        foreach(var kredyt in Lista)
+                        {
+                            if(kredyt.IDKredytu == ID)
+                            {
+                                _kredytInfo.DaneKredyt = kredyt;
+                                break;
+                            }
+                        }
                         _kredytInfo.HasData = true;
                         Mediator.Notify("GoToPage", "przelew");
                     },

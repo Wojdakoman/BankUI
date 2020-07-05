@@ -15,6 +15,7 @@ namespace Projekt.DAL.Repositories
         private static string DELETE_CARD = "DELETE FROM kartaplatnicza WHERE NumerKarty=@numer";
         private static string GET_ACCOUNT_NUMBER = "SELECT NumerKonta FROM kartaplatnicza WHERE NumerKarty=@numer";
         private static string FIND_CARD_PIN = "SELECT * FROM kartaplatnicza where NumerKarty=@numer AND Pin=@pin";
+        private static string UPDATE_CARD = "UPDATE kartaplatnicza SET Pin=@pin, LimitPlatnosci=@limit WHERE NumerKarty=@numer";
 
 
         //Wczytanie wszystkich kart platniczych
@@ -168,6 +169,7 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+<<<<<<< HEAD
         public static KartaPlatnicza GetCard(string numerKarty)
         {
             KartaPlatnicza kartaPlatnicza = new KartaPlatnicza();
@@ -188,6 +190,26 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
             return kartaPlatnicza;
+=======
+        //zmiana pinu i limitu platnosci
+        public static void UpdateCard(string cardNumber, string pin, double limit)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(UPDATE_CARD, connection);
+                command.Parameters.Add("@numer", MySqlDbType.VarChar, 16).Value = cardNumber;
+                command.Parameters.Add("@pin", MySqlDbType.Int32, 4).Value = pin;
+                MySqlParameter parameter = new MySqlParameter("@limit", MySqlDbType.Decimal);
+                parameter.Precision = 10;
+                parameter.Scale = 2;
+                parameter.Value = limit;
+                command.Parameters.Add(parameter);
+                command.ExecuteNonQuery();
+                connection.Close();
+                connection.Close();
+            }
+>>>>>>> 3855f69a187eb2fb8acad81b45b7c64593add326
         }
     }
 }

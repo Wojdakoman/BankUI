@@ -51,6 +51,12 @@ namespace BankUI.ViewModel
                 CurrentPageViewModel = PageViewModels[obj.ToString()];
             else CurrentPageViewModel = PageViewModels["panelGlowny"];
         }
+        private void Wyloguj(object obj)
+        {
+            //tworzy nowa, "czysta" instancje modelu
+            _model = new Data();
+            CurrentPageViewModel = PageViewModels["login"];
+        }
         #endregion
         public MainWindowVM()
         {
@@ -73,6 +79,7 @@ namespace BankUI.ViewModel
             CurrentPageViewModel = PageViewModels["login"];
 
             Mediator.Subscribe("GoToPage", ZmianaWidoku);
+            Mediator.Subscribe("Wyloguj", Wyloguj);
         }
     }
 }

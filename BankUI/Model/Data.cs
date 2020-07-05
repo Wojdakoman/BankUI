@@ -42,6 +42,16 @@ namespace BankUI.Model
                 return true;
             }
         }
+        public bool LoginIstnieje(string login)
+        {
+            return RepositoryWlasciciel.DoesLoginExist(login);
+        }
+        public void AktualizujDaneOsobowe(WlascicielDane noweDane)
+        {
+            kontoBankowe.ChangeOwnerData(new Wlasciciel(noweDane, wlasciciel.Pesel));
+            wlasciciel = RepositoryWlasciciel.FindOwner(noweDane.Login, noweDane.Haslo);
+            kontoBankowe = new KontoBankowe(wlasciciel);
+        }
         public StringKarta PobierzKarte(string numerkarty)
         {
             foreach(var karta in kontoBankowe.KartyPlatnicze.ElementAt(Konto).Value)
@@ -67,6 +77,21 @@ namespace BankUI.Model
         public void NowyPrzelew(string odbiorca, double wartosc, string tytul, string opis)
         {
             RepositoryPrzelew.ExecuteOperation(kontoBankowe.ListaKont[Konto], odbiorca, wartosc, tytul, opis);
+            kontoBankowe.Update();
+        }
+        public void DodajKarte()
+        {
+            kontoBankowe.AddCard(kontoBankowe.ListaKont[Konto].NumerKonta);
+            kontoBankowe.Update();
+        }
+        public void UsunKarte(string karta, string konto)
+        {
+            RepositoryKartaPlatnicza.DeleteCard(kontoBankowe.KartyPlatnicze, konto, karta);
+            kontoBankowe.Update();
+        }
+        public void AktualizujKarte(string numer, string pin, double limit)
+        {
+            RepositoryKartaPlatnicza.UpdateCard(numer, pin, limit);
             kontoBankowe.Update();
         }
         #endregion

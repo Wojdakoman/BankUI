@@ -11,6 +11,7 @@ namespace Projekt.DAL.Repositories
         private static string FIND_PESEL = "SELECT * FROM wlasciciel WHERE login=@login";
         private static string CREATE_OWNER = "INSERT INTO wlasciciel VALUES (@pesel, @imie, @nazwisko, @data, @miasto, @adres, @telefon, @login, @haslo)";
         private static string PESEL_EXIST = "SELECT * FROM wlasciciel WHERE pesel=@peselPodany";
+        private static string UPDATE_OWNER = "UPDATE wlasciciel SET imie=@imie, nazwisko=@nazwisko, miasto=@miasto, adres=@adres, telefon=@telefon, login=@login, haslo=@haslo WHERE pesel=@pesel";
 
         public static Wlasciciel FindOwner(string login, string password)
         {
@@ -107,6 +108,27 @@ namespace Projekt.DAL.Repositories
                 }
                 else
                     return false;
+            }
+        }
+
+        public static void UpdateOwnerData(Wlasciciel owner)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(UPDATE_OWNER, connection);
+
+                command.Parameters.Add("@pesel", MySqlDbType.Int64).Value = owner.Pesel;
+                command.Parameters.Add("@imie", MySqlDbType.VarChar, 20).Value = owner.Imie;
+                command.Parameters.Add("@nazwisko", MySqlDbType.VarChar, 20).Value = owner.Nazwisko;
+                command.Parameters.Add("@miasto", MySqlDbType.VarChar, 30).Value = owner.Miasto;
+                command.Parameters.Add("@adres", MySqlDbType.VarChar, 30).Value = owner.Adres;
+                command.Parameters.Add("@telefon", MySqlDbType.Int32, 10).Value = owner.Telefon;
+                command.Parameters.Add("@login", MySqlDbType.VarChar, 20).Value = owner.Login;
+                command.Parameters.Add("@haslo", MySqlDbType.VarChar, 15).Value = owner.Haslo;
+
+                command.ExecuteNonQuery();
+                connection.Close();
             }
         }
     }

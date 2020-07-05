@@ -27,5 +27,16 @@ namespace BankUI.ViewModel.Classes
             this.Login = wlasciciel.Login;
             this.Haslo = wlasciciel.Haslo;
         }
+
+        public WlascicielDane(string imie, string nazwisko, string miasto, string adres, string telefon, string login, string haslo)
+        {
+            this.Imie = imie;
+            this.Nazwisko = nazwisko;
+            this.Miasto = miasto;
+            this.Adres = adres;
+            this.Telefon = telefon;
+            this.Login = login;
+            this.Haslo = haslo;
+        }
     }
 }

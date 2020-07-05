@@ -34,13 +34,16 @@ namespace BankUI.ViewModel
                             if (_model.Login(LoginName, Pass))
                             {
                                 //login successfull
+                                LoginName = null;
+                                Error = null;
+                                OnPropertyChanged(nameof(Error), nameof(LoginName));
                                 Mediator.Notify("GoToPage", "panelGlowny");
                             }
                             else
                             {
                                 //login failed
                                 Error = "Błędny login lub hasło!";
-                                OnPropertyChanged(nameof(Error));
+                                OnPropertyChanged(nameof(Error), nameof(LoginName));
                             }
 
                         },

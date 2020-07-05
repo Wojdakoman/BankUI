@@ -16,7 +16,7 @@ namespace Projekt.DAL.Repositories
         {
             string accountNumber = string.Empty;
             bool isCorrect = false;
-            while(isCorrect == false)
+            while (isCorrect == false)
             {
                 accountNumber = Methods.AccountNumberGenerator();
                 isCorrect = RepositoryKonto.NumberExist(accountNumber);
@@ -26,6 +26,7 @@ namespace Projekt.DAL.Repositories
 
             using (MySqlConnection connection = DB.Instance.Connection)
             {
+                connection.Open();
                 MySqlCommand command = new MySqlCommand(ADD_CREDIT, connection);
                 command.Parameters.Add("@pesel", MySqlDbType.Int64, 11).Value = kredyt.WlascicielPesel;
                 command.Parameters.Add("@numer", MySqlDbType.VarChar, 26).Value = kredyt.NumerKonta;
@@ -38,12 +39,12 @@ namespace Projekt.DAL.Repositories
 
                 command.Parameters.Add(parameter);
 
-                //Nie wiem czy zadziala ale YOLO
-                parameter.ParameterName = "@oprocentowanie";
+                //Teraz juz dziala xD
+                parameter = new MySqlParameter("@oprocentowanie", MySqlDbType.Decimal);
                 parameter.Value = kredyt.Oprocentowanie;
                 command.Parameters.Add(parameter);
 
-                parameter.ParameterName = "@rata";
+                parameter = new MySqlParameter("@rata", MySqlDbType.Decimal);
                 parameter.Value = kredyt.Rata;
                 command.Parameters.Add(parameter);
 
@@ -52,6 +53,8 @@ namespace Projekt.DAL.Repositories
                 RepositoryKonto.AddAccount(pesel, accountNumber);
 
                 RepositoryKonto.ChangeBalance(wybraneKonto, wartosc);
+
+                connection.Close();
             }
         }
     }

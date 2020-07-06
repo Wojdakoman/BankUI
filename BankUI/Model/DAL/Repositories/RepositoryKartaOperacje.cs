@@ -121,7 +121,7 @@ namespace Projekt.DAL.Repositories
                 MySqlCommand command = new MySqlCommand(GET_HISTORY_TIME, connection);
 
                 command.Parameters.Add("@numer", MySqlDbType.VarChar, 16).Value = kartaPlatnicza.NumerKarty;
-                command.Parameters.Add("@czas", MySqlDbType.DateTime).Value = DateTime.Now.ToShortTimeString();
+                command.Parameters.Add("@czas", MySqlDbType.DateTime).Value = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                 MySqlDataReader reader = command.ExecuteReader();
 

@@ -34,14 +34,13 @@ namespace BankUI.ViewModel
                        arg =>
                        {
                            string wybranyTyp = Typ == 0 ? "wplata" : "wyplata";
-                           MessageBox.Show(_kartaPlatnicza.NumerKarty);
                            //Operacja karta
                            if (wybranyTyp == "wyplata")
                            {
                                if (RepositoryKartaOperacje.CheckLimit(_kartaPlatnicza, double.Parse(Wybrany)))
                                {
                                    //Sprawdz dostepne srodki
-                                   if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKarty, double.Parse(Wybrany)))
+                                   if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKonta, double.Parse(Wybrany)))
                                    {
                                        RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
                                        MessageBox.Show("Operacja wykonana poprawnie");

@@ -38,15 +38,20 @@ namespace BankUI.ViewModel
                            //Operacja karta
                            if (wybranyTyp == "wyplata")
                            {
-                               //Sprawdz dostepne srodki
-                               if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKarty, double.Parse(Wybrany)))
+                               if (RepositoryKartaOperacje.CheckLimit(_kartaPlatnicza, double.Parse(Wybrany)))
                                {
-                                   RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
-                                   MessageBox.Show("Operacja wykonana poprawnie");
-                                   Mediator.Notify("GoToPage", "login");
+                                   //Sprawdz dostepne srodki
+                                   if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKarty, double.Parse(Wybrany)))
+                                   {
+                                       RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
+                                       MessageBox.Show("Operacja wykonana poprawnie");
+                                       Mediator.Notify("GoToPage", "login");
+                                   }
+                                   else
+                                       MessageBox.Show("Brak wystarczajacej ilosci srodkow na koncie");
                                }
                                else
-                                   MessageBox.Show("Brak wystarczajacej ilosci srodkow na koncie");
+                                   MessageBox.Show("Przekroczono limit dzienny");
                            }
                            else
                            {

@@ -7,11 +7,13 @@ namespace Projekt.DAL.Repositories
     //Utworzenie nowej wplaty
     //Usuniecie wplat dla danej karty
     using Projekt.DAL.Entity;
+    using System;
     using System.Linq;
 
     class RepositoryKartaOperacje
     {
         private static string GET_HISTORY = "SELECT * FROM kartaoperacje WHERE KartaPlatniczaNumerKarty = @numer";
+        private static string GET_HISTORY_TIME = "SELECT * FROM kartaoperacje WHERE KartaPlatniczaNumerKarty = @numer AND DATE(CzasOperacji)=@czas";
         private static string ADD_OPERATION = "INSERT INTO kartaoperacje (KartaPlatniczaNumerKarty , Typ, Wartosc, CzasOperacji) VALUES (@numer,@typ,@wartosc,@czas)";
         private static string DELETE_OPERATIONS = "DELETE FROM kartaoperacje WHERE KartaPlatniczaNumerKarty=@numer";
 
@@ -103,6 +105,50 @@ namespace Projekt.DAL.Repositories
                 command.Parameters.Add("@numer", MySqlDbType.VarChar, 16).Value = cardNumber;
                 command.ExecuteNonQuery();
                 connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// Sprawdzenie czy dana operacja nie wykrocza poza dzienny limit karty
+        /// </summary>
+        /// <param name="kartaPlatnicza"></param>
+        /// <param name="kwotaWyplaty"></param>
+        public static bool CheckLimit(KartaPlatnicza kartaPlatnicza, double kwotaWyplaty)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(GET_HISTORY_TIME, connection);
+
+                command.Parameters.Add("@numer", MySqlDbType.VarChar, 16).Value = kartaPlatnicza.NumerKarty;
+                command.Parameters.Add("@czas", MySqlDbType.DateTime).Value = DateTime.Now.ToShortTimeString();
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    List<KartaOperacje> operacje = new List<KartaOperacje>();
+                    while (reader.Read())
+                    {
+                        operacje.Add(new KartaOperacje(reader));
+                    }
+
+                    double sumaWyplat = kwotaWyplaty;
+                    foreach (var x in operacje)
+                    {
+                        if (x.Typ == "wyplata")
+                        {
+                            sumaWyplat += x.Wartosc;
+                        }
+                    }
+
+                    if (sumaWyplat > kartaPlatnicza.LimitPlatnosci)
+                        return false;
+                    else
+                        return true;
+                }
+                else
+                    return true;
             }
         }
     }

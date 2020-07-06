@@ -78,6 +78,7 @@ namespace BankUI.Model
             {
                     result.Add(new StringHistoriaKarta(operacja));
             }
+            result.Sort((x, y) => DateTime.Compare(y.Czas, x.Czas));
             return result;
         }
         public bool NumerIstnieje(string numerKonta)

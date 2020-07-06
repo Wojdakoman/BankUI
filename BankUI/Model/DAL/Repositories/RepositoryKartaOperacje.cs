@@ -12,7 +12,7 @@ namespace Projekt.DAL.Repositories
     class RepositoryKartaOperacje
     {
         private static string GET_HISTORY = "SELECT * FROM kartaoperacje WHERE KartaPlatniczaNumerKarty = @numer";
-        private static string ADD_OPERATION = "INSERT INTO kartaoperacje (KartaPlatniczaNumerKarty , Typ, Wartosc) VALUES (@numer,@typ,@wartosc)";
+        private static string ADD_OPERATION = "INSERT INTO kartaoperacje (KartaPlatniczaNumerKarty , Typ, Wartosc, CzasOperacji) VALUES (@numer,@typ,@wartosc,@czas)";
         private static string DELETE_OPERATIONS = "DELETE FROM kartaoperacje WHERE KartaPlatniczaNumerKarty=@numer";
 
         public static Dictionary<string, List<KartaOperacje>> LoadHistory(Dictionary<string, List<KartaPlatnicza>> cards)
@@ -83,6 +83,7 @@ namespace Projekt.DAL.Repositories
                 MySqlCommand command = new MySqlCommand(ADD_OPERATION, connection);
                 command.Parameters.Add("@numer", MySqlDbType.VarChar, 16).Value = cardOperation.KartaPlatniczaNumerKarty;
                 command.Parameters.Add("@typ", MySqlDbType.VarChar).Value = cardOperation.Typ;
+                command.Parameters.Add("@czas", MySqlDbType.DateTime).Value = cardOperation.CzasOperacji;
                 MySqlParameter parameter = new MySqlParameter("@wartosc", MySqlDbType.Decimal);
                 parameter.Precision = 10;
                 parameter.Scale = 2;

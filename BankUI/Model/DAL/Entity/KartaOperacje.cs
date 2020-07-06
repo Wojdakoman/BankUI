@@ -13,6 +13,7 @@ namespace Projekt.DAL.Entity
         public string KartaPlatniczaNumerKarty { get; set; }
         public string Typ { get; set; }
         public double Wartosc { get; set; }
+        public DateTime CzasOperacji { get; set; }
 
         public KartaOperacje(MySqlDataReader reader)
         {
@@ -20,6 +21,7 @@ namespace Projekt.DAL.Entity
             KartaPlatniczaNumerKarty = reader["KartaPlatniczaNumerKarty"].ToString();
             Typ = reader["Typ"].ToString();
             Wartosc = double.Parse(reader["Wartosc"].ToString());
+            CzasOperacji = DateTime.Parse(reader["CzasOperacji"].ToString());
         }
 
         public KartaOperacje(string numer, string typ, double ile)
@@ -27,6 +29,7 @@ namespace Projekt.DAL.Entity
             KartaPlatniczaNumerKarty = numer;
             Typ = typ;
             Wartosc = ile;
+            CzasOperacji = DateTime.Now;
         }
     }
 }

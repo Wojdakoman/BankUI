@@ -90,7 +90,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             _model.WezKredyt(Wartosc, Miesiecy);
-                            MessageBox.Show("Pomyślnie zaciagnieto kredyt", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show(R.loanTaken, R.success, MessageBoxButton.OK, MessageBoxImage.Information);
                             Mediator.Notify("GoToPage", "kredyty");
                         },
                         arg => true

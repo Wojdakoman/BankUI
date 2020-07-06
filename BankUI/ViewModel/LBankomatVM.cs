@@ -100,6 +100,8 @@ namespace BankUI.ViewModel
         //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
         public string RBack { get => R.back; }
         public string RConnect { get => R.connect; }
+        public string RCardNumber { get => R.cardNumber; }
+        public string RPIN { get => R.pin; }
         #endregion
     }
 }

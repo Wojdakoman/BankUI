@@ -53,7 +53,7 @@ namespace BankUI.ViewModel
                             if (_kredytInfo.HasData)
                             {
                                 Odbiorca = _kredytInfo.DaneKredyt.NumerKonta;
-                                Tytul = "Spłata raty";
+                                Tytul = R.loanPaymentTitle;
                                 Wartosc = _kredytInfo.DaneKredyt.Rata;
                                 _kredytInfo.HasData = false;
                             }
@@ -100,7 +100,7 @@ namespace BankUI.ViewModel
                             _model.NowyPrzelew(Odbiorca, (double)Wartosc, Tytul, Opis);
                             Clear();
                             OnPropertyChanged(nameof(Saldo), nameof(SaldoString));
-                            MessageBox.Show("Wykonano przelew");
+                            MessageBox.Show(R.transferSuccess);
                         },
                         arg => !(string.IsNullOrEmpty(Odbiorca) && string.IsNullOrEmpty(Tytul)) && Wartosc > 0 && Wartosc <= Saldo && _model.NumerIstnieje(Odbiorca)
                     );

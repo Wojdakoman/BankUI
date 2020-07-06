@@ -70,7 +70,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             _model.AktualizujKarte(NumerKarty, Pin, Convert.ToDouble(Limit));
-                            MessageBox.Show("Zaktualizowano dane karty", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show(R.cardDataUpdated, R.success, MessageBoxButton.OK, MessageBoxImage.Information);
                         },
                         arg => Limit > 0 && !string.IsNullOrEmpty(Pin) && Pin.Length == 4
                     );
@@ -88,7 +88,7 @@ namespace BankUI.ViewModel
                     _usunKarte = new RelayCommand(
                         arg =>
                         {
-                            var result = MessageBox.Show("Na pewno usunąć kartę? Tej operacji nie można cofnąć!", "Uwaga", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                            var result = MessageBox.Show(R.cardDelConfirm, R.attention, MessageBoxButton.YesNo, MessageBoxImage.Warning);
                             if(result == MessageBoxResult.Yes)
                             {
                                 _model.UsunKarte(NumerKarty, NumerKonta);

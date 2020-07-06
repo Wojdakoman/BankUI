@@ -22,12 +22,12 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label 
-                    Content="Numer karty"
+                    Content="{Binding RCardNumber}"
                     Grid.Row="0"
                     Style="{StaticResource lRejestacja}"
                     ></Label>
                 <Label 
-                    Content="PIN"
+                    Content="{Binding RPIN}"
                     Grid.Row="1"
                     Style="{StaticResource lRejestacja}"
                     ></Label>

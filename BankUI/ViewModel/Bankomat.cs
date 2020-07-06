@@ -43,19 +43,19 @@ namespace BankUI.ViewModel
                                    if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKonta, double.Parse(Wybrany)))
                                    {
                                        RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
-                                       MessageBox.Show("Operacja wykonana poprawnie");
+                                       MessageBox.Show(R.operationSuccessful);
                                        Mediator.Notify("GoToPage", "login");
                                    }
                                    else
-                                       MessageBox.Show("Brak wystarczajacej ilosci srodkow na koncie");
+                                       MessageBox.Show(R.lackMoney);
                                }
                                else
-                                   MessageBox.Show("Przekroczono limit dzienny");
+                                   MessageBox.Show(R.limitExceed);
                            }
                            else
                            {
                                RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
-                               MessageBox.Show("Operacja wykonana poprawnie");
+                               MessageBox.Show(R.operationSuccessful);
                                Mediator.Notify("GoToPage", "login");
                            }
                        },
@@ -96,6 +96,8 @@ namespace BankUI.ViewModel
         //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
         public string RBack { get => R.back; }
         public string RExec { get => R.execute; }
+        public string RWithdraw { get => R.withdraw; }
+        public string RDeposit { get => R.deposit; }
         #endregion
     }
 }

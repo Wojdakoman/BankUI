@@ -10,6 +10,7 @@ using System.Windows.Media;
 
 namespace BankUI.AttachedProperties
 {
+    using R = Properties.Resources;
     public static class LoginProperties
     {
         public static readonly DependencyProperty UnikatowyLoginProperty =
@@ -41,9 +42,9 @@ namespace BankUI.AttachedProperties
             TextBox textBox = sender as TextBox;
             if (RepositoryWlasciciel.DoesLoginExist(textBox.Text))
             {
-                MessageBox.Show("Podany login jest już zajęty");
+                MessageBox.Show(R.loginOccupied);
                 textBox.Foreground = new SolidColorBrush(Colors.Red);
-                textBox.Text = "Podaj inny login";
+                textBox.Text = R.differentLogin;
                 SetUnikatowyLogin(textBox, null);
             }
         }
@@ -52,7 +53,7 @@ namespace BankUI.AttachedProperties
         {
             TextBox textBox = sender as TextBox;
 
-            if (textBox.Text == "Podaj inny login")
+            if (textBox.Text == R.differentLogin)
             {
                 textBox.Foreground = new SolidColorBrush(Colors.Black);
                 textBox.Text = string.Empty;

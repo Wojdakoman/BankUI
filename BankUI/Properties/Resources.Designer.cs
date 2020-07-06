@@ -70,6 +70,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Pomyślnie otwarto nowe konto!.
+        /// </summary>
+        public static string accountAdded {
+            get {
+                return ResourceManager.GetString("accountAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Numer konta.
         /// </summary>
         public static string accountNumber {
@@ -124,6 +133,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Uwaga.
+        /// </summary>
+        public static string attention {
+            get {
+                return ResourceManager.GetString("attention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Powrót.
         /// </summary>
         public static string back {
@@ -147,6 +165,33 @@ namespace BankUI.Properties {
         public static string birthDate {
             get {
                 return ResourceManager.GetString("birthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Dodano nową kartę do konta.
+        /// </summary>
+        public static string cardAdded {
+            get {
+                return ResourceManager.GetString("cardAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Zaktualizowano dane karty.
+        /// </summary>
+        public static string cardDataUpdated {
+            get {
+                return ResourceManager.GetString("cardDataUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Na pewno usunąć kartę? Tej operacji nie można cofnąć!.
+        /// </summary>
+        public static string cardDelConfirm {
+            get {
+                return ResourceManager.GetString("cardDelConfirm", resourceCulture);
             }
         }
         
@@ -196,6 +241,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Zaktualizowano dane osobowe.
+        /// </summary>
+        public static string dataUpdated {
+            get {
+                return ResourceManager.GetString("dataUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Data.
         /// </summary>
         public static string date {
@@ -223,6 +277,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wplata.
+        /// </summary>
+        public static string deposit {
+            get {
+                return ResourceManager.GetString("deposit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Opis.
         /// </summary>
         public static string description {
@@ -237,6 +300,24 @@ namespace BankUI.Properties {
         public static string details {
             get {
                 return ResourceManager.GetString("details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Podaj inny login.
+        /// </summary>
+        public static string differentLogin {
+            get {
+                return ResourceManager.GetString("differentLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wpisz inny pesel.
+        /// </summary>
+        public static string differentPESEL {
+            get {
+                return ResourceManager.GetString("differentPESEL", resourceCulture);
             }
         }
         
@@ -304,11 +385,47 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Brak wystarczającej ilości środków na koncie.
+        /// </summary>
+        public static string lackMoney {
+            get {
+                return ResourceManager.GetString("lackMoney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Przekroczono limit dzienny.
+        /// </summary>
+        public static string limitExceed {
+            get {
+                return ResourceManager.GetString("limitExceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Spłata raty.
+        /// </summary>
+        public static string loanPaymentTitle {
+            get {
+                return ResourceManager.GetString("loanPaymentTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Kredyty.
         /// </summary>
         public static string loans {
             get {
                 return ResourceManager.GetString("loans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Pomyślnie zaciągnięto kredyt.
+        /// </summary>
+        public static string loanTaken {
+            get {
+                return ResourceManager.GetString("loanTaken", resourceCulture);
             }
         }
         
@@ -367,6 +484,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Podany login jest już zajęty.
+        /// </summary>
+        public static string loginOccupied {
+            get {
+                return ResourceManager.GetString("loginOccupied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Logowanie poprawne.
         /// </summary>
         public static string loginResult {
@@ -412,6 +538,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Na pewno chcesz otworzyć nowe konto?.
+        /// </summary>
+        public static string newAccountConfirm {
+            get {
+                return ResourceManager.GetString("newAccountConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nowa karta.
         /// </summary>
         public static string newCard {
@@ -426,6 +561,15 @@ namespace BankUI.Properties {
         public static string operationHistory {
             get {
                 return ResourceManager.GetString("operationHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Operacja wykonana poprawnie.
+        /// </summary>
+        public static string operationSuccessful {
+            get {
+                return ResourceManager.GetString("operationSuccessful", resourceCulture);
             }
         }
         
@@ -493,6 +637,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Podany pesel istnieje już w naszej bazie.
+        /// </summary>
+        public static string PESELexists {
+            get {
+                return ResourceManager.GetString("PESELexists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Pin.
         /// </summary>
         public static string pin {
@@ -525,6 +678,15 @@ namespace BankUI.Properties {
         public static string signUp {
             get {
                 return ResourceManager.GetString("signUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Sukces.
+        /// </summary>
+        public static string success {
+            get {
+                return ResourceManager.GetString("success", resourceCulture);
             }
         }
         
@@ -574,11 +736,29 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Pomyślnie wykonano przelew.
+        /// </summary>
+        public static string transferSuccess {
+            get {
+                return ResourceManager.GetString("transferSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Zaktualizuj.
         /// </summary>
         public static string update {
             get {
                 return ResourceManager.GetString("update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wyplata.
+        /// </summary>
+        public static string withdraw {
+            get {
+                return ResourceManager.GetString("withdraw", resourceCulture);
             }
         }
     }

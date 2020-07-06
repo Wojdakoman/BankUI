@@ -121,6 +121,9 @@
     <value>Konto</value>
     <comment>menu</comment>
   </data>
+  <data name="accountAdded" xml:space="preserve">
+    <value>Pomyślnie otwarto nowe konto!</value>
+  </data>
   <data name="accountNumber" xml:space="preserve">
     <value>Numer konta</value>
   </data>
@@ -140,6 +143,9 @@
   <data name="atm" xml:space="preserve">
     <value>Bankomat</value>
   </data>
+  <data name="attention" xml:space="preserve">
+    <value>Uwaga</value>
+  </data>
   <data name="back" xml:space="preserve">
     <value>Powrót</value>
     <comment>menu</comment>
@@ -149,6 +155,15 @@
   </data>
   <data name="birthDate" xml:space="preserve">
     <value>Data urodzenia</value>
+  </data>
+  <data name="cardAdded" xml:space="preserve">
+    <value>Dodano nową kartę do konta</value>
+  </data>
+  <data name="cardDataUpdated" xml:space="preserve">
+    <value>Zaktualizowano dane karty</value>
+  </data>
+  <data name="cardDelConfirm" xml:space="preserve">
+    <value>Na pewno usunąć kartę? Tej operacji nie można cofnąć!</value>
   </data>
   <data name="cardNumber" xml:space="preserve">
     <value>Numer karty</value>
@@ -166,6 +181,9 @@
   <data name="countMonths" xml:space="preserve">
     <value>Ile miesięcy:</value>
   </data>
+  <data name="dataUpdated" xml:space="preserve">
+    <value>Zaktualizowano dane osobowe</value>
+  </data>
   <data name="date" xml:space="preserve">
     <value>Data</value>
   </data>
@@ -176,11 +194,20 @@
   <data name="deleteCard" xml:space="preserve">
     <value>Usuń kartę</value>
   </data>
+  <data name="deposit" xml:space="preserve">
+    <value>Wplata</value>
+  </data>
   <data name="description" xml:space="preserve">
     <value>Opis</value>
   </data>
   <data name="details" xml:space="preserve">
     <value>Szczegóły</value>
+  </data>
+  <data name="differentLogin" xml:space="preserve">
+    <value>Podaj inny login</value>
+  </data>
+  <data name="differentPESEL" xml:space="preserve">
+    <value>Wpisz inny pesel</value>
   </data>
   <data name="execute" xml:space="preserve">
     <value>Wykonaj</value>
@@ -203,9 +230,21 @@
   <data name="IPAddres" xml:space="preserve">
     <value>Adres IP</value>
   </data>
+  <data name="lackMoney" xml:space="preserve">
+    <value>Brak wystarczającej ilości środków na koncie</value>
+  </data>
+  <data name="limitExceed" xml:space="preserve">
+    <value>Przekroczono limit dzienny</value>
+  </data>
+  <data name="loanPaymentTitle" xml:space="preserve">
+    <value>Spłata raty</value>
+  </data>
   <data name="loans" xml:space="preserve">
     <value>Kredyty</value>
     <comment>menu</comment>
+  </data>
+  <data name="loanTaken" xml:space="preserve">
+    <value>Pomyślnie zaciągnięto kredyt</value>
   </data>
   <data name="loanValue" xml:space="preserve">
     <value>Wartość kredytu</value>
@@ -226,6 +265,9 @@
   <data name="loginIn" xml:space="preserve">
     <value>Zaloguj</value>
   </data>
+  <data name="loginOccupied" xml:space="preserve">
+    <value>Podany login jest już zajęty</value>
+  </data>
   <data name="loginResult" xml:space="preserve">
     <value>Logowanie poprawne</value>
   </data>
@@ -244,12 +286,18 @@
     <value>Otwórz konto</value>
     <comment>menu</comment>
   </data>
+  <data name="newAccountConfirm" xml:space="preserve">
+    <value>Na pewno chcesz otworzyć nowe konto?</value>
+  </data>
   <data name="newCard" xml:space="preserve">
     <value>Nowa karta</value>
     <comment>menu</comment>
   </data>
   <data name="operationHistory" xml:space="preserve">
     <value>Historia operacji</value>
+  </data>
+  <data name="operationSuccessful" xml:space="preserve">
+    <value>Operacja wykonana poprawnie</value>
   </data>
   <data name="operationType" xml:space="preserve">
     <value>Rodzaj operacji</value>
@@ -272,6 +320,9 @@
   <data name="PESEL" xml:space="preserve">
     <value>PESEL</value>
   </data>
+  <data name="PESELexists" xml:space="preserve">
+    <value>Podany pesel istnieje już w naszej bazie</value>
+  </data>
   <data name="pin" xml:space="preserve">
     <value>Pin</value>
   </data>
@@ -283,6 +334,9 @@
   </data>
   <data name="signUp" xml:space="preserve">
     <value>Rejestracja</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Sukces</value>
   </data>
   <data name="surname" xml:space="preserve">
     <value>Nazwisko</value>
@@ -301,7 +355,13 @@
     <value>Przelewy</value>
     <comment>menu</comment>
   </data>
+  <data name="transferSuccess" xml:space="preserve">
+    <value>Pomyślnie wykonano przelew</value>
+  </data>
   <data name="update" xml:space="preserve">
     <value>Zaktualizuj</value>
+  </data>
+  <data name="withdraw" xml:space="preserve">
+    <value>Wyplata</value>
   </data>
 </root>

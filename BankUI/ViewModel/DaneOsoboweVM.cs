@@ -102,12 +102,12 @@ namespace BankUI.ViewModel
                     _update = new RelayCommand(
                         arg =>
                         {
-                            if (Login != _dane.Login & _model.LoginIstnieje(Login)) MessageBox.Show("Wybrany login jest już zajęty", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            if (Login != _dane.Login & _model.LoginIstnieje(Login)) MessageBox.Show(R.loginOccupied, R.attention, MessageBoxButton.OK, MessageBoxImage.Warning);
                             else
                             {
                                 _model.AktualizujDaneOsobowe(new WlascicielDane(Imie, Nazwisko, Miasto, Adres, Telefon, Login, Haslo));
                                 OnPropertyChanged(nameof(UserName));
-                                MessageBox.Show("Zaktualizowano dane osobowe", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show(R.dataUpdated, R.success, MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                         },
                         arg => (Imie != null && Nazwisko != null && Miasto != null && Adres != null && Telefon != null && Login != null && Haslo != null)

@@ -93,11 +93,11 @@ namespace BankUI.ViewModel
                     _otworzKonto = new RelayCommand(
                         arg =>
                         {
-                            var result = MessageBox.Show("Na pewno chcesz otworzyć nowe konto?", "Uwaga!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                            var result = MessageBox.Show(R.newAccountConfirm, R.attention, MessageBoxButton.YesNo, MessageBoxImage.Question);
                             if(result == MessageBoxResult.Yes)
                             {
                                 _model.OtworzKonto();
-                                MessageBox.Show("Pomyślnie otwarto nowe konto!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show(R.accountAdded, R.success, MessageBoxButton.OK, MessageBoxImage.Information);
                                 OnPropertyChanged(nameof(ListaKontIndex), nameof(ListaKont));
                             }
                         },

@@ -11,6 +11,7 @@ using System.Windows.Media;
 
 namespace BankUI.AttachedProperties
 {
+    using R = Properties.Resources;
     public static class PeselProperties
     {
         public static readonly DependencyProperty OnlyDigitProperty =
@@ -85,7 +86,7 @@ namespace BankUI.AttachedProperties
         {
             var textBox = sender as TextBox;
             string wpisanyPesel = textBox.Text;
-            if(wpisanyPesel == "Wpisz inny pesel")
+            if(wpisanyPesel == R.differentPESEL)
             {
                 textBox.Foreground = new SolidColorBrush(Colors.Black);
                 textBox.Text = string.Empty;
@@ -99,9 +100,9 @@ namespace BankUI.AttachedProperties
             //Sprawdzenie Pesela i inne sprawy xD
             if (wpisanyPesel.Length > 0 && RepositoryWlasciciel.DoesPeselExist(Int64.Parse(wpisanyPesel)))
             {
-                MessageBox.Show("Podany pesel istnieje już w naszej bazie");
+                MessageBox.Show(R.PESELexists);
                 textBox.Foreground = new SolidColorBrush(Colors.Red);
-                textBox.Text = "Wpisz inny pesel";
+                textBox.Text = R.differentPESEL;
                 SetPeselPoprawny(textBox, null);
             }
         }

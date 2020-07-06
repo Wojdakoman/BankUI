@@ -26,5 +26,13 @@ namespace BankUI.ViewModel.Classes
             Type = "Przelew";
             Amount = $"{przelew.Wartosc} PLN";
         }
+        public StringHistoria(KartaOperacje operacja)
+        {
+            Czas = operacja.CzasOperacji;
+            Person = operacja.KartaPlatniczaNumerKarty;
+            Name = operacja.Typ;
+            Type = "Operacja kartą";
+            Amount = $"{operacja.Wartosc} PLN";
+        }
     }
 }

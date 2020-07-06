@@ -152,6 +152,14 @@ namespace BankUI.Model
                 {
                     result.Add(new StringHistoria(przelew, kontoBankowe.ListaKont[Konto].NumerKonta));
                 }
+                //foreach (var karta in kontoBankowe.ListOperacjiKart)
+                //{
+                //    if(kontoBankowe.KartyPlatnicze[kontoBankowe.ListaKont[Konto].NumerKonta].Contains(karta.Key))
+                //    foreach(var operacja in karta.Value)
+                //    {
+                //        result.Add(new StringHistoria(operacja));
+                //    }
+                //}
                 result.Sort((x, y) => DateTime.Compare(y.Czas, x.Czas));
                 return result;
             } }

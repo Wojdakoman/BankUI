@@ -16,12 +16,12 @@ namespace BankUI.ViewModel
     class KartyVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
-        private AppGlobalInfo _appInfo;
+        private AppGlobalInfo _appInfo; //wykorzystuje klase do przekazania numeru karty, ktorej szczegoly chcemy zobaczyc
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
         public int ListaKontIndex { get; set; }
-        public List<StringKarta> Lista { get => _model.Karty; }
+        public List<StringKarta> Lista { get => _model.Karty; } //lista kart przypisanych do konta
         #endregion
         public KartyVM(ref Data model, ref AppGlobalInfo appInfo)
         {
@@ -80,7 +80,7 @@ namespace BankUI.ViewModel
                         =>
                     {
                         string numerkarty = parameter.ToString();
-                        _appInfo.NumerKarty = numerkarty;
+                        _appInfo.NumerKarty = numerkarty; //zapisuje numer karty w klasie AppGlobalInfo
                         Mediator.Notify("GoToPage", "pokazKarte");
                     },
                         arg => true

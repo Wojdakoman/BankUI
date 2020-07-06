@@ -12,14 +12,20 @@ using Projekt.DAL.Entity;
 
 namespace BankUI.ViewModel
 {
+    /// <summary>
+    /// Glowna klasa ViewModelu polaczona z MainWindow.xaml
+    /// </summary>
     class MainWindowVM : ViewModelBase
     {
-        private IPageViewModel _currentPageViewModel;
-        private Dictionary<string, IPageViewModel> _pageViewModels;
+        #region PRIVATE
+        private IPageViewModel _currentPageViewModel; //aktualnie wyswietlana strona
+        private Dictionary<string, IPageViewModel> _pageViewModels; //lista dostepnych stron
         private Data _model;
-        private AppGlobalInfo _appInfo;
+        private AppGlobalInfo _appInfo; //klasa odpowiedzialna za przesylanie danych pomiedzy oknami
         private KartaPlatnicza _kartaPlatnicza;
+        #endregion
 
+        #region PUBLIC
         public Dictionary<string, IPageViewModel> PageViewModels
         {
             get
@@ -43,8 +49,13 @@ namespace BankUI.ViewModel
                 OnPropertyChanged(nameof(CurrentPageViewModel));
             }
         }
+        #endregion
 
         #region EventsMethods
+        /// <summary>
+        /// Metody wywolywane przez zdarzenia Mediatora
+        /// </summary>
+
         private void ZmianaWidoku(object obj)
         {
             string pageName = obj.ToString();
@@ -64,13 +75,20 @@ namespace BankUI.ViewModel
             _model = new Data();
             _appInfo = new AppGlobalInfo();
             _kartaPlatnicza = new KartaPlatnicza();
-            //check connection to DB
+            //sprawdza polacznie z baza danych
             if (!_model.PolaczeniePoprawne())
             {
                 MessageBox.Show(Properties.Resources.DBerror, Properties.Resources.attention, MessageBoxButton.OK, MessageBoxImage.Error);
                 Application.Current.Shutdown(); //zamknij aplikacje, dgy nie można się połaczyć z bazą danych
             }
-            // Add available pages and set page
+            //dodanie dostepnych stron do listy
+            /*
+             * Aby strony wyswietlaly sie poprawnie nalezy rowniez dodac odpowiednie dane w pliku App.xaml
+             * Schemat:
+             * <DataTemplate DataType="{x:Type vm:KlasaVM(.cs)}">
+             *  <okna:Okno(.xaml) />
+             * </DataTemplate>
+             */
             PageViewModels.Add("login", new LoginVM(ref _model));
             PageViewModels.Add("panelGlowny", new PanelGlownyVM(ref _model));
             PageViewModels.Add("przelew", new PrzelewVM(ref _model, ref _appInfo));
@@ -83,9 +101,9 @@ namespace BankUI.ViewModel
             PageViewModels.Add("lBankomat", new LBankomatVM(ref _kartaPlatnicza));
             PageViewModels.Add("pokazKarte", new KartaVM(ref _model, ref _appInfo));
             PageViewModels.Add("bankomat", new BankomatVM(ref _kartaPlatnicza));
-
+            //ustawienei strony startowej
             CurrentPageViewModel = PageViewModels["login"];
-
+            //subskrybcja nasluchiwania zdarzen
             Mediator.Subscribe("GoToPage", ZmianaWidoku);
             Mediator.Subscribe("Wyloguj", Wyloguj);
         }

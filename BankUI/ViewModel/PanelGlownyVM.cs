@@ -17,12 +17,14 @@ namespace BankUI.ViewModel
     class PanelGlownyVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
+        #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
         public int ListaKontIndex { get; set; }
         public string Saldo { get => $"{_model.Saldo} PLN"; }
         public string TypKonta { get => $"Konto {_model.TypKonta}"; }
-        public List<StringHistoria> Lista { get => _model.Historia; }
+        public List<StringHistoria> Lista { get => _model.Historia; } //lista zawierajaca hostorie operacji na koncie
+        #endregion
 
         public PanelGlownyVM(ref Data model) => _model = model;
 

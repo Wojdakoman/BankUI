@@ -102,6 +102,7 @@ namespace BankUI.ViewModel
                     _update = new RelayCommand(
                         arg =>
                         {
+                            //sprawdza, czy nastapiła zmiana loginu i czy nowy login jest wolny
                             if (Login != _dane.Login & _model.LoginIstnieje(Login)) MessageBox.Show(R.loginOccupied, R.attention, MessageBoxButton.OK, MessageBoxImage.Warning);
                             else
                             {

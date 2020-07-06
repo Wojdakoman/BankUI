@@ -16,9 +16,10 @@ namespace BankUI.ViewModel
     {
         #region PRIVATE
         private Data _model;
-        private int _wartosc = 100;
-        private int _miesiecy = 3;
+        private int _wartosc = 100; //domyslna wartosc kredytu (100 - 50000)
+        private int _miesiecy = 3; //domyslna dlugosc kredytu (3 - 60)
         #endregion
+
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }

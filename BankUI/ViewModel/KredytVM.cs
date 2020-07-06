@@ -15,12 +15,12 @@ namespace BankUI.ViewModel
     class KredytVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
-        private AppGlobalInfo _kredytInfo;
+        private AppGlobalInfo _kredytInfo; //wykorzystuje klase do przeslania danych do kredytu po wyborze opcji "Splac kredyt"
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
         public int ListaKontIndex { get; set; }
-        public List<StringKredyt> Lista { get => _model.Kredyty; }
+        public List<StringKredyt> Lista { get => _model.Kredyty; } //lista zaciagnietych kredytow dla wlasciciela
         #endregion
         public KredytVM(ref Data model, ref AppGlobalInfo kredyt)
         {
@@ -79,12 +79,12 @@ namespace BankUI.ViewModel
                     _splacRate = new RelayCommand((parameter)
                         =>
                     {
-                        int ID = Convert.ToInt32(parameter);
+                        int ID = Convert.ToInt32(parameter); //numer kredytu, dla ktorego wcisniety zostal przycisk
                         foreach(var kredyt in Lista)
                         {
                             if(kredyt.IDKredytu == ID)
                             {
-                                _kredytInfo.DaneKredyt = kredyt;
+                                _kredytInfo.DaneKredyt = kredyt; //przkazanie danych o kredycie do klasy AppGlobalInfo aby byly dostepne do wczytania w oknie Przelewy
                                 break;
                             }
                         }

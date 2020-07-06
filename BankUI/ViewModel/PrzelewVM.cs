@@ -18,7 +18,7 @@ namespace BankUI.ViewModel
     class PrzelewVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
-        private AppGlobalInfo _kredytInfo;
+        private AppGlobalInfo _kredytInfo; //wykorzystuje klase do odebrania danych o przlewie
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
@@ -50,6 +50,7 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             ListaKontIndex = _model.Konto;
+                            //uzupelnienie danych przelewu, jezeli sa przeslane
                             if (_kredytInfo.HasData)
                             {
                                 Odbiorca = _kredytInfo.DaneKredyt.NumerKonta;
@@ -57,6 +58,7 @@ namespace BankUI.ViewModel
                                 Wartosc = _kredytInfo.DaneKredyt.Rata;
                                 _kredytInfo.HasData = false;
                             }
+                            //inaczej nalezy wyczyscic pola, gdyz moga zawierac dane ze starego przelewu
                             else Clear();
                             OnPropertyChanged(nameof(ListaKontIndex), nameof(UserName), nameof(ListaKont), nameof(Saldo), nameof(SaldoString), nameof(Odbiorca), nameof(Tytul), nameof(Wartosc));
                         },

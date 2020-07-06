@@ -13,12 +13,15 @@ using System.Threading.Tasks;
 
 namespace BankUI.Model
 {
+    /// <summary>
+    /// Klasa odpowiedzialna za polaczenie modelu z view modelem. Do tej klasy kierowane sa wszystkei zapytania i polecenia
+    /// </summary>
     class Data
     {
         private KontoBankowe kontoBankowe;
         private Wlasciciel wlasciciel;
         private List<string> _numeryKont = new List<string>();
-        public int Konto { get; set; } = 0;
+        public int Konto { get; set; } = 0; //indeks konta z kontoBankowe.ListaKont, które jest aktualnie wybrane
 
         #region Ctor
         public Data()
@@ -34,6 +37,9 @@ namespace BankUI.Model
         #endregion
 
         #region Funkcje
+        /// <summary>
+        /// Sprawdza, czy mozna otworzyc polaczenie z baza danych
+        /// </summary>
         public bool PolaczeniePoprawne()
         {
             try
@@ -70,11 +76,6 @@ namespace BankUI.Model
             kontoBankowe.AddAccount("Zwykle");
             kontoBankowe.Update();
         }
-        //public void ZamknijKonto()
-        //{
-            
-        //    kontoBankowe.Update();
-        //}
         public StringKarta PobierzKarte(string numerkarty)
         {
             foreach(var karta in kontoBankowe.KartyPlatnicze.ElementAt(Konto).Value)
@@ -94,6 +95,10 @@ namespace BankUI.Model
             result.Sort((x, y) => DateTime.Compare(y.Czas, x.Czas));
             return result;
         }
+        /// <summary>
+        /// Sprawdza, czy podany numer konta bankowego istnieje
+        /// </summary>
+        /// <param name="numerKonta">Sprawdzany numer konta</param>
         public bool NumerIstnieje(string numerKonta)
         {
             return !RepositoryKonto.NumberExist(numerKonta);
@@ -108,21 +113,35 @@ namespace BankUI.Model
             kontoBankowe.AddCard(kontoBankowe.ListaKont[Konto].NumerKonta);
             kontoBankowe.Update();
         }
+        /// <summary>
+        /// Usuwa kartę z konta
+        /// </summary>
+        /// <param name="karta">Numer usuwanej karty</param>
+        /// <param name="konto">Numer konta, do ktorego karta jest przypisana</param>
         public void UsunKarte(string karta, string konto)
         {
             RepositoryKartaPlatnicza.DeleteCard(kontoBankowe.KartyPlatnicze, konto, karta);
             kontoBankowe.Update();
         }
-        public void AktualizujKarte(string numer, string pin, double limit)
+        public void AktualizujKarte(string numerkarty, string pin, double limit)
         {
-            RepositoryKartaPlatnicza.UpdateCard(numer, pin, limit);
+            RepositoryKartaPlatnicza.UpdateCard(numerkarty, pin, limit);
             kontoBankowe.Update();
         }
+        /// <summary>
+        /// Tworzenie nowego kredytu
+        /// </summary>
+        /// <param name="wartosc">Wartosc zaciaganego kredytu</param>
+        /// <param name="dlugosc">Ilosc miesiecy splacania kredytu</param>
         public void WezKredyt(int wartosc, int dlugosc)
         {
             kontoBankowe.AddCreditAccount(wlasciciel.Pesel, kontoBankowe.ListaKont[Konto].NumerKonta, wartosc, dlugosc);
             kontoBankowe.Update();
         }
+        /// <summary>
+        /// Zwraca saldo konta kredytowego (na ktore przelewane sa raty)
+        /// </summary>
+        /// <param name="numerKonta">Numer konta kredytowego</param>
         public double Splacono(string numerKonta)
         {
             foreach(var konto in kontoBankowe.KontaKredytowe)
@@ -146,6 +165,9 @@ namespace BankUI.Model
             } }
         public string TypKonta { get => kontoBankowe.ListaKont[Konto].TypKonta; }
         public double Saldo { get => kontoBankowe.ListaKont[Konto].Saldo; }
+        /// <summary>
+        /// Zwraca liste informacji o kartach przypisanych do konta
+        /// </summary>
         public List<StringKarta> Karty { get
             {
                 List<StringKarta> result = new List<StringKarta>();
@@ -155,6 +177,9 @@ namespace BankUI.Model
                 }
                 return result;
             } }
+        /// <summary>
+        /// Zwraca liste wykonanych/odebranych przelewow oraz operacji kartowych na danym koncie
+        /// </summary>
         public List<StringHistoria> Historia { get
             {
                 List<Konto> temp = new List<Konto>();
@@ -200,11 +225,6 @@ namespace BankUI.Model
                 {
                     result.Add(new StringKredyt(kredyt, Splacono(kredyt.NumerKonta)));
                 }
-                //result.Sort((a, b) => b.Data.CompareTo(a.Data));
-                //for(int i = 0; i < 10; i++)
-                //{
-                //    result.Add(new StringKredyt());
-                //}
                 return result;
             }
         }

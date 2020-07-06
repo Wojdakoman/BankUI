@@ -16,7 +16,7 @@ namespace BankUI.ViewModel
     class KartaVM : ViewModelBase, IPageViewModel
     {
         private Data _model;
-        private AppGlobalInfo _appInfo;
+        private AppGlobalInfo _appInfo; //wykorzystuje klase do odebrania numeru karty, ktora ma byc wyswietlana
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         #region DaneKarty
@@ -25,7 +25,7 @@ namespace BankUI.ViewModel
         public string Data { get; set; }
         public double? Limit { get; set; }
         public string Pin { get; set; }
-        public List<StringHistoriaKarta> Lista { get => _model.PobierzHistorieKarty(_appInfo.NumerKarty); }
+        public List<StringHistoriaKarta> Lista { get => _model.PobierzHistorieKarty(_appInfo.NumerKarty); } //lista z historia operacji na karcie
         #endregion
         #endregion
         public KartaVM(ref Data model, ref AppGlobalInfo appInfo)

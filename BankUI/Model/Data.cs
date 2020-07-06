@@ -147,19 +147,19 @@ namespace BankUI.Model
                 List<Konto> temp = new List<Konto>();
                 temp.Add(kontoBankowe.ListaKont[Konto]);
                 List<StringHistoria> result = new List<StringHistoria>();
-
+                //pobierz i dodaj przelewy do historii
                 foreach(var przelew in RepositoryPrzelew.LoadOperations(temp).ElementAt(0).Value)
                 {
                     result.Add(new StringHistoria(przelew, kontoBankowe.ListaKont[Konto].NumerKonta));
                 }
-                //foreach (var karta in kontoBankowe.ListOperacjiKart)
-                //{
-                //    if(kontoBankowe.KartyPlatnicze[kontoBankowe.ListaKont[Konto].NumerKonta].Contains(karta.Key))
-                //    foreach(var operacja in karta.Value)
-                //    {
-                //        result.Add(new StringHistoria(operacja));
-                //    }
-                //}
+                //dla wszystkich kart dla danego konta, dodaj operacje do historii
+                foreach (var karta in kontoBankowe.KartyPlatnicze[kontoBankowe.ListaKont[Konto].NumerKonta])
+                {
+                    foreach (var operacja in kontoBankowe.ListOperacjiKart[karta.NumerKarty])
+                    {
+                        result.Add(new StringHistoria(operacja));
+                    }
+                }
                 result.Sort((x, y) => DateTime.Compare(y.Czas, x.Czas));
                 return result;
             } }

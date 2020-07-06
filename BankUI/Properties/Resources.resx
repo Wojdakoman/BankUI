@@ -187,6 +187,9 @@
   <data name="date" xml:space="preserve">
     <value>Data</value>
   </data>
+  <data name="DBerror" xml:space="preserve">
+    <value>Błąd połączenia z bazą danych!</value>
+  </data>
   <data name="deleteAccount" xml:space="preserve">
     <value>Zamknij konto</value>
     <comment>menu</comment>

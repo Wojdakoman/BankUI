@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using BankUI.Model;
 using BankUI.ViewModel.Base;
 using BankUI.ViewModel.Classes;
@@ -63,6 +64,12 @@ namespace BankUI.ViewModel
             _model = new Data();
             _appInfo = new AppGlobalInfo();
             _kartaPlatnicza = new KartaPlatnicza();
+            //check connection to DB
+            if (!_model.PolaczeniePoprawne())
+            {
+                MessageBox.Show(Properties.Resources.DBerror, Properties.Resources.attention, MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown(); //zamknij aplikacje, dgy nie można się połaczyć z bazą danych
+            }
             // Add available pages and set page
             PageViewModels.Add("login", new LoginVM(ref _model));
             PageViewModels.Add("panelGlowny", new PanelGlownyVM(ref _model));

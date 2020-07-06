@@ -1,6 +1,8 @@
 ﻿using BankUI.ViewModel.Classes;
+using MySql.Data.MySqlClient;
 using Projekt.API;
 using Projekt.Class;
+using Projekt.DAL;
 using Projekt.DAL.Entity;
 using Projekt.DAL.Repositories;
 using System;
@@ -32,6 +34,17 @@ namespace BankUI.Model
         #endregion
 
         #region Funkcje
+        public bool PolaczeniePoprawne()
+        {
+            try
+            {
+                DB.Instance.Connection.Open();
+            } catch(MySqlException e)
+            {
+                return false;
+            }
+            return true;
+        }
         public bool Login(string uzytkownik, string haslo)
         {
             wlasciciel = RepositoryWlasciciel.FindOwner(uzytkownik, haslo);

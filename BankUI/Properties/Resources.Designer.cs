@@ -259,6 +259,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Błąd połączenia z bazą danych!.
+        /// </summary>
+        public static string DBerror {
+            get {
+                return ResourceManager.GetString("DBerror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Zamknij konto.
         /// </summary>
         public static string deleteAccount {

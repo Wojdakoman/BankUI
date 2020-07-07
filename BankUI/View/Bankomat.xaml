@@ -53,13 +53,13 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <
+                        <RadioButton
                             Grid.Row="0"
                             Grid.Column="0"
                             Content="10"
                             GroupName="pieniadze"
                             prop:RadioBankomatProperties.Radio="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        ></>
+                        ></RadioButton>
                         <RadioButton
                             Grid.Row="1"
                             Grid.Column="0"

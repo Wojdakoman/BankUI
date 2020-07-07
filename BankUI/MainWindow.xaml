@@ -7,7 +7,7 @@
         mc:Ignorable="d" WindowState="Maximized"
         Title="Bank RWW" Height="450" Width="800"
         MinWidth="1200"
-        MinHeight="450"
+        MinHeight="650"
         >
     <Grid>
 

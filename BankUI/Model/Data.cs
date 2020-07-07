@@ -37,6 +37,10 @@ namespace BankUI.Model
         #endregion
 
         #region Funkcje
+        public string PinNowejKarty()
+        {
+            return kontoBankowe.KartyPlatnicze[NumeryKont[Konto]].Last().Pin;
+        }
         /// <summary>
         /// Sprawdza, czy mozna otworzyc polaczenie z baza danych
         /// </summary>

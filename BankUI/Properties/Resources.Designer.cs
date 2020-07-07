@@ -169,7 +169,7 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Dodano nową kartę do konta.
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Dodano nową kartę do konta. PIN:.
         /// </summary>
         public static string cardAdded {
             get {

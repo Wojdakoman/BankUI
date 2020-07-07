@@ -101,7 +101,7 @@ namespace BankUI.ViewModel
                         {
                             _model.DodajKarte();
                             OnPropertyChanged(nameof(Lista));
-                            MessageBox.Show(R.cardAdded, R.success, MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show($"{R.cardAdded} {_model.PinNowejKarty()}", R.success, MessageBoxButton.OK, MessageBoxImage.Information);
                         },
                         arg => true
                     );

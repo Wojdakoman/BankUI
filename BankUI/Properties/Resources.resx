@@ -157,7 +157,7 @@
     <value>Data urodzenia</value>
   </data>
   <data name="cardAdded" xml:space="preserve">
-    <value>Dodano nową kartę do konta</value>
+    <value>Dodano nową kartę do konta. PIN:</value>
   </data>
   <data name="cardDataUpdated" xml:space="preserve">
     <value>Zaktualizowano dane karty</value>

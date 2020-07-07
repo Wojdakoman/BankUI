@@ -30,7 +30,7 @@ namespace BankUI.ViewModel
         public string Odbiorca { get; set; }
         public string Tytul { get; set; }
         public string Opis { get; set; }
-        public string Wartosc { get; set; }
+        public double? Wartosc { get; set; }
         #endregion
         #endregion
         public PrzelewVM(ref Data model, ref AppGlobalInfo kredyt)
@@ -56,7 +56,7 @@ namespace BankUI.ViewModel
                             {
                                 Odbiorca = _kredytInfo.DaneKredyt.NumerKonta;
                                 Tytul = R.loanPaymentTitle;
-                                Wartosc = _kredytInfo.DaneKredyt.Rata.ToString();
+                                Wartosc = _kredytInfo.DaneKredyt.Rata;
                                 _kredytInfo.HasData = false;
                                 _sprawdzKredyt = true;
                             }
@@ -101,7 +101,7 @@ namespace BankUI.ViewModel
                     _wykonajPrzelew = new RelayCommand(
                         arg =>
                         {
-                            _model.NowyPrzelew(Odbiorca, double.Parse(Wartosc), Tytul, Opis);
+                            _model.NowyPrzelew(Odbiorca, Convert.ToDouble(Wartosc), Tytul, Opis);
                             Clear();
                             OnPropertyChanged(nameof(Saldo), nameof(SaldoString));
                             MessageBox.Show(R.transferSuccess);
@@ -115,7 +115,7 @@ namespace BankUI.ViewModel
                                 _sprawdzKredyt = false;
                             }
                         },
-                        arg => !(string.IsNullOrEmpty(Odbiorca) && string.IsNullOrEmpty(Tytul)) && double.Parse(Wartosc) > 0 && double.Parse(Wartosc) <= Saldo && _model.NumerIstnieje(Odbiorca)
+                        arg => !(string.IsNullOrEmpty(Odbiorca) && string.IsNullOrEmpty(Tytul)) && Wartosc > 0 && Wartosc <= Saldo && _model.NumerIstnieje(Odbiorca)
                     );
                 }
                 return _wykonajPrzelew;
@@ -168,7 +168,7 @@ namespace BankUI.ViewModel
             Odbiorca = "";
             Tytul = "";
             Opis = "";
-            Wartosc = "0";
+            Wartosc = null;
             OnPropertyChanged(nameof(Odbiorca), nameof(Tytul), nameof(Opis), nameof(Wartosc));
         }
 

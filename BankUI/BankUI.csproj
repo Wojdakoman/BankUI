@@ -177,9 +177,7 @@
     <Compile Include="View\Bankomat.xaml.cs">
       <DependentUpon>Bankomat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\DoubleTextBox.xaml.cs">
-      <DependentUpon>DoubleTextBox.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="View\Controls\MoneyTextBox.cs" />
     <Compile Include="View\DaneOsobowe.xaml.cs">
       <DependentUpon>DaneOsobowe.xaml</DependentUpon>
     </Compile>
@@ -234,10 +232,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Bankomat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Controls\DoubleTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

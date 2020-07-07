@@ -64,7 +64,7 @@
                     <Label Content="{Binding NumerKarty}" FontSize="13" Margin="0 0 0 5" />
                     <Label Content="{Binding NumerKonta}" FontSize="13" Margin="0 0 0 5" />
                     <Label Content="{Binding Data}" FontSize="13" Margin="0 0 0 5" />
-                    <controls:DoubleTextBox Width="200" Text="{Binding Path=Limit, Mode=TwoWay, Converter={StaticResource DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 5" />
+                    <controls:MoneyTextBox Width="200" Padding="5" Margin="0 0 0 5" Text="{Binding Limit, Converter={StaticResource DoubleToStringConverter}}" />
                     <PasswordBox Width="200" MaxLength="4" prop:BankomatPinProperties.PinLiczby="{Binding Pin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5" Margin="0 0 0 5" />
                 </StackPanel>
             </StackPanel>

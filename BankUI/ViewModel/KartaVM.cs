@@ -70,7 +70,6 @@ namespace BankUI.ViewModel
                         arg =>
                         {
                             _model.AktualizujKarte(NumerKarty, Pin, Convert.ToDouble(Limit));
-                            MessageBox.Show(Limit.ToString());
                             MessageBox.Show(R.cardDataUpdated, R.success, MessageBoxButton.OK, MessageBoxImage.Information);
                         },
                         arg => Limit > 0 && !string.IsNullOrEmpty(Pin) && Pin.Length == 4

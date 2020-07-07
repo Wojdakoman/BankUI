@@ -89,6 +89,7 @@ namespace BankUI.ViewModel
                             }
                         }
                         _kredytInfo.HasData = true;
+
                         Mediator.Notify("GoToPage", "przelew");
                     },
                         arg => true

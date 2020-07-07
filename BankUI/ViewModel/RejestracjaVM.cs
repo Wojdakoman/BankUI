@@ -64,9 +64,12 @@ namespace BankUI.ViewModel
                         if (!(RepositoryWlasciciel.DoesLoginExist(Login) || RepositoryWlasciciel.DoesPeselExist(Int64.Parse(Pesel))))
                         {
                             //Mlodziezowe do 18 roku zycia
-                            string typ = (DateTime.Now - Data).Days / 365 <= 18 ? "Mlodziezowe" : "Normalne";
+                            string typ = (DateTime.Now - Data).Days / 365 <= 18 ? "Mlodziezowe" : "Zwykle";
                             NewOwner nowaOsoba = new NewOwner(typ, Pesel, Imie, Nazwisko, Data.ToShortDateString(), Miasto, Adres, Telefon, Login, Haslo);
                             Task.Delay(1000);
+
+
+
 
                             //Zalogowanie nowego klienta
                             _model.Login(Login, Haslo);
@@ -74,7 +77,7 @@ namespace BankUI.ViewModel
                         }
 
                     },
-                        arg => (Pesel != null && Imie != null && Nazwisko != null && Data != null && Miasto != null && Adres != null && Telefon != null && Login != null && Haslo != null)
+                        arg => (Pesel != null && Pesel.Length == 11 && Imie != null && Nazwisko != null && Data != null && Miasto != null && Adres != null && Telefon != null && Telefon.Length ==9 && Login != null && Login.Length > 1 && Haslo != null && Haslo.Length >1)
                     );
                 }
                 return zarejestruj;
@@ -101,6 +104,36 @@ namespace BankUI.ViewModel
                 powrot = value;
             }
         }
+
+        private ICommand _onLoad = null;
+        public ICommand OnLoad
+        {
+            get
+            {
+                if (_onLoad == null)
+                {
+                    _onLoad = new RelayCommand(
+                        arg =>
+                        {
+                            Imie = string.Empty;
+                            Nazwisko = string.Empty;
+                            Pesel = string.Empty;
+                            Miasto = string.Empty;
+                            Adres = string.Empty;
+                            Telefon = string.Empty;
+                            Login = string.Empty;
+                            Haslo = string.Empty;
+                            Data = DateTime.Now.Date;
+
+                            OnPropertyChanged(nameof(Imie), nameof(Nazwisko), nameof(Pesel), nameof(Data), nameof(Miasto), nameof(Adres), nameof(Telefon), nameof(Login), nameof(Haslo));
+                },
+                        arg => true
+                    );
+                }
+                return _onLoad;
+            }
+        }
+
         #endregion
         #region Contructors
         public RejestracjaVM(ref Data model)

@@ -412,6 +412,15 @@ namespace BankUI.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Spłacono kredyt!.
+        /// </summary>
+        public static string loanPaid {
+            get {
+                return ResourceManager.GetString("loanPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Spłata raty.
         /// </summary>
         public static string loanPaymentTitle {

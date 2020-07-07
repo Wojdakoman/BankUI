@@ -151,7 +151,15 @@ namespace BankUI.Model
             }
             return 0;
         }
-
+        /// <summary>
+        /// Kończy kredyt
+        /// </summary>
+        /// <param name="IDkredyt">Numer kredytu</param>
+        /// <param name="numerKonta">Numer konta kredytowego</param>
+        public void ZamknijKredyt(int IDkredyt, string numerKonta)
+        {
+            RepositoryKredyt.DeleteCredit(IDkredyt);
+        }
 
         #endregion
 

@@ -124,6 +124,7 @@
     <Compile Include="AttachedProperties\NumerKartyProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperties.cs" />
     <Compile Include="AttachedProperties\PeselProperties.cs" />
+    <Compile Include="AttachedProperties\PrzelewProperties.cs" />
     <Compile Include="AttachedProperties\RadioBankomatProperties.cs" />
     <Compile Include="Model\API\APIHelper.cs" />
     <Compile Include="Model\API\IP.cs" />

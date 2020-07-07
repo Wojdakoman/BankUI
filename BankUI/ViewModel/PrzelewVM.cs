@@ -29,7 +29,7 @@ namespace BankUI.ViewModel
         public string Odbiorca { get; set; }
         public string Tytul { get; set; }
         public string Opis { get; set; }
-        public double? Wartosc { get; set; }
+        public string Wartosc { get; set; }
         #endregion
         #endregion
         public PrzelewVM(ref Data model, ref AppGlobalInfo kredyt)
@@ -55,7 +55,7 @@ namespace BankUI.ViewModel
                             {
                                 Odbiorca = _kredytInfo.DaneKredyt.NumerKonta;
                                 Tytul = R.loanPaymentTitle;
-                                Wartosc = _kredytInfo.DaneKredyt.Rata;
+                                Wartosc = _kredytInfo.DaneKredyt.Rata.ToString();
                                 _kredytInfo.HasData = false;
                             }
                             //inaczej nalezy wyczyscic pola, gdyz moga zawierac dane ze starego przelewu
@@ -99,12 +99,12 @@ namespace BankUI.ViewModel
                     _wykonajPrzelew = new RelayCommand(
                         arg =>
                         {
-                            _model.NowyPrzelew(Odbiorca, (double)Wartosc, Tytul, Opis);
+                            _model.NowyPrzelew(Odbiorca, double.Parse(Wartosc), Tytul, Opis);
                             Clear();
                             OnPropertyChanged(nameof(Saldo), nameof(SaldoString));
                             MessageBox.Show(R.transferSuccess);
                         },
-                        arg => !(string.IsNullOrEmpty(Odbiorca) && string.IsNullOrEmpty(Tytul)) && Wartosc > 0 && Wartosc <= Saldo && _model.NumerIstnieje(Odbiorca)
+                        arg => !(string.IsNullOrEmpty(Odbiorca) && string.IsNullOrEmpty(Tytul)) && double.Parse(Wartosc) > 0 && double.Parse(Wartosc) <= Saldo && _model.NumerIstnieje(Odbiorca)
                     );
                 }
                 return _wykonajPrzelew;
@@ -157,7 +157,7 @@ namespace BankUI.ViewModel
             Odbiorca = "";
             Tytul = "";
             Opis = "";
-            Wartosc = null;
+            Wartosc = "0";
             OnPropertyChanged(nameof(Odbiorca), nameof(Tytul), nameof(Opis), nameof(Wartosc));
         }
 

@@ -13,7 +13,7 @@ namespace Projekt.DAL.Repositories
     {
         private static string ADD_CREDIT = "INSERT INTO kredyt (WlascicielPesel, Wartosc, NumerKonta, DataSplaty, Oprocentowanie, Rata) VALUES (@pesel, @wartosc, @numer, @data, @oprocentowanie, @rata)";
         private static string GET_CREDITS = "SELECT * FROM kredyt WHERE WlascicielPesel=@pesel";
-
+        private static string DEL_CREDIT = "DELETE FROM kredyt WHERE NumerKredytu=@numer";
 
         /// <summary>
         /// Utworzenie nowego kredytu
@@ -96,6 +96,24 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
             return credits;
+        }
+
+        /// <summary>
+        /// Usuwanie kredytu z tabeli
+        /// </summary>
+        /// <param name="id">Numer kredytu</param>
+        public static void DeleteCredit(int id)
+        {
+            using (MySqlConnection connection = DB.Instance.Connection)
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(DEL_CREDIT, connection);
+
+                command.Parameters.Add("@numer", MySqlDbType.Int32, 10).Value = id;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }
 }

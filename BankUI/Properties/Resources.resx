@@ -239,6 +239,9 @@
   <data name="limitExceed" xml:space="preserve">
     <value>Przekroczono limit dzienny</value>
   </data>
+  <data name="loanPaid" xml:space="preserve">
+    <value>Spłacono kredyt!</value>
+  </data>
   <data name="loanPaymentTitle" xml:space="preserve">
     <value>Spłata raty</value>
   </data>

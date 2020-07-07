@@ -19,6 +19,7 @@ namespace BankUI.ViewModel
     {
         private Data _model;
         private AppGlobalInfo _kredytInfo; //wykorzystuje klase do odebrania danych o przlewie
+        private bool _sprawdzKredyt = false; //warunek, czy sprawdzic czy kredyt zostal splacony 
         #region PUBLIC
         public string UserName { get => _model.WlascicielName; }
         public List<string> ListaKont { get => _model.NumeryKont; }
@@ -57,6 +58,7 @@ namespace BankUI.ViewModel
                                 Tytul = R.loanPaymentTitle;
                                 Wartosc = _kredytInfo.DaneKredyt.Rata.ToString();
                                 _kredytInfo.HasData = false;
+                                _sprawdzKredyt = true;
                             }
                             //inaczej nalezy wyczyscic pola, gdyz moga zawierac dane ze starego przelewu
                             else Clear();
@@ -103,6 +105,15 @@ namespace BankUI.ViewModel
                             Clear();
                             OnPropertyChanged(nameof(Saldo), nameof(SaldoString));
                             MessageBox.Show(R.transferSuccess);
+                            if (_sprawdzKredyt) //sprawdza, czy wukonanie przelwu splacilo kredyt
+                            {
+                                if (_kredytInfo.DaneKredyt.Splacono + _kredytInfo.DaneKredyt.Rata >= _kredytInfo.DaneKredyt.Koszt)
+                                {
+                                    _model.ZamknijKredyt(_kredytInfo.DaneKredyt.IDKredytu, _kredytInfo.DaneKredyt.NumerKonta);
+                                    MessageBox.Show(R.loanPaid, R.success, MessageBoxButton.OK, MessageBoxImage.Information);
+                                }
+                                _sprawdzKredyt = false;
+                            }
                         },
                         arg => !(string.IsNullOrEmpty(Odbiorca) && string.IsNullOrEmpty(Tytul)) && double.Parse(Wartosc) > 0 && double.Parse(Wartosc) <= Saldo && _model.NumerIstnieje(Odbiorca)
                     );

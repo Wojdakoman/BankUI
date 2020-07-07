@@ -71,7 +71,7 @@
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding Splacono}" CellStyle="{StaticResource asd}">
+                <DataGridTextColumn FontSize="16" Width="2*" IsReadOnly="True" Binding="{Binding SplaconoString}" CellStyle="{StaticResource asd}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding ElementName=MainGrid, Path=DataContext.RPaidBack}"/>

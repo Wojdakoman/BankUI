@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BankUI.ViewModel.Classes
 {
+    /// <summary>
+    /// Struktura danych wykorzystywana przy historii przelewow i operacji karta w panelu glownym
+    /// </summary>
     class StringHistoria
     {
         public string Data { get => Czas.ToString(); }

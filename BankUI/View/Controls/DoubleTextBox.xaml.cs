@@ -91,7 +91,7 @@ namespace BankUI.View.Controls
             if (e.Text == "-")
                 return;
 
-            //przecinek tez nie moze byc pierwszy
+            //separator tez nie moze byc pierwszy
             if (e.Text == znak && t == "")
             {
                 e.Handled = true;

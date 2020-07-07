@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankUI"
         mc:Ignorable="d" WindowState="Maximized"
-        Title="Bank RWW" Height="450" Width="800">
+        Title="Bank RWW" Height="450" Width="800"
+        MinWidth="1200"
+        MinHeight="450"
+        >
     <Grid>
 
         <ContentControl Grid.Row="0" Content="{Binding CurrentPageViewModel}" />

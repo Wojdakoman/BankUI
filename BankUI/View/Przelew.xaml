@@ -85,7 +85,7 @@
                     <TextBox Width="200" Text="{Binding Odbiorca}" Padding="5" Margin="0 0 0 5" />
                     <TextBox Width="200" Text="{Binding Tytul}" Padding="5" Margin="0 0 0 5" />
                     <TextBox Width="200" Text="{Binding Opis}" Padding="5" Margin="0 0 0 5" />
-                    <controls:DoubleTextBox Width="200" Text="{Binding Path=Wartosc, Mode=TwoWay, Converter={StaticResource DoubleToStringConverter}}" />
+                    <controls:DoubleTextBox Width="200" Text="{Binding Path=Wartosc, Mode=TwoWay, Converter={StaticResource DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">

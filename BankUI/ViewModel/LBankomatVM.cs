@@ -69,7 +69,6 @@ namespace BankUI.ViewModel
                            else
                            {
                                MessageBox.Show("Błąd danych");
-                               NumerKarty = string.Empty;
                            }
                        },
                         arg => NumerKarty != null && NumerKarty.Length == 16 && Pin != null && Pin.Length == 4

@@ -12,11 +12,11 @@
             <Label Content="{Binding RLoginHeader}" FontSize="20"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="{Binding RLogin}" Width="50"/>
-                <TextBox Width="150" Text="{Binding LoginName}"  />
+                <TextBox Width="150" Text="{Binding LoginName}" VerticalContentAlignment="Center" />
             </StackPanel>
             <StackPanel Margin="0 5" Orientation="Horizontal">
                 <Label Content="{Binding RPassword}" Width="50"/>
-                <PasswordBox x:Name="passwordBoxPassword" Width="150"></PasswordBox>
+                <PasswordBox x:Name="passwordBoxPassword" Width="150" VerticalContentAlignment="Center"></PasswordBox>
             </StackPanel>
             <Button Margin="0 5" Content="{Binding RLoginIn}" Command="{Binding Login}" CommandParameter="{Binding ElementName=passwordBoxPassword}" />
             <Button Content="{Binding RSignUp}" Command="{Binding StronaRejestracji}"/>

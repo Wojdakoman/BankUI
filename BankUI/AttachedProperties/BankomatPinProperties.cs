@@ -8,13 +8,18 @@ using System.Windows.Controls;
 
 namespace BankUI.AttachedProperties
 {
-    public static class BankomatPin
+
+    /// <summary>
+    /// Właściwości dołączone odpowiedzialne za mozliwość wyłącznego wprowadzania liczb w podane pole
+    /// </summary>
+
+    public static class BankomatPinProperties
     {
         public static readonly DependencyProperty PinLiczbyProperty =
             DependencyProperty.RegisterAttached(
                 "PinLiczby",
                 typeof(string),
-                typeof(BankomatPin),
+                typeof(BankomatPinProperties),
                 new PropertyMetadata(string.Empty, PinLiczbaChanged)
         );
 

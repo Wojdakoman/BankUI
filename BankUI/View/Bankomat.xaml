@@ -53,47 +53,47 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <RadioButton
+                        <
                             Grid.Row="0"
                             Grid.Column="0"
                             Content="10"
                             GroupName="pieniadze"
-                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        ></RadioButton>
+                            prop:RadioBankomatProperties.Radio="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        ></>
                         <RadioButton
                             Grid.Row="1"
                             Grid.Column="0"
                             Content="20"
                             GroupName="pieniadze"
-                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            prop:RadioBankomatProperties.Radio="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="2"
                             Grid.Column="0"
                             Content="50"
                             GroupName="pieniadze"
-                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            prop:RadioBankomatProperties.Radio="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="0"
                             Grid.Column="1"
                             Content="100"
                             GroupName="pieniadze"
-                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            prop:RadioBankomatProperties.Radio="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="1"
                             Grid.Column="1"
                             Content="200"
                             GroupName="pieniadze"
-                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            prop:RadioBankomatProperties.Radio="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                         <RadioButton
                             Grid.Row="2"
                             Grid.Column="1"
                             Content="500"
                             GroupName="pieniadze"
-                            prop:RadioButtonBankomat.Radio="{Binding Wybrany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            prop:RadioBankomatProperties.Radio="{Binding Kwota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ></RadioButton>
                     </Grid>
                 </StackPanel>

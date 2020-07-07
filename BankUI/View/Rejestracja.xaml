@@ -130,7 +130,7 @@
                 <TextBox
                     Grid.Row="6"
                     Grid.Column="1"
-                    MaxLength="11"
+                    MaxLength="9"
                     Text="{Binding Telefon}"
                     prop:PeselProperties.OnlyDigit="True"
                     Style="{StaticResource tbRejestracja}"

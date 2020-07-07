@@ -11,11 +11,15 @@ namespace Projekt.DAL.Repositories
     using Projekt.DAL.Entity;
     static class RepositoryPrzelew
     {
-        // 1. Wczytanie histori operacji dla każdego konta, czyli map np. string i list<>
 
         private static string GET_OPERATIONS = "SELECT * FROM przelew WHERE NumerNadawcy=@numer or NumerOdbiorcy=@numer";
         private static string ADD_OPERATION = "INSERT INTO przelew (NumerNadawcy, NumerOdbiorcy, Wartosc, CzasOperacji, Tytul, Opis) VALUES (@nadawca, @odbiorca, @wartosc, @czas, @tytul, @opis)";
 
+        /// <summary>
+        /// Wczytanie histori operacji dla każdego konta
+        /// </summary>
+        /// <param name="listaKont"></param>
+        /// <returns></returns>
         public static Dictionary<string,List<Przelew>> LoadOperations(List<Konto> listaKont)
         {
             Dictionary<string, List<Przelew>> dictionaryOfOperation = new Dictionary<string, List<Przelew>>();
@@ -45,7 +49,14 @@ namespace Projekt.DAL.Repositories
             }
             return dictionaryOfOperation;
         }
-
+        /// <summary>
+        /// Wykonanie przelewu
+        /// </summary>
+        /// <param name="kontoNadawca"></param>
+        /// <param name="odbiorca"></param>
+        /// <param name="wartosc"></param>
+        /// <param name="tytul"></param>
+        /// <param name="opis"></param>
         public static void ExecuteOperation(Konto kontoNadawca, string odbiorca, double wartosc, string tytul, string opis)
         {
             //Utworz nowy obiekt PRZELEW
@@ -57,7 +68,10 @@ namespace Projekt.DAL.Repositories
             RepositoryKonto.ChangeBalanceT(kontoNadawca.NumerKonta, odbiorca, wartosc);
 
         }
-
+        /// <summary>
+        /// Dodanie przelewu jako operacji do bazy danych
+        /// </summary>
+        /// <param name="operation"></param>
         public static void AddOperation(Przelew operation)
         {
             using (MySqlConnection connection = DB.Instance.Connection)

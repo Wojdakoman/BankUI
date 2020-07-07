@@ -8,13 +8,16 @@ using System.Windows.Controls;
 
 namespace BankUI.AttachedProperties
 {
-    public static class RadioButtonBankomat
+    /// <summary>
+    /// Właściwości dołączone odpowiedzialne za przypisanie wybranej wartości do zmiennej po stronie VM
+    /// </summary>
+    public static class RadioBankomatProperties
     {
         public static readonly DependencyProperty RadioProperty =
             DependencyProperty.RegisterAttached(
                 "Radio",
                 typeof(string),
-                typeof(RadioButtonBankomat),
+                typeof(RadioBankomatProperties),
                 new PropertyMetadata(string.Empty, RadioButtonChecked));
 
         public static void SetRadio(RadioButton radioButton, string value)

@@ -8,6 +8,9 @@ using System.Windows.Controls;
 
 namespace BankUI.AttachedProperties
 {
+    /// <summary>
+    /// Właściwości dołączone umożliwiające zbindowanie hasła do zmiennej w VM
+    /// </summary>
     public static class PasswordBoxProperties
     {
         public static readonly DependencyProperty HasloProperty =

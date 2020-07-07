@@ -19,10 +19,13 @@ namespace BankUI.ViewModel
     using R = Properties.Resources;
     class LBankomatVM : ViewModelBase, IPageViewModel
     {
+        #region Private Methods
         private KartaPlatnicza _kartaPlatnicza;
         private string numerKarty;
         private ICommand zaloguj;
         private ICommand powrot;
+        #endregion
+        #region Public Properties
         public string Pin { get; set; }
         public string NumerKarty
         {
@@ -36,6 +39,11 @@ namespace BankUI.ViewModel
                 OnPropertyChanged(nameof(NumerKarty));
             }
         }
+        #endregion
+        #region Commands
+        /// <summary>
+        /// Sprawdzenie czy karta o podanym numerze i pinie została wprowadzona poprawnie
+        /// </summary>
         public ICommand Zaloguj
         {
             get
@@ -70,10 +78,7 @@ namespace BankUI.ViewModel
                 return zaloguj;
             }
         }
-        public LBankomatVM(ref KartaPlatnicza kartaPlatnicza)
-        {
-            _kartaPlatnicza = kartaPlatnicza;
-        }
+
 
         public ICommand Powrot
         {
@@ -95,7 +100,13 @@ namespace BankUI.ViewModel
                 powrot = value;
             }
         }
-
+        #endregion
+        #region Constructors
+        public LBankomatVM(ref KartaPlatnicza kartaPlatnicza)
+        {
+            _kartaPlatnicza = kartaPlatnicza;
+        }
+        #endregion
         #region Zasoby
         //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
         public string RBack { get => R.back; }

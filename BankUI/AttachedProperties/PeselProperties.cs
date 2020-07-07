@@ -12,6 +12,9 @@ using System.Windows.Media;
 namespace BankUI.AttachedProperties
 {
     using R = Properties.Resources;
+    /// <summary>
+    /// Właściwości dołączone odpowiedzialne za możliwe wyłącznie wprowadzanie liczb do pola
+    /// </summary>
     public static class PeselProperties
     {
         public static readonly DependencyProperty OnlyDigitProperty =
@@ -56,6 +59,10 @@ namespace BankUI.AttachedProperties
         }
         // Zmiana koloru 
 
+
+        /// <summary>
+        /// Właściwości dołączone odpowiedzialne za sprawdzenie unikalności wprowadzonego numeru pesel
+        /// </summary>
         public static readonly DependencyProperty PeselPoprawnyProperty =
             DependencyProperty.RegisterAttached(
                 "PeselPoprawny",
@@ -97,7 +104,6 @@ namespace BankUI.AttachedProperties
         {
             var textBox = sender as TextBox;
             string wpisanyPesel = textBox.Text;
-            //Sprawdzenie Pesela i inne sprawy xD
             if (wpisanyPesel.Length > 0 && RepositoryWlasciciel.DoesPeselExist(Int64.Parse(wpisanyPesel)))
             {
                 MessageBox.Show(R.PESELexists);

@@ -151,6 +151,8 @@ namespace BankUI.Model
             }
             return 0;
         }
+
+
         #endregion
 
         #region Public
@@ -229,13 +231,6 @@ namespace BankUI.Model
             }
         }
         public WlascicielDane DaneWlasciciela { get => new WlascicielDane(wlasciciel); }
-
-        public bool PeselIstnieje(Int64 pesel)
-        {
-
-
-            return true;
-        }
         #endregion
     }
 }

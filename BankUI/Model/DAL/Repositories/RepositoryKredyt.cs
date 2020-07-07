@@ -13,6 +13,15 @@ namespace Projekt.DAL.Repositories
     {
         private static string ADD_CREDIT = "INSERT INTO kredyt (WlascicielPesel, Wartosc, NumerKonta, DataSplaty, Oprocentowanie, Rata) VALUES (@pesel, @wartosc, @numer, @data, @oprocentowanie, @rata)";
         private static string GET_CREDITS = "SELECT * FROM kredyt WHERE WlascicielPesel=@pesel";
+
+
+        /// <summary>
+        /// Utworzenie nowego kredytu
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <param name="wybraneKonto"></param>
+        /// <param name="wartosc"></param>
+        /// <param name="ileMiesiecy"></param>
         public static void TakeCredit(Int64 pesel, string wybraneKonto, double wartosc, int ileMiesiecy)
         {
             string accountNumber = string.Empty;
@@ -40,7 +49,6 @@ namespace Projekt.DAL.Repositories
 
                 command.Parameters.Add(parameter);
 
-                //Teraz juz dziala xD
                 parameter = new MySqlParameter("@oprocentowanie", MySqlDbType.Decimal);
                 parameter.Value = kredyt.Oprocentowanie;
                 command.Parameters.Add(parameter);
@@ -59,6 +67,11 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Wczytanie listy kredytow
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <returns></returns>
         public static List<Kredyt> LoadCredits(Int64 pesel)
         {
             List<Kredyt> credits = new List<Kredyt>();

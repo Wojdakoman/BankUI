@@ -8,6 +8,9 @@ using System.Windows.Controls;
 
 namespace BankUI.AttachedProperties
 {
+    /// <summary>
+    /// Właściwości dołączone odpowiedzialne za odpowiednią stylizacje wprowadzanego numeru konta oraz wpisywanych wyłącznie liczb
+    /// </summary>
     class NumerKartyProperties
     {
         public static readonly DependencyProperty NumerKartyProperty =

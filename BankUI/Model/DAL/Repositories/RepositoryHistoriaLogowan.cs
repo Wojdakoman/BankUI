@@ -10,6 +10,12 @@ namespace Projekt.DAL.Repositories
     {
         private static string INSERT_DATA = "INSERT INTO historialogowan(WlascicielPesel, DataLogowania, GodzinaLogowania, AdresIP, CzyPoprawne) VALUES ( @pesel, @data, @godzina, @ip, @poprawne )";
         private static string GET_HISTORY = "SELECT * FROM historialogowan WHERE WlascicielPesel=@pesel";
+
+        /// <summary>
+        /// Wczytaj historie logowań dla przypisanego właściciela
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <returns></returns>
         public static List<HistoriaLogowan> LoadHistory(Int64 pesel)
         {
             List<HistoriaLogowan> list = new List<HistoriaLogowan>();
@@ -35,7 +41,10 @@ namespace Projekt.DAL.Repositories
             return list;
         }
 
-
+        /// <summary>
+        /// Dodanie nowej próby logowania
+        /// </summary>
+        /// <param name="data"></param>
         public static void CreateHistory(HistoriaLogowan data)
         {
             using (MySqlConnection connection = DB.Instance.Connection)

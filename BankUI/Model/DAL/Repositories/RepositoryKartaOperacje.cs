@@ -17,6 +17,11 @@ namespace Projekt.DAL.Repositories
         private static string ADD_OPERATION = "INSERT INTO kartaoperacje (KartaPlatniczaNumerKarty , Typ, Wartosc, CzasOperacji) VALUES (@numer,@typ,@wartosc,@czas)";
         private static string DELETE_OPERATIONS = "DELETE FROM kartaoperacje WHERE KartaPlatniczaNumerKarty=@numer";
 
+        /// <summary>
+        /// Wczytanie historii wykonanych operacji przez karty dla konkretnych kont
+        /// </summary>
+        /// <param name="cards"></param>
+        /// <returns></returns>
         public static Dictionary<string, List<KartaOperacje>> LoadHistory(Dictionary<string, List<KartaPlatnicza>> cards)
         {
             Dictionary<string, List<KartaOperacje>> list = new Dictionary<string, List<KartaOperacje>>();
@@ -47,23 +52,17 @@ namespace Projekt.DAL.Repositories
             }
             return list;
         }
+
         //OPERACJA WPLATY/WYPLATY
-        //KARTA POWIAZANA Z KONTEM, CZYLI STAN KONTA TEZ SIE ZMIENIA XD
+        //KARTA POWIAZANA Z KONTEM, CZYLI STAN KONTA TEZ SIE ZMIENIA
         //1. Dodanie nowej operacji => do karty operacji
         //2. Zmiana stanu konta przypisanego do konkretnej karty
-        //      3. Pobranie numeru konta z klasy kontobankowe i wykonanie opearcji na tym koncie
+        //3. Pobranie numeru konta z klasy kontobankowe i wykonanie opearcji na tym koncie
 
         public static void ExecuteOperation(string cardNumber, string typ, double wartosc, Dictionary<string, List<KartaPlatnicza>> data)
         {
             AddOperation(new KartaOperacje(cardNumber, typ, wartosc));
-            //Jest jeszcze druga sciezka, pobierajaca wszystko z klasy KontoBankowe (numerkarty => w KartyPlatnicze i wziecie numeru konta)
-            //string accountNumber = RepositoryKartaPlatnicza.ReturnAccountNumber(cardNumber);
-
-            //Czyli druga opcja:
             string accountNumber = data.FirstOrDefault(x => x.Value.Any(y => y.NumerKarty == cardNumber)).Key;
-
-            //Zla kolejnosc => brak sprawdzenia czy jest wystarczajaca ilosc srodkow na koncie xD (czyli dodajemy operacje, a anulujemy z powodu braku srodkow)
-            //Wykonanie zmiany salda na koncie o podanym wyzej numerze
             if (typ == "wyplata")
                 wartosc = -wartosc;
             RepositoryKonto.ChangeBalance(accountNumber, wartosc);
@@ -77,6 +76,10 @@ namespace Projekt.DAL.Repositories
             RepositoryKonto.ChangeBalance(accountNumber, wartosc);
         }
 
+        /// <summary>
+        /// Dodanie nowej operacji dla karty
+        /// </summary>
+        /// <param name="cardOperation"></param>
         public static void AddOperation(KartaOperacje cardOperation)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -96,6 +99,10 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Usuniecie operacji
+        /// </summary>
+        /// <param name="cardNumber"></param>
         public static void DeleteOperations(string cardNumber)
         {
             using (MySqlConnection connection = DB.Instance.Connection)

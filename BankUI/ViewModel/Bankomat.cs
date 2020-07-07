@@ -17,13 +17,21 @@ namespace BankUI.ViewModel
     using R = Properties.Resources;
     class BankomatVM : ViewModelBase, IPageViewModel
     {
+        #region Private Method
         private KartaPlatnicza _kartaPlatnicza;
         private ICommand wykonaj;
-
-
-        public string Wybrany { get; set; }
+        #endregion
+        #region Public Properties
+        public string Kwota { get; set; }
         public int? Typ { get; set; }
-        
+        #endregion
+        #region Commands
+        /// <summary>
+        /// Wykonanie operacji wpłaty/wypłaty
+        /// W przypadku wypłaty:
+        /// Sprawdzany jest limit dzienny przypisany do danej karty
+        /// Oraz czy stan konta pozwala na wypłate
+        /// </summary>
         public ICommand Wykonaj
         {
             get
@@ -37,12 +45,12 @@ namespace BankUI.ViewModel
                            //Operacja karta
                            if (wybranyTyp == "wyplata")
                            {
-                               if (RepositoryKartaOperacje.CheckLimit(_kartaPlatnicza, double.Parse(Wybrany)))
+                               if (RepositoryKartaOperacje.CheckLimit(_kartaPlatnicza, double.Parse(Kwota)))
                                {
                                    //Sprawdz dostepne srodki
-                                   if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKonta, double.Parse(Wybrany)))
+                                   if (RepositoryKonto.CheckBalance(_kartaPlatnicza.NumerKonta, double.Parse(Kwota)))
                                    {
-                                       RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
+                                       RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Kwota), _kartaPlatnicza.NumerKonta);
                                        MessageBox.Show(R.operationSuccessful);
                                        Mediator.Notify("GoToPage", "login");
                                    }
@@ -54,21 +62,18 @@ namespace BankUI.ViewModel
                            }
                            else
                            {
-                               RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Wybrany), _kartaPlatnicza.NumerKonta);
+                               RepositoryKartaOperacje.ExecuteOperation(_kartaPlatnicza.NumerKarty, wybranyTyp, double.Parse(Kwota), _kartaPlatnicza.NumerKonta);
                                MessageBox.Show(R.operationSuccessful);
                                Mediator.Notify("GoToPage", "login");
                            }
                        },
-                        arg => Wybrany != null && Typ != null
+                        arg => Kwota != null && Typ != null
                     );
                 }
                 return wykonaj;
             }
         }
-        public BankomatVM(ref KartaPlatnicza kartaPlatnicza)
-        {
-            _kartaPlatnicza = kartaPlatnicza;
-        }
+
 
         private ICommand powrot;
         public ICommand Powrot
@@ -91,7 +96,13 @@ namespace BankUI.ViewModel
                 powrot = value;
             }
         }
-
+        #endregion
+        #region Contructor
+        public BankomatVM(ref KartaPlatnicza kartaPlatnicza)
+        {
+            _kartaPlatnicza = kartaPlatnicza;
+        }
+        #endregion
         #region Zasoby
         //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
         public string RBack { get => R.back; }

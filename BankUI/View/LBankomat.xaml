@@ -43,7 +43,7 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     MaxLength="4"
-                    prop:BankomatPin.PinLiczby="{Binding Pin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    prop:BankomatPinProperties.PinLiczby="{Binding Pin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></PasswordBox>
                 <Button
                     Content="{Binding RConnect}"

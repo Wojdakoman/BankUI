@@ -13,6 +13,12 @@ namespace Projekt.DAL.Repositories
         private static string PESEL_EXIST = "SELECT * FROM wlasciciel WHERE pesel=@peselPodany";
         private static string UPDATE_OWNER = "UPDATE wlasciciel SET imie=@imie, nazwisko=@nazwisko, miasto=@miasto, adres=@adres, telefon=@telefon, login=@login, haslo=@haslo WHERE pesel=@pesel";
 
+        /// <summary>
+        /// Znalezienie konta o podanym loginie i hasle, w przypadku nie poprawnego logowania => utworzenie próby logowania
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static Wlasciciel FindOwner(string login, string password)
         {
             Wlasciciel wlasciciel = null;
@@ -51,6 +57,11 @@ namespace Projekt.DAL.Repositories
             }
             return wlasciciel;
         }
+
+        /// <summary>
+        /// Stworzenie nowego właściciela
+        /// </summary>
+        /// <param name="owner"></param>
         public static void CreateOwner(Wlasciciel owner)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -73,6 +84,11 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Sprawdzenie czy podany pesel istnieje
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <returns></returns>
         public static bool DoesPeselExist(Int64 pesel)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -92,6 +108,11 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Sprawdzenie czy login instnieje
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public static bool DoesLoginExist(string login)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -111,6 +132,10 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Aktualizacja danych właściciela
+        /// </summary>
+        /// <param name="owner"></param>
         public static void UpdateOwnerData(Wlasciciel owner)
         {
             using (MySqlConnection connection = DB.Instance.Connection)

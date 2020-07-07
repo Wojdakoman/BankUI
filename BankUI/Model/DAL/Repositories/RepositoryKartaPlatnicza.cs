@@ -18,7 +18,11 @@ namespace Projekt.DAL.Repositories
         private static string UPDATE_CARD = "UPDATE kartaplatnicza SET Pin=@pin, LimitPlatnosci=@limit WHERE NumerKarty=@numer";
 
 
-        //Wczytanie wszystkich kart platniczych
+        /// <summary>
+        /// Wczytanie wszystkich kart platniczych dla danych kont
+        /// </summary>
+        /// <param name="accounts"></param>
+        /// <returns></returns>
         public static Dictionary<string,List<KartaPlatnicza>> LoadCards(List<Konto> accounts)
         {
             Dictionary<string, List<KartaPlatnicza>> listOfCards = new Dictionary<string, List<KartaPlatnicza>>();
@@ -106,7 +110,12 @@ namespace Projekt.DAL.Repositories
                     return true;
             }
         }
-        //Wypadaloby tez usunac historie wplat dla usuwanej karty
+        /// <summary>
+        /// Usuniecie karty wraz z jej historią operacji
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="accountNumber"></param>
+        /// <param name="cardNumber"></param>
         public static void DeleteCard(Dictionary<string, List<KartaPlatnicza>> list, string accountNumber, string cardNumber)
         {
             //Usuniecie histori podanej wyzej karty
@@ -149,6 +158,12 @@ namespace Projekt.DAL.Repositories
             return accountNumber;
         }
 
+        /// <summary>
+        /// Sprawdzenie czy podana karta już instnieje w bazie (potrzebne do generowania nowej karty)
+        /// </summary>
+        /// <param name="numerKarty"></param>
+        /// <param name="pin"></param>
+        /// <returns></returns>
         public static bool DoesCardExist(string numerKarty, string pin)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -169,6 +184,11 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Pobierz dane karty, przydatne do operacji w bankomacie
+        /// </summary>
+        /// <param name="numerKarty"></param>
+        /// <returns></returns>
         public static KartaPlatnicza GetCard(string numerKarty)
         {
             KartaPlatnicza kartaPlatnicza = new KartaPlatnicza();

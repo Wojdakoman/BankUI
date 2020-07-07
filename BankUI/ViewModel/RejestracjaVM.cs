@@ -48,7 +48,8 @@ namespace BankUI.ViewModel
                 OnPropertyChanged(nameof(Haslo));
             }
         }
-
+        #endregion
+        #region Commands
         public ICommand Zarejestruj
         {
             get
@@ -107,11 +108,6 @@ namespace BankUI.ViewModel
             _model = model;
         }
         #endregion
-        #region Methods
-
-
-        #endregion
-
         #region Zasoby
         //Zawiera odwołania do zasobów aplikacji, aby pobrać odpowiednią wersję językową dla kontorlek
         #region menu

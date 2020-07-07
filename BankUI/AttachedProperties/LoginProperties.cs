@@ -10,7 +10,11 @@ using System.Windows.Media;
 
 namespace BankUI.AttachedProperties
 {
+    
     using R = Properties.Resources;
+    /// <summary>
+    /// Właściwości dołączone odpowiedzialne za sprawdzenie unikalności loginu i zmienienia właściwości pola
+    /// </summary>
     public static class LoginProperties
     {
         public static readonly DependencyProperty UnikatowyLoginProperty =

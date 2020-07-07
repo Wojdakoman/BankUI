@@ -14,6 +14,12 @@ namespace Projekt.DAL.Repositories
         private static string ADD_NEW_CREDIT_ACCOUNT = "INSERT INTO konto (NumerKonta, WlascicielPesel, TypKonta, Saldo ) VALUES (@numer, @pesel, @typ, @saldo)";
         private static string NUMBER_EXIST = "SELECT * FROM konto WHERE NumerKonta=@numer";
 
+
+        /// <summary>
+        /// Wczytanie kont dla konkretnego właściciela
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <returns></returns>
         public static List<Konto> GetAccount(Int64 pesel)
         {
             List<Konto> list = new List<Konto>();
@@ -36,6 +42,11 @@ namespace Projekt.DAL.Repositories
             }
             return list;
         }
+        /// <summary>
+        /// Wczytanie kont kredytowych
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <returns></returns>
         public static List<Konto> GetCreditAccount(Int64 pesel)
         {
             List<Konto> list = new List<Konto>();
@@ -58,6 +69,13 @@ namespace Projekt.DAL.Repositories
             }
             return list;
         }
+
+        /// <summary>
+        /// Zmiana salda kont przy wykonywaniu przelewu
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="receiverNumber"></param>
+        /// <param name="money"></param>
         public static void ChangeBalanceT(string accountNumber, string receiverNumber, double money)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -99,7 +117,11 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
         }
-        //Wykonaj wplate/wyplate
+        /// <summary>
+        /// Wykonaj wplate/wyplate 
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="money"></param>
         public static void ChangeBalance(string accountNumber, double money)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -117,7 +139,10 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
         }
-
+        /// <summary>
+        /// Dodanie nowego konta
+        /// </summary>
+        /// <param name="konto"></param>
         public static void AddAccount(Konto konto)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -153,6 +178,11 @@ namespace Projekt.DAL.Repositories
                 connection.Close();
             }
         }
+        /// <summary>
+        /// Sprawdzenie czy instnieje konto o podanym numerze
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <returns></returns>
         public static bool NumberExist(string accountNumber)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -169,6 +199,12 @@ namespace Projekt.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Sprawdzenie balansu konta
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="wartosc"></param>
+        /// <returns></returns>
         public static bool CheckBalance(string accountNumber, double wartosc)
         {
             using (MySqlConnection connection = DB.Instance.Connection)
@@ -192,7 +228,6 @@ namespace Projekt.DAL.Repositories
                 }
                 else
                     return false;
-                //Tu zamkniecie polaczenie pozostawimy programowani
             }
         }
     }
